@@ -1,2 +1,5 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+Hopefully you can only see this if you're signed in.<br>
+If this - <b><%= current_user.username %></b> - is blank, that means I've messed up.<br>
+If it says your username, then we're all good.<br><br>
+<%= link_to "Back", posts_path %><br><br>
+This is /posts/new, so you're probably expecting a form to make a new post. I'm working on that, but for now, I'm just testing out the site's very basic functionality.
