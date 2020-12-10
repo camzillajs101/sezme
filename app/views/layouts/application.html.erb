@@ -10,6 +10,17 @@
   </head>
 
   <body>
+    <div class="header">
+      <%= link_to "Sezme", posts_path, class: "logo" %>
+      <% if user_signed_in? %>
+        Currently signed in as: <%= current_user.username %> |
+        <%= link_to "My profile", user_path(current_user) %> |
+        <%= link_to "Edit account", edit_user_registration_path %> |
+        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign in", new_user_session_path %>
+      <% end %>
+    </div><hr>
     <%= yield %>
   </body>
 </html>

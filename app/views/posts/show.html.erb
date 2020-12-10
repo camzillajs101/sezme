@@ -1,2 +1,38 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<%= link_to "Back", posts_path %>
+<h1><%= @post.title %></h1>
+<p>Created by user <%= link_to User.find(@post.user_id).username, user_path(@post.user_id), class: "userproflink" %></p>
+<h3>Rating: <%= @post.rating.to_f / 10 %> stars</h3>
+<p><%= @post.desc %></p>
+<hr>
+<% if user_signed_in? %>
+  <%= form_with url: post_reviews_path(@post), model: @review do |f| %>
+    <div>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+
+    <div>
+      <%= f.label :desc, "Description" %><br>
+      <%= f.text_area :desc %>
+    </div>
+
+    <div> <!-- TODO: make better rating select option -->
+      <%= f.label :rating, "Rating (0-5)", id: "ratingInput" %><br>
+      <%= f.range_field :rating, in: 0..5 %>
+    </div>
+
+    <div>
+      <%= f.submit "Post review" %>
+    </div>
+  <% end %>
+<% end %>
+<br>
+<% @reviews.each do |f| %>
+ <p><b><%= f.title %></b> | <%= f.rating.to_f / 10 %> stars</p>
+ <p><%= f.desc %></p>
+ <p>(score)
+    <% if user_signed_in? && f.user_id == current_user.id %>
+      | <%= link_to "Delete", post_review_path(@post, f), method: :delete %>
+    <% end %>
+ </p>
+<% end %>

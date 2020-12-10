@@ -1,13 +1,8 @@
-<div class="header">
-  <div class="logo">Sezme</div>
-  <% if user_signed_in? %>
-    Currently signed in as: <%= current_user.username %> |
-    <%= link_to "Edit account", edit_user_registration_path %> |
-    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to "Sign in", new_user_session_path %>
-  <% end %>
-</div>
-<hr>
-<%= link_to "New post", new_post_path %><br><br>
-Normally all the posts would be here, but there aren't any yet. Literally none. The Posts table is empty.
+<p><%= link_to "New post", new_post_path %><p>
+<% @posts.each do |f| %>
+  <div>
+    <h2><%= link_to f.title, post_path(f.id), class: "postlink" %> | <%= f.rating.to_f / 10 %> stars</h2>
+    <p>by user <%= link_to User.find(f.user_id).username, user_path(f.user_id), class: "userproflink" %></p>
+    <p><%= pluralize(f.reviews.count, 'review') %> so far</p>
+  </div>
+<% end %>
