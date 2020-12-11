@@ -1,0 +1,8 @@
+<%= link_to image_tag("icons/fill/arrow-go-back-fill.png"), post_path(params[:id]) %>
+<h2>Edit post</h2>
+
+<p>Remember to describe your topic thoroughly and neutrally.</p>
+
+<%= form_with model: @post, class: "styledform" do |f| %>
+  <%= render "form", rating: @post.rating, submittext: "Update Post", form: f %>
+<% end %>

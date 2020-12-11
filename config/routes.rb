@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root 'posts#index', as: :posts
-  resources :posts, only: [:show, :new, :create, :destroy] do
+  resources :posts, except: [:index, :destroy] do
     resources :reviews, only: [:create, :destroy]
   end
-  resources :users, only: :show
+  get '/users/:username', to: 'users#show', as: :user
+  get '/pages/:page', to: 'pages#show'
 end

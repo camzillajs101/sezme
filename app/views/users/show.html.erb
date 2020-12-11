@@ -1,5 +1,5 @@
-<h1>User profile</h1>
+<%= link_to image_tag("icons/fill/arrow-go-back-fill.png"), posts_path %>
 <h2><%= @user.username %></h2>
-<p>Created on <%= Date::MONTHNAMES[@user.created_at.month] %> <%= @user.created_at.day %>, <%= @user.created_at.year %></p>
+<p>Joined on <%= Date::MONTHNAMES[@user.created_at.month] %> <%= @user.created_at.day %>, <%= @user.created_at.year %></p>
 <p><%= pluralize(@user.posts.count, 'post') %></p>
 <p><%= pluralize(@user.reviews.count, 'review') %></p>

@@ -1,8 +1,15 @@
-<p><%= link_to "New post", new_post_path %><p>
+<p><%= link_to new_post_path, class: "buttonicon nodecor" do %>
+  <%= image_tag("icons/fill/pencil-fill.png", class: "icon invert") %> Create Post
+<% end %></p>
 <% @posts.each do |f| %>
-  <div>
-    <h2><%= link_to f.title, post_path(f.id), class: "postlink" %> | <%= f.rating.to_f / 10 %> stars</h2>
-    <p>by user <%= link_to User.find(f.user_id).username, user_path(f.user_id), class: "userproflink" %></p>
+  <div class="post">
+    <%= link_to "#{post_path(f.id)}#reviewform", class: "buttonicon nodecor smallbutton" do %>
+      <%= image_tag("icons/fill/star-half-fill.png", class: "icon invert") %> Review
+    <% end %>
+    <%= link_to post_path(f.id), class: "postlink nodecor" do %>
+      <%= f.title %> | <%= f.rating.to_f / 10 %> stars
+    <% end %>
+    <p>by user <%= link_to User.find(f.user_id).username, user_path(User.find(f.user_id).username), class: "userproflink" %></p>
     <p><%= pluralize(f.reviews.count, 'review') %> so far</p>
   </div>
 <% end %>

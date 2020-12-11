@@ -1,0 +1,17 @@
+<div>
+  <%= form.label :title %><br>
+  <%= form.text_field :title, placeholder: "Name your topic" %>
+</div><br>
+
+<div>
+  <%= form.label :desc, "Description" %><br>
+  <%= form.text_area :desc, placeholder: "Describe it in a few sentences" %>
+</div><br>
+
+<%= form.hidden_field :rating, value: rating %>
+
+<div>
+  <%= button_tag(type: 'submit', class: "buttonicon") do %>
+    <%= submittext %>
+  <% end %>
+</div>

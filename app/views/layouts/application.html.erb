@@ -11,16 +11,23 @@
 
   <body>
     <div class="header">
-      <%= link_to "Sezme", posts_path, class: "logo" %>
+      <span style="float:left">
+        <%= link_to "Sezme", posts_path, class: "logo" %> |
+        <%= link_to "About", "pages/about", class: "nodecor" %>
+      </span>
+
+      <!-- lord forgive me, but... -->
       <% if user_signed_in? %>
         Currently signed in as: <%= current_user.username %> |
-        <%= link_to "My profile", user_path(current_user) %> |
-        <%= link_to "Edit account", edit_user_registration_path %> |
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        <%= link_to image_tag("icons/fill/account-circle-fill.png", class: "icon"), user_path(current_user.username) %> |
+        <%= link_to image_tag("icons/fill/settings-3-fill.png", class: "icon"), edit_user_registration_path %> |
+        <%= link_to image_tag("icons/fill/logout-box-fill.png", class: "icon"), destroy_user_session_path, method: :delete %>
       <% else %>
-        <%= link_to "Sign in", new_user_session_path %>
+        <%= link_to "Sign in", new_user_session_path, class: "nodecor" %>
       <% end %>
-    </div><hr>
-    <%= yield %>
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
