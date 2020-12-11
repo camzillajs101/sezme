@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @reviews = @post.reviews.all # Review.where(post_id: params[:id])
+    @reviews = @post.reviews.all
   end
 
   def new

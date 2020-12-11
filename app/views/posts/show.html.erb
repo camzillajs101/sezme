@@ -1,5 +1,5 @@
 <%= link_to image_tag("icons/fill/arrow-go-back-fill.png"), posts_path %>
-<% if user_signed_in? && @post.user_id = current_user.id %>
+<% if user_signed_in? && @post.user_id == current_user.id %>
   <%= link_to edit_post_path, class: "buttonicon nodecor smallbutton" do %>
     <%= image_tag("icons/fill/edit-2-fill.png", class: "icon invert") %> Edit
   <% end %>
