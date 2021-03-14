@@ -1,55 +1,37 @@
-<%= link_to image_tag("icons/fill/arrow-go-back-fill.png"), posts_path %>
-<% if user_signed_in? && @post.user_id == current_user.id %>
-  <%= link_to edit_post_path, class: "buttonicon nodecor smallbutton" do %>
-    <%= image_tag("icons/fill/edit-2-fill.png", class: "icon invert") %> Edit
-  <% end %>
-<% end %>
-<h2><%= @post.title %></h2>
-<p>Rating: <b><%= @post.rating.to_f / 10 %> stars</b> | Posted by user <%= link_to User.find(@post.user_id).username, user_path(User.find(@post.user_id).username), class: "userproflink" %></p>
-<p><%= @post.desc %></p>
-<hr>
+<%= render 'shared/header' %>
 
-<% if user_signed_in? %>
-  <%= form_with url: post_reviews_path(@post), model: @review, class: "styledform" do |f| %>
-    <h3 id="reviewform">Write a review</h3><br><br>
-    <div>
-      <%= f.label :title %><br>
-      <%= f.text_field :title, size: 41, placeholder: "A brief summary of your review" %>
+<div class="maincontainer">
+  <div class="page show">
+    <%= link_to image_tag("icons/fill/arrow-go-back-fill.png"), posts_path %>
+
+    <div class="indv_post">
+      <div class="postinfo">
+        <div class="posttitle"><%= @post.title %></div>
+        <p>Rating: <b><%= @post.rating.to_f / 10 %> stars</b> | Posted by user <%= link_to @user.username, @user, class: "userproflink" %></p>
+        <p><%= @post.desc %></p>
+      </div>
+      <div class="editpostbtn">
+        <% if user_signed_in? && @post.user_id == current_user.id %>
+          <%= link_to edit_post_path, class: "btn" do %>
+            <%= image_tag("icons/fill/edit-2-fill.png", class: "icon") %> Edit
+          <% end %>
+        <% end %>
+      </div>
     </div>
+    <div class="newreview"><%= render 'reviews/new' %> <!-- form.newreview --></div>
 
-    <div> <!-- TODO: make better rating select option -->
-      <%= f.label :rating, "Rating (0-5)", id: "ratingInput" %><br>
-      <%= f.range_field :rating, in: 0..5 %>
-    </div>
+    <div class="post_reviews list">
+      <% @reviews.each do |f| %>
+        <%= render 'reviews/show', review: f %>
+      <% end %>
 
-    <div>
-      <%= f.label :desc, "Description" %><br>
-      <%= f.text_area :desc, rows: "4", placeholder: "Write your review of the topic here..." %>
-    </div>
-
-    <div>
-      <%= button_tag(type: 'submit', id: "postreviewbutton", class: "buttonicon") do %>
-        Post Review
+      <% if @post.reviews.count == 0 %>
+        No reviews on this post yet. Be the first to tell the world what you think!
       <% end %>
     </div>
-  <% end %>
-  <br>
-<% else %>
-  <p><%= link_to "Sign in", new_user_session_path, class: "textlink" %> to leave a review</p>
-<% end %>
-<hr>
-
-<% @reviews.each do |f| %>
-  <div class="review">
-    <p><b><%= f.title %></b> | <%= f.rating.to_f / 10 %> stars | <%= link_to User.find(f.user_id).username, user_path(User.find(f.user_id).username), class: "userproflink" %></p>
-    <p><%= f.desc %></p>
-    <p>(score)
-      <% if user_signed_in? && f.user_id == current_user.id %>
-        | <%= link_to image_tag("icons/fill/delete-bin-fill.png", class: "icon"), post_review_path(@post, f), method: :delete %>
-      <% end %>
-    </p>
   </div>
-<% end %>
-<% if @post.reviews.count == 0 %>
-  No reviews on this post yet. Be the first to tell the world what you think!
-<% end %>
+
+  <div class="sidebar">
+    <%= render 'shared/sidebar' %>
+  </div>
+</div>

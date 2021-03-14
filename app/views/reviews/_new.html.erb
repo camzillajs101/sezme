@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+  <%= form_with url: post_reviews_path(@post), model: @review, class: "newreviewform" do |f| %>
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, placeholder: "A brief summary of your review" %>
+    </div>
+
+    <div class="field"> <!-- TODO: make better rating select option -->
+      <%= f.label :rating, "Rating (0-5)", id: "ratingInput" %><br>
+      <%= f.range_field :rating, in: 0..5 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :desc, "Description" %><br>
+      <%= f.text_area :desc, rows: "4", placeholder: "Write your review of the topic here..." %>
+    </div>
+
+    <div>
+      <%= button_tag(type: 'submit', id: "postreviewbutton", class: "buttonicon") do %>
+        Post Review
+      <% end %>
+    </div>
+  <% end %>
+  <h3 id="reviewheader">Write a review</h3>
+<% else %>
+  <p><%= link_to "Sign in", new_user_session_path, class: "textlink" %> to leave a review</p>
+<% end %>

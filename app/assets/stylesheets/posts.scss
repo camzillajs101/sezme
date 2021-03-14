@@ -7,28 +7,113 @@
  src: font-url('OpenSans-Regular.ttf');
 }
 
-* {
-  font-family: "Open Sans";
+.maincontainer {
+  display: flex;
+  align-items: flex-start;
+  flex-flow: row wrap;
+  margin: 2em 5%;
+  gap: 5%;
+
+  .page {
+    display: flex;
+    flex-flow: column wrap;
+
+    padding: 2% 3%;
+    margin-bottom: 2em;
+    border: 2px solid #aaa;
+    border-radius: 0.25em;
+    background-color: white;
+    box-shadow: 0 2em 2em 1em #ccc;
+
+    .post {
+      display: flex;
+      justify-content: space-between;
+
+      border: 1px solid white;
+      border-radius: 5px;
+      transition: border 200ms;
+      padding: 2em 1.5em 1.2em;
+      margin: 0.5em 0;
+    }
+    .post:hover {
+      border: 1px solid gray;
+    }
+
+    .indv_post {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+
+      margin-top: 1em;
+    }
+
+    .newreview {
+      display: flex;
+      justify-content: space-between;
+
+      margin: 2em 0;
+    }
+
+    .post_reviews {
+
+    }
+  }
+
+  .sidebar {
+    flex: 1 1 20%;
+    min-width: 250px;
+    min-height: 40vh;
+
+    padding: 0 1.5em;
+    border: 2px solid #aaa;
+    border-radius: 5px;
+    background-color: white;
+  }
 }
-body {
-  background-color: #BC986A;
-  margin: 0;
-  padding: 0;
+
+@media (max-width: 540px){
+  /* wrap side buttons */
+  .post, .indv_post {
+    flex-flow: column wrap;
+  }
+  .newreview {
+    flex-direction: column-reverse;
+  }
+
+  /* remove middle nav */
+  .nav_middle {
+    display: none;
+  }
+}
+
+.page:is(.list,.show) {
+  flex: 1 2 55%;
+}
+.page.static {
+  flex: 0 1 600px; /* is it bad to do this? I don't think so...right? */
+  min-height: 70vh;
+}
+.page.form {
+  flex: 0 1 40%;
+  min-height: 70vh;
+  margin: 0 auto;
+}
+
+
+.btn {
+  padding: 8px 10px;
+  color: black;
+  font-weight: normal;
+  outline: 3px solid #33cccc;
+  transition: outline-offset 150ms;
+}
+.btn:hover {
+  outline-offset: 2px;
 }
 a {
   color: #659DBD;
-}
-.nodecor {
   text-decoration: none;
-  color: black;
-}
-.header {
-  padding: 10px;
-  margin: 0;
-  text-align: right;
-  overflow: auto;
-  border-bottom: 2px solid #DAAD86;
-  background-color: #8D8741;
+  font-weight: bold;
 }
 .logo {
   text-decoration: none;
@@ -38,69 +123,43 @@ a {
   padding: 0px 5px;
 }
 .postlink {
-  font-size: 1.5em;
+  color: black;
+  font-size: 1.25em;
+}
+.posttitle {
+  font-size: 2em;
+  font-weight: bold;
 }
 .userproflink {
   font-weight: bold;
   color: black;
   text-decoration: underline;
 }
-.container {
-  width: 50%;
-  padding: 20px 50px;
-  margin: 15px 10%;
-  border: 1px solid gray;
-  border-radius: 5px;
-  background-color: #FBEEC1;
-}
-.post {
-  border: 1px solid #FBEEC1;
-  padding: 20px 25px 10px;
-  margin: 10px 0;
-}
-.review {
-  margin: 30px 0px;
-}
-.post:hover {
-  border: 1px solid gray;
-  border-radius: 5px;
-}
-.icon {
-  height: 20px;
-  width: auto;
-  position: relative;
-  top: 5px;
-}
+
 .invert {
   filter: invert(1);
 }
-.buttonicon {
-  padding: 8px;
+input[type="submit"] {
   border: 1px solid gray;
-  border-radius: 4px;
+  border-radius: 3px;
   color: white;
-  background-color: #659DBD;
+  background-color: #4f95f0;
+  padding: 4px 12px;
+  margin: 8px 0px;
 }
-.buttonicon:hover {
-  background-color: #6593ad;
+.deviseform input[type="text"], .deviseform input[type="password"], .deviseform input[type="email"] {
+  padding: 3px;
+  width: 200px;
 }
-.styledform input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 3px 0px;
-  box-sizing: border-box;
+// .newpostform * {
+//   width: 100%;
+//   padding: 0px;
+// }
+.field {
+  padding: 5px 0px;
 }
-.styledform input[type="range"] {
-  padding: 0;
-}
+
 textarea {
   resize: vertical;
   min-height: 100px;
-}
-.smallbutton {
-  padding: 4px;
-  float: right;
-}
-#reviewform {
-  float: right;
 }

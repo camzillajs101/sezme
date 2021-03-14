@@ -1,17 +1,17 @@
-<div>
-  <%= form.label :title %><br>
-  <%= form.text_field :title, placeholder: "Name your topic" %>
-</div><br>
+<% if title_editable %>
+  <div class="field">
+    <%= form.label :title %><br>
+    <%= form.text_field :title, placeholder: "Name your topic" %>
+  </div><br>
+<% end %>
 
-<div>
-  <%= form.label :desc, "Description" %><br>
+<div class="field">
+  <%= title_editable ? (form.label :desc, "Description") : "" %><br>
   <%= form.text_area :desc, placeholder: "Describe it in a few sentences" %>
 </div><br>
 
 <%= form.hidden_field :rating, value: rating %>
 
 <div>
-  <%= button_tag(type: 'submit', class: "buttonicon") do %>
-    <%= submittext %>
-  <% end %>
+  <%= form.submit submittext %>
 </div>

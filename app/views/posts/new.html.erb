@@ -1,9 +1,12 @@
-<%= link_to image_tag("icons/fill/arrow-go-back-fill.png"), posts_path %>
+<div class="maincontainer">
+  <div class="page form">
+    <%= link_to image_tag("icons/fill/arrow-go-back-fill.png"), posts_path %>
 
-<h2>New post</h2>
-<p>Create a topic to be reviewed. Make sure to describe it neutrally as to not influence reviews.</p>
-<p>All posts start with a rating of 5 and are averaged over every review.</p>
+    <h2>New post</h2>
+    <p>Create a topic to be reviewed. Make sure to describe it neutrally as to not influence reviews.</p>
 
-<%= form_with model: @post, url: "/posts", class: "styledform" do |f| %>
-  <%= render "form", rating: 50, submittext: "Create Post", form: f %>
-<% end %>
+    <%= form_with model: @post, url: "/posts", class: "newpostform" do |f| %>
+      <%= render "form", rating: 50, submittext: "Create Post", form: f, title_editable: true %>
+    <% end %>
+  </div>
+</div>
