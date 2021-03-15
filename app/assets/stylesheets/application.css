@@ -14,7 +14,7 @@
  *= require_self
  */
 
-/* global styles */
+/* global styles and color */
 body {
  margin: 0;
  padding: 0;
@@ -25,6 +25,9 @@ body {
 hr {
   display: inline;
 }
+a {
+  text-decoration: none;
+}
 
 nav {
   display: flex;
@@ -33,7 +36,7 @@ nav {
 
   padding: 0.5em 0.7em;
   box-shadow: 0px 1px 5px 0 gray;
-  background-color: #fff;
+  background-color: #324b4b;
   font-family: "brandon-grotesque";
   font-size: 1.25em;
 }
@@ -45,4 +48,76 @@ nav {
 
   position: relative;
   top: -0.1em;
+}
+
+/* buttons and links */
+.link {
+  color: #2DE3B0;
+  position: relative;
+}
+.postlink {
+  color: #007b7c;
+  font-size: 1.25em;
+}
+.userproflink {
+  color: #007b7c;
+}
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0; /* to center it ((100-120)/2) */
+  width: 100%;
+  height: 3px;
+  background-color: currentColor;
+
+  transform: scaleX(0);
+  transition: transform 150ms ease-out;
+  transform-origin: right;
+}
+.link:is(:hover, :focus)::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.signupbtn { /* not very dry */
+  color: #005557;
+  background-color: #33CCCC;
+  padding: 0.2em 1em;
+  border-radius: 1em;
+  transition: background-color 150ms;
+}
+.signupbtn:is(:hover, :focus) {
+  background-color: #33CCCCBB;
+}
+.loginbtn {
+  background-color: #fff;
+  color: #005557;
+  padding: 0.2em 1em;
+  border-radius: 1em;
+  // box-shadow: inset 0 0 0 2px #33CCCC;
+  margin-right: 0.5em;
+  position: relative;
+  z-index: 1;
+
+  transition: color 250ms;
+}
+.loginbtn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1em;
+  background-color: #33CCCC;
+  z-index: -1;
+
+  transform: scale(0);
+  transition: transform 200ms;
+}
+.loginbtn:is(:hover, :focus):after {
+  transform: scale(1);
+}
+.loginbtn:is(:hover, :focus) {
+  color: white;
 }

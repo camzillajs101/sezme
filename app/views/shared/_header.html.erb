@@ -1,10 +1,10 @@
 <nav>
   <div class="nav_left">
-    <%= link_to "Sezme", posts_path %>
+    <%= link_to "Sezme", posts_path, class: "link" %>
   </div>
 
   <div class="nav_middle"> <!-- pages -->
-    <%= link_to "About", "/pages/about" %>
+    <%= link_to "About", "/pages/about", class: "link" %>
   </div>
 
   <div class="nav_right">
@@ -14,7 +14,8 @@
       <%= link_to image_tag("icons/fill/settings-3-fill.png", class: "icon"), edit_user_registration_path %>
       <%= link_to image_tag("icons/fill/logout-box-fill.png", class: "icon"), destroy_user_session_path, method: :delete %>
     <% else %>
-      <%= link_to "Sign in", new_user_session_path, class: "nodecor" %>
+      <%= link_to "Log in", new_user_session_path, class: "loginbtn" %>
+      <%= link_to "Sign up", new_user_registration_path, class: "signupbtn" %>
     <% end %>
   </div>
 </nav>

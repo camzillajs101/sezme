@@ -92,6 +92,7 @@
 .page.static {
   flex: 0 1 600px; /* is it bad to do this? I don't think so...right? */
   min-height: 70vh;
+  max-width: 100%;
 }
 .page.form {
   flex: 0 1 40%;
@@ -107,13 +108,8 @@
   outline: 3px solid #33cccc;
   transition: outline-offset 150ms;
 }
-.btn:hover {
+.btn:hover, .btn:focus {
   outline-offset: 2px;
-}
-a {
-  color: #659DBD;
-  text-decoration: none;
-  font-weight: bold;
 }
 .logo {
   text-decoration: none;
@@ -122,18 +118,9 @@ a {
   border-radius: 2px;
   padding: 0px 5px;
 }
-.postlink {
-  color: black;
-  font-size: 1.25em;
-}
 .posttitle {
   font-size: 2em;
   font-weight: bold;
-}
-.userproflink {
-  font-weight: bold;
-  color: black;
-  text-decoration: underline;
 }
 
 .invert {

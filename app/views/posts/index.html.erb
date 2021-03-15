@@ -13,7 +13,7 @@
           <p><%= pluralize(f.reviews.count, 'review') %> so far</p>
         </div>
         <div class="reviewbtn">
-          <%= link_to "#{post_path(f.id)}#reviewform", class: "btn nodecor smallbutton" do %>
+          <%= link_to "#{post_path(f.id)}#reviewform", class: "btn" do %>
             <%= image_tag("icons/fill/star-half-fill.png", class: "icon") %> Review
           <% end %>
         </div>
