@@ -8,3 +8,16 @@
 .review {
   margin: 30px 0px;
 }
+
+.ratinginput {
+  display: flex;
+  margin-top: 1em;
+
+  .star {
+    padding: 0.2em;
+  }
+  img {
+    height: 20px;
+    width: 20px;
+  }
+}
