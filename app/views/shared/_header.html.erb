@@ -1,4 +1,4 @@
-<nav>
+<header>
   <div class="nav_left">
     <%= link_to "Sezme", posts_path, class: "link" %>
   </div>
@@ -8,14 +8,14 @@
   </div>
 
   <div class="nav_right">
-    <% if user_signed_in? %> <!-- TODO: images are pushed downwards, but still extend the div's height. Looks off. -->
-      <b><%= current_user.username %></b>
-      <%= link_to image_tag("icons/fill/account-circle-fill.png", class: "icon"), user_path(current_user.username) %>
-      <%= link_to image_tag("icons/fill/settings-3-fill.png", class: "icon"), edit_user_registration_path %>
-      <%= link_to image_tag("icons/fill/logout-box-fill.png", class: "icon"), destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Log in", new_user_session_path, class: "loginbtn" %>
-      <%= link_to "Sign up", new_user_registration_path, class: "signupbtn" %>
-    <% end %>
+    <%= current_user.username %>
+    <nav>
+      <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+      </ul>
+    </nav>
   </div>
-</nav>
+</header>

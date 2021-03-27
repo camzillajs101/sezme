@@ -14,10 +14,18 @@
  *= require_self
  */
 
+/* variables */
+:root {
+  --header-bg: #324b4b;
+  --header-text: #2DE3B0;
+}
+
 /* global styles and color */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 body {
  margin: 0;
- padding: 0;
  font-size: 16px;
  font-family: "Open Sans";
  background-color: #e6e6e6;
@@ -29,17 +37,38 @@ a {
   text-decoration: none;
 }
 
-nav {
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   padding: 0.5em 0.7em;
   box-shadow: 0px 1px 5px 0 gray;
-  background-color: #324b4b;
+  background-color: var(--header-bg);
+  color: var(--header-text);
   font-family: "brandon-grotesque";
   font-size: 1.25em;
+  position: relative;
 }
+nav {
+  position: absolute;
+  top: 100%;
+  right: 0;
+
+  min-width: 10%;
+  background-color: var(--header-bg);
+  border: 2px dashed white;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav li {
+  margin-bottom: 0.5em;
+  margin-left: 1em;
+}
+
 .icon {
   height: 1.25em;
   width: auto;
@@ -52,7 +81,7 @@ nav {
 
 /* buttons and links */
 .link {
-  color: #2DE3B0;
+  color: inherit;
   position: relative;
 }
 .postlink {
@@ -66,7 +95,7 @@ nav {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0; /* to center it ((100-120)/2) */
+  left: 0;
   width: 100%;
   height: 3px;
   background-color: currentColor;
@@ -89,12 +118,12 @@ nav {
 .signupbtn:is(:hover, :focus) {
   background-color: #33CCCCBB;
 }
-.loginbtn {
+.loginbtn { /* TODO: hover animation works on firefox but not on chrome */
   background-color: #fff;
   color: #005557;
   padding: 0.2em 1em;
   border-radius: 1em;
-  // box-shadow: inset 0 0 0 2px #33CCCC;
+  /* box-shadow: inset 0 0 0 2px #33CCCC; */
   margin-right: 0.5em;
   position: relative;
   z-index: 1;
@@ -115,7 +144,7 @@ nav {
   transform: scale(0);
   transition: transform 200ms;
 }
-.loginbtn:is(:hover, :focus):after {
+.loginbtn:is(:hover, :focus)::after {
   transform: scale(1);
 }
 .loginbtn:is(:hover, :focus) {
