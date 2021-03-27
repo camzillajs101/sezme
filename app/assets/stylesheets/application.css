@@ -42,7 +42,7 @@ header {
   justify-content: space-between;
   align-items: center;
 
-  padding: 0.5em 0.7em;
+  padding: 0 0.7em;
   box-shadow: 0px 1px 5px 0 gray;
   background-color: var(--header-bg);
   color: var(--header-text);
@@ -50,6 +50,11 @@ header {
   font-size: 1.25em;
   position: relative;
 }
+header > * {
+  margin: 0.5em 0;
+}
+
+/* nav menu */
 nav {
   position: absolute;
   top: 100%;
@@ -58,6 +63,8 @@ nav {
   min-width: 10%;
   background-color: var(--header-bg);
   border: 2px dashed white;
+
+  display: none;
 }
 nav ul {
   margin: 0;
@@ -65,8 +72,20 @@ nav ul {
   list-style: none;
 }
 nav li {
-  margin-bottom: 0.5em;
-  margin-left: 1em;
+  padding: 0.5em 0.8em;
+}
+nav li:hover {
+  background-color: white;
+}
+.nav-right {
+  margin: 0;
+  padding: 0.5em 0;
+}
+:is(.nav-right, nav):hover nav {
+  display: block;
+}
+nav a {
+  color: inherit;
 }
 
 .icon {

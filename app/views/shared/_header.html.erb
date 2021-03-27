@@ -1,21 +1,25 @@
 <header>
-  <div class="nav_left">
+  <div class="nav-left">
     <%= link_to "Sezme", posts_path, class: "link" %>
   </div>
 
-  <div class="nav_middle"> <!-- pages -->
+  <div class="nav-middle"> <!-- pages -->
     <%= link_to "About", "/pages/about", class: "link" %>
   </div>
 
-  <div class="nav_right">
-    <%= current_user.username %>
-    <nav>
-      <ul>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-        <li>d</li>
-      </ul>
-    </nav>
+  <div class="nav-right">
+    <% if user_signed_in? %> <!-- TODO: either change nav background or text color, both are dark right now -->
+      <%= current_user.username %>
+      <nav>
+        <ul>
+          <li><%= link_to "Profile", user_path(current_user.username) %></li>
+          <li><%= link_to "Account settings", edit_user_registration_path %></li>
+          <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </nav>
+    <% else %>
+      <%= link_to "Log in", new_user_session_path, class: "loginbtn" %>
+      <%= link_to "Sign up", new_user_registration_path, class: "signupbtn" %>
+    <% end %>
   </div>
 </header>
