@@ -16,7 +16,7 @@
 
 /* variables */
 :root {
-  --header-bg: #324b4b;
+  --header-bg: #114a66;
   --header-text: #2DE3B0;
 }
 
@@ -41,6 +41,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 999;
 
   padding: 0 0.7em;
   box-shadow: 0px 1px 5px 0 gray;
@@ -48,13 +50,16 @@ header {
   color: var(--header-text);
   font-family: "brandon-grotesque";
   font-size: 1.25em;
-  position: relative;
 }
 header > * {
   margin: 0.5em 0;
 }
 
 /* nav menu */
+.header-right {
+  margin: 0;
+  padding: 0.5em 0;
+}
 nav {
   position: absolute;
   top: 100%;
@@ -62,30 +67,41 @@ nav {
 
   min-width: 10%;
   background-color: var(--header-bg);
-  border: 2px dashed white;
+  border: 1px solid black;
+  border-top: none;
 
-  display: none;
+  transform: scaleY(0);
+  transform-origin: top;
+  opacity: 0;
+
+  transition: opacity 150ms, transform 250ms;
+}
+:is(.header-right, nav):hover nav {
+  transform: scaleY(1);
+  opacity: 1;
 }
 nav ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-nav li {
-  padding: 0.5em 0.8em;
-}
-nav li:hover {
-  background-color: white;
-}
-.nav-right {
-  margin: 0;
-  padding: 0.5em 0;
-}
-:is(.nav-right, nav):hover nav {
-  display: block;
-}
 nav a {
+  display: block;
+  padding: 0.5em 0.8em;
   color: inherit;
+  transition: color 200ms, background-color 200ms;
+}
+nav a:hover {
+  background-color: white;
+  color: black;
+}
+nav .icon {
+  height: 1.15em;
+  filter: invert(100%);
+  transition: filter 200ms;
+}
+nav a:hover .icon {
+  filter: none;
 }
 
 .icon {

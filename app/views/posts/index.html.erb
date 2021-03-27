@@ -3,7 +3,7 @@
 <div class="maincontainer">
   <div class="page list">
     <p><%= link_to new_post_path, class: "btn nodecor" do %>
-      <%= image_tag("icons/fill/pencil-fill.png", class: "icon") %> Create Topic
+      <%= image_tag("icons/pencil-fill.svg", class: "icon") %> Create Topic
     <% end %></p><br>
     <% @posts.each do |f| %>
       <div class="post">
@@ -14,7 +14,7 @@
         </div>
         <div class="reviewbtn">
           <%= link_to "#{post_path(f.id)}#reviewform", class: "btn" do %>
-            <%= image_tag("icons/fill/star-half-fill.png", class: "icon") %> Review
+            <%= image_tag("icons/star-half-fill.svg", class: "icon") %> Review
           <% end %>
         </div>
       </div>

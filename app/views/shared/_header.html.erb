@@ -1,20 +1,26 @@
 <header>
-  <div class="nav-left">
+  <div class="header-left">
     <%= link_to "Sezme", posts_path, class: "link" %>
   </div>
 
-  <div class="nav-middle"> <!-- pages -->
+  <div class="header-middle"> <!-- pages -->
     <%= link_to "About", "/pages/about", class: "link" %>
   </div>
 
-  <div class="nav-right">
+  <div class="header-right">
     <% if user_signed_in? %> <!-- TODO: either change nav background or text color, both are dark right now -->
       <%= current_user.username %>
       <nav>
         <ul>
-          <li><%= link_to "Profile", user_path(current_user.username) %></li>
-          <li><%= link_to "Account settings", edit_user_registration_path %></li>
-          <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to user_path(current_user.username) do %>
+            <%= image_tag("icons/account-circle-line.svg", class: "icon") %> Profile
+          <% end %></li>
+          <li><%= link_to edit_user_registration_path do %>
+            <%= image_tag("icons/settings-3-line.svg", class: "icon") %> Account settings
+          <% end %></li>
+          <li><%= link_to destroy_user_session_path, method: :delete do %>
+            <%= image_tag("icons/logout-box-r-line.svg", class: "icon") %> Log out
+          <% end %></li>
         </ul>
       </nav>
     <% else %>
