@@ -2,23 +2,27 @@
 
 <div class="maincontainer">
   <div class="page show">
-    <%= link_to image_tag("icons/fill/arrow-go-back-fill.png"), posts_path %>
+    <%= link_to image_tag("icons/arrow-go-back-line.svg"), posts_path, :class => "back-btn" %>
 
-    <div class="indv_post">
+    <div class="indv-post">
       <div class="postinfo">
         <div class="posttitle"><%= @post.title %></div>
-        <p>Rating: <b><%= @post.rating.to_f / 10 %> stars</b> | Posted by user <%= link_to @user.username, @user, class: "userproflink" %></p>
+        <p>Rating: <b><%= @post.rating.to_f / 10 %> stars</b> | Posted by user <%= link_to @user.username, user_path(@user.username), class: "userproflink" %></p>
         <p><%= @post.desc %></p>
       </div>
+
       <div class="editpostbtn">
         <% if user_signed_in? && @post.user_id == current_user.id %>
           <%= link_to edit_post_path, class: "btn" do %>
-            <%= image_tag("icons/fill/edit-2-fill.png", class: "icon") %> Edit
+            <%= image_tag("icons/edit-2-fill.svg", class: "icon") %> Edit
           <% end %>
         <% end %>
       </div>
     </div>
-    <div class="newreview"><%= render 'reviews/new' %> <!-- form.newreview --></div>
+
+    <div class="newreview-form" id="newreview-form"> <!-- id for link (posts/:id#newreview-form) -->
+      <%= render 'reviews/new' %>
+    </div>
 
     <div class="post_reviews list">
       <% @reviews.each do |f| %>

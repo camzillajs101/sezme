@@ -1,10 +1,20 @@
-<%= link_to image_tag("icons/fill/arrow-go-back-fill.png"), post_path(params[:id]) %>
-<h2>Edit Topic Description</h2>
+<%= render 'shared/header' %>
 
-<h3><%= @post.title %></h3>
+<div class="maincontainer">
+  <div class="page show">
+    <%= link_to image_tag("icons/arrow-go-back-line.svg"), post_path(params[:id]) %>
+    <h2>Edit Topic Description</h2>
 
-<p>Remember to describe your topic thoroughly and neutrally.</p>
+    <h3><%= @post.title %></h3>
 
-<%= form_with model: @post, class: "styledform" do |f| %>
-  <%= render "form", rating: @post.rating, submittext: "Update Post", form: f, title_editable: false %>
-<% end %>
+    <p>Remember to describe your topic thoroughly and neutrally.</p>
+
+    <%= form_with model: @post, class: "styledform" do |f| %>
+      <%= render "form", rating: @post.rating, submittext: "Update Post", form: f, title_editable: false %>
+    <% end %>
+  </div>
+
+  <div class="sidebar">
+    <p>edit page</p>
+  </div>
+</div>

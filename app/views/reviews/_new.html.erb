@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <%= form_with url: post_reviews_path(@post), model: @review, class: "newreviewform" do |f| %>
+  <%= form_with url: post_reviews_path(@post), model: @review do |f| %>
     <div class="field">
       <%= f.label :title %><br>
       <%= f.text_field :title, placeholder: "A brief summary of your review" %>
@@ -16,9 +16,7 @@
     </div>
 
     <div>
-      <%= button_tag(type: 'submit', id: "postreviewbutton", class: "buttonicon") do %>
-        Post Review
-      <% end %>
+      <%= f.submit "Add Review" %>
     </div>
   <% end %>
   <h3 id="reviewheader">Write a review</h3>
