@@ -1,21 +1,34 @@
-<nav>
-  <div class="nav_left">
+<header>
+  <div class="header-left">
     <%= link_to "Sezme", posts_path, class: "link" %>
   </div>
 
-  <div class="nav_middle"> <!-- pages -->
+  <div class="header-middle"> <!-- pages -->
     <%= link_to "About", "/pages/about", class: "link" %>
   </div>
 
-  <div class="nav_right">
-    <% if user_signed_in? %> <!-- TODO: images are pushed downwards, but still extend the div's height. Looks off. -->
-      <b><%= current_user.username %></b>
-      <%= link_to image_tag("icons/fill/account-circle-fill.png", class: "icon"), user_path(current_user.username) %>
-      <%= link_to image_tag("icons/fill/settings-3-fill.png", class: "icon"), edit_user_registration_path %>
-      <%= link_to image_tag("icons/fill/logout-box-fill.png", class: "icon"), destroy_user_session_path, method: :delete %>
+  <div class="header-right">
+    <% if user_signed_in? %>
+      <%= check_box_tag :navtoggle %>
+      <%= label_tag :navtoggle do %>
+        <%= current_user.username %> <%= image_tag("icons/arrow-drop-right-line.svg", class: "icon nav-icon") %>
+      <% end %>
+      <nav>
+        <ul>
+          <%= link_to user_path(current_user.username) do %>
+            <li><%= image_tag("icons/account-circle-line.svg", class: "icon") %> Profile</li>
+          <% end %>
+          <%= link_to edit_user_registration_path do %>
+            <li><%= image_tag("icons/settings-3-line.svg", class: "icon") %> Account settings</li>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <li><%= image_tag("icons/logout-box-r-line.svg", class: "icon") %> Log out</li>
+          <% end %>
+        </ul>
+      </nav>
     <% else %>
       <%= link_to "Log in", new_user_session_path, class: "loginbtn" %>
       <%= link_to "Sign up", new_user_registration_path, class: "signupbtn" %>
     <% end %>
   </div>
-</nav>
+</header>
