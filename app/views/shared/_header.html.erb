@@ -8,19 +8,22 @@
   </div>
 
   <div class="header-right">
-    <% if user_signed_in? %> <!-- TODO: either change nav background or text color, both are dark right now -->
-      <%= current_user.username %>
+    <% if user_signed_in? %>
+      <%= check_box_tag :navtoggle %>
+      <%= label_tag :navtoggle do %>
+        <%= current_user.username %> <%= image_tag("icons/arrow-drop-right-line.svg", class: "icon nav-icon") %>
+      <% end %>
       <nav>
         <ul>
-          <li><%= link_to user_path(current_user.username) do %>
-            <%= image_tag("icons/account-circle-line.svg", class: "icon") %> Profile
-          <% end %></li>
-          <li><%= link_to edit_user_registration_path do %>
-            <%= image_tag("icons/settings-3-line.svg", class: "icon") %> Account settings
-          <% end %></li>
-          <li><%= link_to destroy_user_session_path, method: :delete do %>
-            <%= image_tag("icons/logout-box-r-line.svg", class: "icon") %> Log out
-          <% end %></li>
+          <%= link_to user_path(current_user.username) do %>
+            <li><%= image_tag("icons/account-circle-line.svg", class: "icon") %> Profile</li>
+          <% end %>
+          <%= link_to edit_user_registration_path do %>
+            <li><%= image_tag("icons/settings-3-line.svg", class: "icon") %> Account settings</li>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <li><%= image_tag("icons/logout-box-r-line.svg", class: "icon") %> Log out</li>
+          <% end %>
         </ul>
       </nav>
     <% else %>

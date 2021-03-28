@@ -14,13 +14,19 @@
  *= require_self
  */
 
-/* variables */
+/* ==========
+  variables
+========== */
+
 :root {
   --header-bg: #114a66;
   --header-text: #2DE3B0;
 }
 
-/* global styles and color */
+/* ==========
+  global styles and color
+========== */
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -55,7 +61,10 @@ header > * {
   margin: 0.5em 0;
 }
 
-/* nav menu */
+/* ==========
+  nav menu
+========== */
+
 .header-right {
   margin: 0;
   padding: 0.5em 0;
@@ -65,31 +74,44 @@ nav {
   top: 100%;
   right: 0;
 
-  min-width: 10%;
-  background-color: var(--header-bg);
+  min-width: 20%;
+  background-color: #114a66;
   border: 1px solid black;
   border-top: none;
+  border-right: none;
 
-  transform: scaleY(0);
+  transform: scaleY(0.5);
   transform-origin: top;
   opacity: 0;
-
   transition: opacity 150ms, transform 250ms;
+
+  font-size: 0.9em;
 }
-:is(.header-right, nav):hover nav {
+:is(.header-right, nav):hover nav, #navtoggle:checked ~ nav { /* for hover and click */
   transform: scaleY(1);
   opacity: 1;
+}
+:is(.header-right, nav):hover .nav-icon, #navtoggle:checked ~ label .nav-icon { /* this is way too complicated */
+  transform: rotate(90deg);
 }
 nav ul {
   margin: 0;
   padding: 0;
   list-style: none;
+
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
 }
 nav a {
-  display: block;
+  flex-grow: 1;
   padding: 0.5em 0.8em;
   color: inherit;
   transition: color 200ms, background-color 200ms;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
 }
 nav a:hover {
   background-color: white;
@@ -104,6 +126,10 @@ nav a:hover .icon {
   filter: none;
 }
 
+#navtoggle {
+  display: none;
+}
+
 .icon {
   height: 1.25em;
   width: auto;
@@ -111,20 +137,33 @@ nav a:hover .icon {
   margin: 0 0.5ch;
 
   position: relative;
-  top: -0.1em;
+  top: -0.25ch;
+}
+.nav-icon {
+  top: -0.1ch;
+  filter: invert(100%);
+  transition: transform 150ms;
 }
 
-/* buttons and links */
-.link {
-  color: inherit;
-  position: relative;
+/* ==========
+  buttons and links
+========== */
+
+.userproflink {
+  color: #007b7c;
 }
 .postlink {
   color: #007b7c;
   font-size: 1.25em;
 }
-.userproflink {
-  color: #007b7c;
+.back-btn {
+  margin-top: 0.5em;
+}
+
+/* for links in general */
+.link {
+  color: inherit;
+  position: relative;
 }
 .link::after {
   content: '';
@@ -139,10 +178,15 @@ nav a:hover .icon {
   transition: transform 150ms ease-out;
   transform-origin: right;
 }
+.link:focus {
+  outline: none;
+}
 .link:is(:hover, :focus)::after {
   transform: scaleX(1);
   transform-origin: left;
 }
+
+/* sign up and log in btns on header */
 .signupbtn { /* not very dry */
   color: #005557;
   background-color: #33CCCC;
@@ -151,14 +195,15 @@ nav a:hover .icon {
   transition: background-color 150ms;
 }
 .signupbtn:is(:hover, :focus) {
+  outline: none;
   background-color: #33CCCCBB;
 }
+
 .loginbtn { /* TODO: hover animation works on firefox but not on chrome */
   background-color: #fff;
   color: #005557;
   padding: 0.2em 1em;
   border-radius: 1em;
-  /* box-shadow: inset 0 0 0 2px #33CCCC; */
   margin-right: 0.5em;
   position: relative;
   z-index: 1;
@@ -179,9 +224,10 @@ nav a:hover .icon {
   transform: scale(0);
   transition: transform 200ms;
 }
+.loginbtn:is(:hover, :focus) {
+  outline: none;
+  color: white;
+}
 .loginbtn:is(:hover, :focus)::after {
   transform: scale(1);
-}
-.loginbtn:is(:hover, :focus) {
-  color: white;
 }
