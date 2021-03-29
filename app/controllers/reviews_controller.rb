@@ -1,9 +1,7 @@
 class ReviewsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
-    @review = @post.reviews.create(review_params)
-    @review.user_id = current_user.id
-    @review.rating *= 10
+    @review = @post.reviews.new(review_params)
 
     @post.rating = @post.rating + (@review.rating - @post.rating) / (@post.reviews.count + 2)
     @post.save
@@ -11,7 +9,9 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to @post
     else
-      render post_path
+      @review.errors.full_messages.each do |e|
+        puts e
+      end
     end
   end
 
@@ -28,6 +28,6 @@ class ReviewsController < ApplicationController
 
   private
     def review_params
-      params.permit(:title, :desc, :rating)
+      params.require(:review).permit(:title, :desc, :rating).merge(user_id: current_user.id)
     end
 end

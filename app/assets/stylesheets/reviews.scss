@@ -11,13 +11,18 @@
 
 .ratinginput {
   display: flex;
-  margin-top: 1em;
 
   .star {
-    padding: 0.2em;
-  }
-  img {
     height: 20px;
     width: 20px;
+    background-size: contain;
+    cursor: pointer;
+
+    &.filled {
+      background-image: url('/assets/icons/fill/star-fill.png');
+    }
+    &:not(.filled) {
+      background-image: url('/assets/icons/line/star-line.png');
+    }
   }
 }

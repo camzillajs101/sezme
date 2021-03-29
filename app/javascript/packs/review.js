@@ -3,14 +3,14 @@ $(document).ready(() => {
   const star_fill = "https://unsplash.it/40/40";
 
   function fill(id){
-    $(`#star-${id}`)[0].src = star_fill;
+    $(`#star-${id}`).addClass('filled');
   }
   function line(id){
-    $(`#star-${id}`)[0].src = star_line;
+    $(`#star-${id}`).removeClass('filled');
   }
 
   for (let i = 0; i < 5; i++){
-    $('.ratinginput').append(`<div id="star-${i}-container" class="star"><img src="${star_line}" id="star-${i}"></div>`);
+    $('.ratinginput').append(`<div id="star-${i}" class="star"></div>`);
   }
 
   let hold = -1; // represents which rating the user has selected; starts at -1 to signify no hold
