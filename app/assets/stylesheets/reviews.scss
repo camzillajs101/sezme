@@ -8,3 +8,21 @@
 .review {
   margin: 30px 0px;
 }
+
+.ratinginput {
+  display: flex;
+
+  .star {
+    height: 20px;
+    width: 20px;
+    background-size: contain;
+    cursor: pointer;
+
+    &.filled {
+      background-image: url('/assets/icons/star-fill.svg');
+    }
+    &:not(.filled) {
+      background-image: url('/assets/icons/star-line.svg');
+    }
+  }
+}

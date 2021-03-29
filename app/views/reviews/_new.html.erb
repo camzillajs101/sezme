@@ -1,3 +1,5 @@
+<%= javascript_pack_tag 'review' %>
+
 <% if user_signed_in? %>
   <%= form_with url: post_reviews_path(@post), model: @review do |f| %>
     <div class="field">
@@ -6,8 +8,9 @@
     </div>
 
     <div class="field"> <!-- TODO: make better rating select option -->
-      <%= f.label :rating, "Rating (0-5)", id: "ratingInput" %><br>
-      <%= f.range_field :rating, in: 0..5 %>
+      <%= f.label :rating, "Rating (0-5)" %>
+      <div class="ratinginput"></div>
+      <%= f.hidden_field :rating, in: 0..50 %>
     </div>
 
     <div class="field">
