@@ -1,6 +1,5 @@
 $(document).ready(() => {
-  const star_line = "https://unsplash.it/20/20"; // placeholders
-  const star_fill = "https://unsplash.it/40/40";
+  $('input[name="review[rating]"]').val(-1);
 
   function fill(id){
     $(`#star-${id}`).addClass('filled');
@@ -38,6 +37,6 @@ $(document).ready(() => {
 
   $('.star').click(e => {
     hold = Number(e.target.id.substring(5,6));
-    $('input[name="rating"]').val((hold+1)*10); // TODO: at some point (not super important) add ability to select half stars. Maybe html maps?
+    $('input[name="review[rating]"]').val((hold+1)*10); // TODO: at some point (not super important) add ability to select half stars. Maybe html maps?
   });
 });
