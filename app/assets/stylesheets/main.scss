@@ -71,19 +71,19 @@ nav {
     flex-flow: column nowrap;
     justify-content: center;
 
-    &:hover {
+    &:is(:hover, :focus) {
       background-color: white;
       color: black;
 
       .icon {
-        filter: none;
+        filter: none; // https://youtu.be/QRC-_RsefjQ?t=77
       }
     }
   }
 
   .icon {
     height: 1.15em;
-    filter: invert(100%);
+    filter: invert(1);
     transition: filter 200ms;
   }
 }
@@ -113,7 +113,7 @@ nav {
 }
 .nav-icon {
   top: -0.1ch;
-  filter: invert(100%);
+  filter: invert(1);
   transition: transform 150ms;
 }
 
