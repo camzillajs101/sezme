@@ -80,7 +80,7 @@ nav {
   border-top: none;
   border-right: none;
 
-  transform: scaleY(0.5);
+  transform: scaleY(0);
   transform-origin: top;
   opacity: 0;
   transition: opacity 150ms, transform 250ms;
