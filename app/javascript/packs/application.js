@@ -15,3 +15,16 @@ require("jquery")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+$(document).ready(() => {
+  function closeHeader(){
+    $('.infobar').css({ transform: 'scaleY(0)', opacity: '0' });
+    setTimeout(() => { // wait for transitions to finish
+      $('.infobar').hide();
+    },350);
+  }
+
+  $('.close').click(() => {
+    closeHeader();
+  });
+});

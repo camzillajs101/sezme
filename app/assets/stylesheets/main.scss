@@ -34,6 +34,7 @@ header {
 }
 
 nav {
+  z-index: 999;
   position: absolute;
   top: 100%;
   right: 0;
@@ -225,8 +226,14 @@ nav {
   text-align: center;
   font-size: 0.75em;
 
-  .x {
+  transform-origin: top;
+  transition: opacity 200ms, transform 350ms;
+
+  .close {
     float: right;
     margin-right: 1em;
+    filter: invert(1);
+
+    cursor: pointer;
   }
 }
