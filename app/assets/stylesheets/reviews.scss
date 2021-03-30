@@ -19,10 +19,10 @@
     cursor: pointer;
 
     &.filled {
-      background-image: url('/assets/icons/star-fill.svg');
+      background-image: url(asset_path('icons/star-fill.svg'));
     }
     &:not(.filled) {
-      background-image: url('/assets/icons/star-line.svg');
+      background-image: url(asset_path('icons/star-line.svg'));
     }
   }
 }
