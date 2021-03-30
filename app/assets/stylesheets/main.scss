@@ -210,3 +210,23 @@ nav {
     }
   }
 }
+
+/* info bar */
+.infobar {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0.5em;
+
+  background-color: var(--header-bg-sec);
+  color: white;
+  text-align: center;
+  font-size: 0.75em;
+
+  .x {
+    float: right;
+    margin-right: 1em;
+  }
+}
