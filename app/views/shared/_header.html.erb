@@ -33,6 +33,9 @@
   </div>
 
   <div class="infobar">
+    <% if @post && @post.errors.any? %>
+      <% @post.errors.first %>
+    <% end %>
     <%= image_tag("icons/close-line.svg", class: "close") %>
   </div>
 </header>

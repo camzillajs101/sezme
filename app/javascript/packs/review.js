@@ -39,4 +39,10 @@ $(document).ready(() => {
     hold = Number(e.target.id.substring(5,6));
     $('input[name="review[rating]"]').val((hold+1)*10); // TODO: at some point (not super important) add ability to select half stars. Maybe html maps?
   });
+
+  $('.edit-review').click((e) => {
+    let review = e.target.parentElement.parentElement.parentElement // lol
+    console.log(review,$('.review'));
+    alert("eheh");
+  })
 });

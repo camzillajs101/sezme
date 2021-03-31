@@ -3,7 +3,7 @@
   <p><%= review.desc %></p>
   <p>(score)
     <% if user_signed_in? && review.user_id == current_user.id %>
-      | <%= link_to image_tag("icons/edit-2-fill.svg", class: "icon"), "", data: { confirm: "This doesn't do anything yet" } %> | <%= link_to image_tag("icons/delete-bin-fill.svg", class: "icon"), post_review_path(@post, review), method: :delete, data: { confirm: "Delete this review?" } %>
+      | <%= link_to image_tag("icons/edit-2-fill.svg", class: "icon edit-review"), "#" %> | <%= link_to image_tag("icons/delete-bin-fill.svg", class: "icon"), post_review_path(@post, review), method: :delete, data: { confirm: "Delete this review?" } %>
     <% end %>
   </p>
 </div>

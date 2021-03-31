@@ -27,4 +27,9 @@ $(document).ready(() => {
   $('.close').click(() => {
     closeHeader();
   });
+
+  $('.newpostform').on('error',(e,data,status,xhr) => {
+    console.log("ehas");
+    alert("heih");
+  });
 });
