@@ -1,20 +1,22 @@
-<%= render 'shared/header' %>
-
 <div class="maincontainer">
-  <div class="page show">
+  <div class="page form">
     <%= link_to image_tag("icons/arrow-go-back-line.svg"), post_path(params[:id]) %>
-    <h2>Edit Topic Description</h2>
+    <h2>Edit Topic Description</h2> <!-- TODO: add info explaining why you can't edit title -->
 
     <h3><%= @post.title %></h3>
 
     <p>Remember to describe your topic thoroughly and neutrally.</p>
 
-    <%= form_with model: @post, class: "styledform" do |f| %>
-      <%= render "form", rating: @post.rating, submittext: "Update Post", form: f, title_editable: false %>
-    <% end %>
-  </div>
+    <%= form_with model: @post, class: "editpost-form" do |f| %>
+      <div class="field">
+        <%= f.text_area :desc, placeholder: "Describe it in a few sentences" %>
+      </div>
 
-  <div class="sidebar">
-    <p>edit page</p>
+      <%= f.hidden_field :rating %>
+
+      <div class="field">
+        <%= f.submit "Update Post" %>
+      </div>
+    <% end %>
   </div>
 </div>
