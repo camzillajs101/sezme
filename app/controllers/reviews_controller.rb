@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
     @post = Post.find(params[:post_id])
     @review = @post.reviews.new(review_params)
 
-    @post.rating = @post.rating + (@review.rating - @post.rating) / (@post.reviews.count + 2)
+    @post.rating = @post.rating > 0 ? @post.rating + (@review.rating - @post.rating) / (@post.reviews.count + 1) : @review.rating
     @post.save
 
     if @review.save

@@ -6,7 +6,7 @@
     <p>Create a topic to be reviewed. Make sure to describe it neutrally as to not influence reviews.</p>
 
     <%= form_with model: @post, url: "/posts", class: "newpostform" do |f| %>
-      <%= render "form", rating: 50, submittext: "Create Post", form: f, title_editable: true %>
+      <%= render "form", rating: -1, submittext: "Create Post", form: f, title_editable: true %>
     <% end %>
   </div>
 </div>

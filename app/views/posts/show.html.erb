@@ -7,7 +7,7 @@
     <div class="indv-post">
       <div class="postinfo">
         <div class="posttitle"><%= @post.title %></div>
-        <p>Rating: <b><%= @post.rating.to_f / 10 %> stars</b> | Posted by user <%= link_to @user.username, user_path(@user.username), class: "userproflink" %></p>
+        <p>Rating: <b><%= @post.rating > 0 ? "#{@post.rating.to_f / 10} stars" : "[unrated]" %></b> | Posted by user <%= link_to @user.username, user_path(@user.username), class: "userproflink" %></p>
         <p><%= @post.desc %></p>
       </div>
 
