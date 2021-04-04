@@ -75,9 +75,14 @@
 .indv-post {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
 
   margin-top: 1em;
+}
+.postinfo {
+  flex-shrink: 1;
+}
+.side-btn {
+  flex-shrink: 0;
 }
 
 .newreview-form {
@@ -99,7 +104,7 @@
     flex-direction: column-reverse;
     margin-top: 1em;
   }
-  .newreview-btn {
+  .side-btn {
     margin: 1em 0;
   }
 

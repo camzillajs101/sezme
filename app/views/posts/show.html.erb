@@ -11,13 +11,13 @@
         <p><%= @post.desc %></p>
       </div>
 
-      <div class="editpostbtn">
-        <% if user_signed_in? && @post.user_id == current_user.id %>
+      <% if user_signed_in? && @post.user_id == current_user.id %>
+        <div class="side-btn">
           <%= link_to edit_post_path, class: "btn" do %>
             <%= image_tag("icons/edit-2-fill.svg", class: "icon") %> Edit
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
 
     <div class="newreview-form" id="newreview-form"> <!-- id for link (posts/:id#newreview-form) -->
