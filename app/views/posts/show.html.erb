@@ -25,12 +25,13 @@
     </div>
 
     <div class="post_reviews list">
-      <% @reviews.each do |f| %>
-        <%= render 'reviews/show', review: f %>
-      <% end %>
-
       <% if @post.reviews.count == 0 %>
         No reviews on this post yet. Be the first to tell the world what you think!
+      <% else %>
+        <h3><%= pluralize(@post.reviews.count, 'review') %></h3>
+        <% @reviews.each do |f| %>
+          <%= render 'reviews/show', review: f %>
+        <% end %>
       <% end %>
     </div>
   </div>
