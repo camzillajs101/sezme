@@ -7,7 +7,7 @@
 
     <p>Remember to describe your topic thoroughly and neutrally.</p>
 
-    <%= form_with model: @post, class: "editpost-form" do |f| %>
+    <%= form_with model: @post, class: "post-form" do |f| %>
       <div class="field">
         <%= f.text_area :desc, placeholder: "Describe it in a few sentences" %>
       </div>
@@ -15,7 +15,7 @@
       <%= f.hidden_field :rating %>
 
       <div class="field">
-        <%= f.submit "Update Post" %>
+        <%= f.submit "Update Post", class: "form-submit" %>
       </div>
     <% end %>
   </div>
