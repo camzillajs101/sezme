@@ -24,8 +24,7 @@
   flex-flow: column wrap;
   flex: 1 2 70%;
 
-
-  padding: 2% 3%;
+  padding: 1.5em 2em;
   border: 2px solid #aaa;
   border-radius: 0.25em;
   background-color: white;
@@ -106,6 +105,11 @@
   }
   .side-btn {
     margin: 1em 0;
+  }
+
+  /* set width of all pages to be 100% */
+  .page {
+    flex-basis: 100%;
   }
 
   /* remove middle header item */

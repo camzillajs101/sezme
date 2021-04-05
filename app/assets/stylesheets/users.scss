@@ -9,3 +9,88 @@
 
   color: red;
 }
+
+/* ==========
+  forms
+========== */
+// login/signup stuff
+.devise-form {
+  flex: 0 1 40%;
+  min-width: 350px;
+  margin: 10vh auto;
+
+  .new_user { // form tag
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    gap: 1em;
+
+    margin: 1.5em 0;
+
+    > * {
+      min-width: 65%;
+    }
+  }
+
+  .field input {
+    width: 100%;
+    margin-top: 0.5em;
+    padding: 1em 1.5em;
+
+    font-size: 0.8em;
+
+    border: 1px solid lightgray;
+    border-radius: 1em;
+    transition: border 200ms;
+
+    &:is(:hover, :focus){
+      outline: none;
+      border: 1px solid gray;
+    }
+  }
+  .actions input {
+    width: 100%;
+    margin-top: 0.5em;
+    padding: 1em 1em;
+
+    border: none;
+    border-radius: 1em;
+
+    background-color: #4f95f0;
+    color: white;
+    font-size: 0.8em;
+    transition: background-color 200ms;
+
+    &:is(:hover, :focus){
+      cursor: pointer;
+      outline: none;
+      background-color: #66a1ee;
+    }
+  }
+
+  .links {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    gap: 0.5em;
+
+    a {
+      flex: 0 1 35%;
+      min-width: 75px;
+      padding: 0.5em 1em;
+
+      border: 1px solid gray;
+      border-radius: 0.5em;
+
+      background-color: #138080;
+      color: white;
+      font-size: 0.8em;
+      text-align: center;
+      transition: background-color 200ms;
+
+      &:hover {
+        background-color: #1C9797;
+      }
+    }
+  }
+}
