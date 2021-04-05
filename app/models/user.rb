@@ -9,5 +9,6 @@ class User < ApplicationRecord
   validates :username, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :confirmable, :lockable, :trackable
+         :confirmable, :lockable, :trackable,
+         authentication_keys: [:username]
 end

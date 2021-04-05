@@ -94,3 +94,26 @@
     }
   }
 }
+
+/* ==========
+  user index
+========== */
+.users-list-container {
+  max-width: 80vw;
+  overflow-x: scroll;
+
+  table {
+    border-collapse: collapse;
+  }
+  tr:nth-child(2n) {
+    background-color: rgba(0,0,0,0.05);
+  }
+  th, td {
+    padding: 0.3em 0.5em;
+    border: 1px solid black;
+    white-space: nowrap;
+  }
+  th {
+    padding: 0.5em;
+  }
+}
