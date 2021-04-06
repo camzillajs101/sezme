@@ -45,3 +45,8 @@ h2, h3 {
 hr {
   border-color: lightgray;
 }
+
+textarea {
+  resize: none;
+  height: 8em;
+}

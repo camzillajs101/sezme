@@ -32,7 +32,7 @@
     }
   }
 
-  .field input {
+  .field input { // inputs
     width: 100%;
     margin-top: 0.5em;
     padding: 1em 1.5em;
@@ -43,12 +43,12 @@
     border-radius: 1em;
     transition: border 200ms;
 
-    &:is(:hover, :focus){
+    &:is(:hover, :focus) {
       outline: none;
       border: 1px solid gray;
     }
   }
-  .actions input {
+  .actions input { // submit
     width: 100%;
     margin-top: 0.5em;
     padding: 1em 1em;
@@ -61,7 +61,7 @@
     font-size: 0.8em;
     transition: background-color 200ms;
 
-    &:is(:hover, :focus){
+    &:is(:hover, :focus) {
       cursor: pointer;
       outline: none;
       background-color: #66a1ee;

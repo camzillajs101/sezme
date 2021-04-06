@@ -2,11 +2,6 @@
 
 <% if user_signed_in? %>
   <%= form_with url: post_reviews_path(@post), model: @review do |f| %>
-    <div class="field">
-      <%= f.label :title %><br>
-      <%= f.text_field :title, placeholder: "A brief summary of your review" %>
-    </div>
-
     <div class="field"> <!-- TODO: make better rating select option -->
       <%= f.label :rating, "Rating (0-5)" %>
       <div class="ratinginput"></div>
@@ -14,11 +9,17 @@
     </div>
 
     <div class="field">
-      <%= f.label :desc, "Description" %><br>
-      <%= f.text_area :desc, rows: "4", placeholder: "Write your review of the topic here..." %>
+      <%= f.label :title %><br>
+      <%= f.text_field :title, placeholder: "A brief summary of your review" %>
     </div>
 
-    <div>
+    <div class="field">
+      <%= f.label :desc, "Description" %><br>
+      <%= f.text_area :desc, rows: "4", placeholder: "Write your review of the topic here..." %>
+      <div class="charlimit">0/2000</div>
+    </div>
+
+    <div class="actions">
       <%= f.submit "Add Review" %>
     </div>
   <% end %>

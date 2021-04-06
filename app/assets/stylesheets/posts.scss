@@ -84,12 +84,6 @@
   flex-shrink: 0;
 }
 
-.newreview-form {
-  display: flex;
-  justify-content: space-between;
-
-  margin: 2em 0;
-}
 .post_reviews {
 
 }
@@ -214,9 +208,4 @@
 // }
 .field {
 
-}
-
-textarea {
-  resize: vertical;
-  min-height: 100px;
 }
