@@ -58,10 +58,12 @@
   }
   .charlimit {
     position: absolute;
-    right: 0.8em;
-    bottom: 0.6em;
+    right: 1.2em;
+    bottom: 0.3em;
     color: lightgray;
     transition: color 250ms;
+
+    padding: 0.2em;
   }
   textarea:focus ~ .charlimit {
     color: black;
