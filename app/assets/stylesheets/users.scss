@@ -13,7 +13,31 @@
 /* ==========
   forms
 ========== */
-// login/signup stuff
+
+// login/signup forms
+.devise-main-form {
+  flex: 0 1 40%;
+  min-width: 350px;
+  margin: 10vh auto;
+
+  .field, .actions {
+    width: 100%;
+    margin-bottom: 0.5em;
+  }
+
+  .field {
+
+    input:not([type="checkbox"]) {
+      width: 100%;
+      padding: 0.8em 1em;
+      font-size: 0.8em;
+      border: 1px solid lightgray;
+      border-radius: 2em;
+    }
+  }
+}
+
+// other devise forms
 .devise-form {
   flex: 0 1 40%;
   min-width: 350px;
