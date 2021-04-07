@@ -5,7 +5,7 @@
 // devise styling
 
 .devise-errors {
-  margin-bottom: 1em;
+  // margin-bottom: 1em;
 
   color: red;
 }
@@ -20,9 +20,19 @@
   min-width: 350px;
   margin: 10vh auto;
 
+  form {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+
+    margin: 1em 0;
+  }
+
   .field, .actions {
-    width: 100%;
-    margin-bottom: 0.5em;
+    width: 70%;
+    //margin: 1em 0;
   }
 
   .field {
@@ -33,6 +43,35 @@
       font-size: 0.8em;
       border: 1px solid lightgray;
       border-radius: 2em;
+    }
+  }
+
+  .info {
+    position: relative;
+    margin-left: 0.5ch;
+
+    .info-text {
+      display: none;
+      position: absolute;
+      bottom: 1.3em;
+      left: 2em;
+      white-space: nowrap;
+
+      font-size: 0.8em;
+      background-color: rgba(240,240,240,0.9);
+      border: 1px solid gray;
+      padding: 0.5em;
+    }
+  }
+  .info-icon {
+    height: 1.1em;
+    width: auto;
+    margin: none;
+    position: relative;
+    top: 0.35ch;
+
+    &:hover ~ .info-text {
+      display: block;
     }
   }
 }

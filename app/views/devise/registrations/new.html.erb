@@ -18,8 +18,13 @@
       <div class="field">
         <%= f.label :password %>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
+          <span class="info">
+            <%= image_tag("icons/information-line.svg", class: "info-icon") %><br>
+            <div class="info-text">
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+            </div>
+          </span>
+        <% end %>
         <%= f.password_field :password, autocomplete: "new-password" %>
       </div>
 
