@@ -1,11 +1,16 @@
+<%= render 'shared/header' %>
+
 <div class="maincontainer">
-  <div class="page form">
-    <%= link_to image_tag("icons/arrow-go-back-line.svg"), post_path(params[:id]) %>
-    <h2>Edit Topic Description</h2> <!-- TODO: add info explaining why you can't edit title -->
+  <div class="page show">
+    <%= link_to image_tag("icons/arrow-go-back-line.svg"), post_path(params[:id]), class: "back-btn" %>
+    <!-- TODO: add info explaining why you can't edit title -->
 
-    <h3><%= @post.title %></h3>
-
-    <p>Remember to describe your topic thoroughly and neutrally.</p>
+    <div class="indv-post">
+      <div class="postinfo">
+        <div class="posttitle"><%= @post.title %></div>
+        <p>Rating: <b><%= @post.rating > 0 ? "#{@post.rating.to_f / 10} stars" : "[unrated]" %></b></p>
+      </div>
+    </div>
 
     <%= form_with model: @post, class: "post-form" do |f| %>
       <div class="field">
@@ -14,9 +19,15 @@
 
       <%= f.hidden_field :rating %>
 
+      <p>Remember to describe your topic thoroughly and neutrally.</p>
+
       <div class="field">
         <%= f.submit "Update Post", class: "form-submit" %>
       </div>
     <% end %>
+  </div>
+
+  <div class="sidebar">
+    <%= render 'shared/sidebar' %>
   </div>
 </div>
