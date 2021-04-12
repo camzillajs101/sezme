@@ -7,7 +7,7 @@
     <div class="indv-post">
       <div class="postinfo">
         <div class="posttitle"><%= @post.title %></div>
-        <p>Rating: <b><%= @post.rating > 0 ? "#{@post.rating.to_f / 10} stars" : "[unrated]" %></b> | Posted by user <%= link_to @user.username, user_path(@user.username), class: "userproflink" %></p>
+        <p>Rating: <b><%= Post.calcrating(@post) %></b> | Posted by user <%= link_to @user.username, user_path(@user.username), class: "userproflink" %></p>
         <p><%= @post.desc %></p>
 
         <div class="taglist">
@@ -45,6 +45,13 @@
   </div>
 
   <div class="sidebar">
-    <%= render 'shared/sidebar' %>
+    <h3>Related topics</h3>
+    <div class="related-topics-wrapper">
+      <% @post.find_related_tags.each do |post| %>
+        <div class="related-topic">
+          <%= link_to post.title, post %> - <%= Post.calcrating(post) %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
