@@ -58,3 +58,6 @@ gem 'devise'
 
 # jquery
 gem 'jquery-rails'
+
+# AATO
+gem 'acts-as-taggable-on', '~> 7.0'
