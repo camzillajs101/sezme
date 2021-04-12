@@ -9,6 +9,14 @@
         <div class="posttitle"><%= @post.title %></div>
         <p>Rating: <b><%= @post.rating > 0 ? "#{@post.rating.to_f / 10} stars" : "[unrated]" %></b> | Posted by user <%= link_to @user.username, user_path(@user.username), class: "userproflink" %></p>
         <p><%= @post.desc %></p>
+
+        <div class="taglist">
+          <% if @tags.any? %>
+            Tags:&nbsp; <%= @tags.join(', ') %>
+          <% else %>
+            This post is not currently tagged.
+          <% end %>
+        </div>
       </div>
 
       <% if user_signed_in? && @post.user_id == current_user.id %>

@@ -20,6 +20,11 @@
   justify-content: space-between;
 
   margin-top: 1em;
+
+  .taglist {
+    margin-top: 3em;
+    font-size: 0.8em;
+  }
 }
 .postinfo {
   flex-shrink: 1;
