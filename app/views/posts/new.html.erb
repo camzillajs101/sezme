@@ -19,6 +19,19 @@
       <%= f.hidden_field :rating, value: -1 %>
 
       <div class="field">
+        <%= f.label :tag_list, "(Optional) Tags" %>
+        <span class="info">
+          <%= image_tag("icons/information-line.svg", class: "info-icon") %>
+          <div class="info-text">
+            Tag your post so other users can find it more easily.<br>
+            Tags should be separated with a comma and a space.
+          </div>
+        </span>
+
+        <%= f.text_area :tag_list, placeholder: "Example: movies, star wars, science fiction" %>
+      </div>
+
+      <div class="field">
         <%= f.submit "Create Topic", class: "form-submit" %>
       </div>
     <% end %>

@@ -267,3 +267,36 @@ nav {
   border-radius: 5px;
   background-color: white;
 }
+
+/* ==========
+  forms
+========== */
+
+.info {
+  position: relative;
+  margin-left: 0.5ch;
+
+  .info-text {
+    display: none;
+    position: absolute;
+    bottom: 1.3em;
+    left: 2em;
+    white-space: nowrap;
+
+    font-size: 0.8em;
+    background-color: rgba(240,240,240,0.9);
+    border: 1px solid gray;
+    padding: 0.5em;
+  }
+}
+.info-icon {
+  height: 1.1em;
+  width: auto;
+  margin: none;
+  position: relative;
+  top: 0.35ch;
+
+  &:hover ~ .info-text {
+    display: block;
+  }
+}

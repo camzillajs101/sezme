@@ -3,4 +3,6 @@ class Post < ApplicationRecord
   has_many :reviews
 
   validates :title, :desc, presence: true
+
+  acts_as_taggable_on :tags
 end
