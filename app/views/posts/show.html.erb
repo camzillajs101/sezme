@@ -49,8 +49,17 @@
     <div class="related-topics-wrapper">
       <% @post.find_related_tags.each do |post| %>
         <div class="related-topic">
-          <%= link_to post.title, post %> - <%= Post.calcrating(post) %>
+          <%= link_to post.title, post, class: "userproflink" %> - <%= Post.calcrating(post) %>
         </div>
+      <% end %>
+    </div>
+
+    <h3>Search topics</h3>
+    <div class="search-topics-wrapper">
+      <%= form_tag posts_path, method: :get do %>
+        <%= label_tag :query, "Search for:" %>
+        <%= text_field_tag :query %>
+        <%= submit_tag "Search" %>
       <% end %>
     </div>
   </div>

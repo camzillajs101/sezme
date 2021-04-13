@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   devise_for :admins # controllers exist but are not used yet
-  
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root 'posts#index', as: :posts
@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   get '/users/', to: 'users#index', as: :users
 
   get '/pages/:page', to: 'pages#show'
+
+  get '/search', to: 'posts#search'
 end

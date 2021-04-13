@@ -2,7 +2,14 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
 
   def index
-    @posts = Post.order(id: :asc)
+    if params[:query]
+      # @posts = Post.tagged_with(params[:query])
+      @title_match = Post.where("title like ?","%#{params[:query]}%")
+      @tag_match = Post.tagged_with(params[:query])
+      @posts = (@title_match + @tag_match).uniq
+    else
+      @posts = Post.order(id: :asc)
+    end
   end
 
   def show
@@ -44,6 +51,11 @@ class PostsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def search
+    @posts = Post.tagged_with(params[:query])
+    render :index
   end
 
   private
