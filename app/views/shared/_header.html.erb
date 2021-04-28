@@ -8,6 +8,9 @@
   </div>
 
   <div class="header-right">
+    <% if admin_signed_in? %>
+      <%= link_to "Admin", destroy_admin_session_path, method: :delete, class: "link" %> &nbsp;
+    <% end %>
     <% if user_signed_in? %>
       <%= check_box_tag :navtoggle %>
       <%= label_tag :navtoggle do %>

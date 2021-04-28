@@ -17,12 +17,74 @@
   border: 1px solid lightgray;
   padding: 0.5em 2em;
 }
+.newreview-form {
+  position: relative;
+  margin: 2em 0;
+
+  #reviewheader {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.2rem;
+  }
+
+  .field + .field {
+    margin-top: 0.5em;
+  }
+  .actions {
+    margin-top: 1em;
+  }
+
+  input:not([type="submit"]) {
+    width: 33%;
+    padding: 0.5em;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 0.3em 0.5em;
+  }
+
+  input, textarea {
+    font-size: 0.8em;
+    font-family: inherit;
+    margin-top: 0.3em;
+
+    border: 1px solid lightgray;
+    border-radius: 0.3em;
+    transition: border 200ms;
+
+    &:is(:hover, :focus) {
+      border: 1px solid gray;
+      outline: none;
+    }
+  }
+
+  .field {
+    position: relative;
+  }
+  .charlimit {
+    position: absolute;
+    right: 1.2em;
+    bottom: 0.3em;
+
+    font-size: 0.8em;
+    color: lightgray;
+    transition: color 250ms;
+
+    padding: 0.2em;
+  }
+  textarea:focus ~ .charlimit {
+    color: black;
+  }
+}
+
 .ratinginput {
   display: flex;
 
   .star {
-    height: 20px;
-    width: 20px;
+    height: 1.25rem;
+    width: 1.25rem;
     background-size: contain;
     cursor: pointer;
 

@@ -40,17 +40,13 @@ $(document).ready(() => {
     $('input[name="review[rating]"]').val((hold+1)*10); // TODO: at some point (not super important) add ability to select half stars. Maybe html maps?
   });
 
-  // only text box shows until you click into it
-  let displayfield = 3; // field to display at first
-  let element = $(`.newreview-formtag .field:nth-of-type(${displayfield})`);
-  let notelement = $(`.newreview-formtag .field:not(:nth-of-type(${displayfield}))`);
-
-  notelement.hide();
-
-  element.click(() => {
-    notelement.show();
-  });
-  $('.newreview-formtag .cancel').click(() => {
-    notelement.hide();
+  $('textarea').on('input', () => {
+    let length = $('textarea').val().length
+    $('.charlimit').text(length+"/2000");
+    if (length > 2000){
+      $('.charlimit').css('color','red');
+    } else {
+      $('.charlimit').css('color','');
+    }
   });
 });

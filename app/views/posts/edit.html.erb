@@ -2,19 +2,32 @@
 
 <div class="maincontainer">
   <div class="page show">
-    <%= link_to image_tag("icons/arrow-go-back-line.svg"), post_path(params[:id]) %>
-    <h2>Edit Topic Description</h2>
+    <%= link_to image_tag("icons/arrow-go-back-line.svg"), post_path(params[:id]), class: "back-btn" %>
+    <!-- TODO: add info explaining why you can't edit title -->
 
-    <h3><%= @post.title %></h3>
+    <div class="indv-post">
+      <div class="postinfo">
+        <div class="posttitle"><%= @post.title %></div>
+        <p>Rating: <b><%= @post.rating > 0 ? "#{@post.rating.to_f / 10} stars" : "[unrated]" %></b></p>
+      </div>
+    </div>
 
-    <p>Remember to describe your topic thoroughly and neutrally.</p>
+    <%= form_with model: @post, class: "post-form" do |f| %>
+      <div class="field">
+        <%= f.text_area :desc, placeholder: "Describe it in a few sentences" %>
+      </div>
 
-    <%= form_with model: @post, class: "styledform" do |f| %>
-      <%= render "form", rating: @post.rating, submittext: "Update Post", form: f, title_editable: false %>
+      <%= f.hidden_field :rating %>
+
+      <p>Remember to describe your topic thoroughly and neutrally.</p>
+
+      <div class="field">
+        <%= f.submit "Update Post", class: "form-submit" %>
+      </div>
     <% end %>
   </div>
 
   <div class="sidebar">
-    <p>edit page</p>
+    <%= render 'shared/sidebar' %>
   </div>
 </div>

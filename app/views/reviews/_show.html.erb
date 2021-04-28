@@ -1,5 +1,5 @@
 <div class="review">
-  <p><b><%= review.title %></b> | <%= review.rating.to_f / 10 %> stars | <%= link_to User.find(review.user_id).username, user_path(User.find(review.user_id).username), class: "userproflink" %></p>
+  <p><b><%= review.title %></b> | <%= pluralize(review.rating / 10, 'star') %> | <%= link_to User.find(review.user_id).username, user_path(User.find(review.user_id).username), class: "userproflink" %></p>
   <p><%= review.desc %></p>
   <p>(score)
     <% if user_signed_in? && review.user_id == current_user.id %>

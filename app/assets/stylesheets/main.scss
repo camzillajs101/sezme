@@ -5,6 +5,11 @@
   I would have used application.css.
 */
 
+/* ==========
+  fonts
+========== */
+
+// all in adobe rn
 
 /* ==========
   header and navbar
@@ -93,7 +98,7 @@ nav {
     transform: scaleY(1);
     opacity: 1;
   }
-  .nav-icon, label .nav-icon {
+  label .nav-icon {
     transform: rotate(90deg);
   }
 }
@@ -209,4 +214,56 @@ nav {
       transform: scale(1);
     }
   }
+}
+
+/* ==========
+  main page styling
+========== */
+
+.maincontainer {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  margin: 1em 3%;
+  gap: 1em;
+}
+
+.page {
+  display: flex;
+  flex-flow: column wrap;
+  flex: 1 2 70%;
+
+  padding: 1.5em 2em;
+  border: 2px solid #aaa;
+  border-radius: 0.25em;
+  background-color: white;
+  box-shadow: 0 2em 2em 1em #ccc;
+
+  &.list {
+    gap: 0.5em;
+  }
+  &.show {
+
+  }
+  &.static {
+    flex: 0 1 600px; /* is it bad to do this? I don't think so...right? */
+    min-height: 70vh;
+    max-width: 100%;
+  }
+  &.form {
+    flex: 0 1 50%;
+    min-height: 60vh;
+    margin: 10vh auto;
+  }
+}
+
+.sidebar {
+  flex: 1 1 calc(30% - 1em); // minus maincontainer's gap
+  min-width: 20ch;
+  min-height: 40vh;
+
+  padding: 0.5em 1.5em;
+  border: 2px solid #aaa;
+  border-radius: 5px;
+  background-color: white;
 }

@@ -1,0 +1,32 @@
+<%= render 'shared/header' %>
+
+<div class="maincontainer">
+  <div class="page index">
+    <p>If you're seeing this, you're an admin, and your email is <%= current_admin.email %>.</p>
+
+    <p>If by some chance you're seeing this and you're not an admin, something's gone very wrong. Be a good soul and <a href="mailto:info@sezmereviews.com">report this</a> instead of touching these controls.</p>
+
+    <div class="users-list-container">
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Date joined</th>
+          <th>Sign in count</th>
+          <th>Confirmed?</th>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= link_to user.username, user_path(user.username) %></td> <!-- user user username user username username user user username user username username username -->
+            <td><%= user.email %></td>
+            <td><%= user.created_at %></td>
+            <td><%= user.sign_in_count %></td>
+            <td><%= user.confirmed? %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

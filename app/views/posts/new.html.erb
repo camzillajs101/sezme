@@ -2,11 +2,25 @@
   <div class="page form">
     <%= link_to image_tag("icons/arrow-go-back-line.svg"), posts_path %>
 
-    <h2>New post</h2>
+    <h2>New topic</h2>
     <p>Create a topic to be reviewed. Make sure to describe it neutrally as to not influence reviews.</p>
 
-    <%= form_with model: @post, url: "/posts", class: "newpostform" do |f| %>
-      <%= render "form", rating: 50, submittext: "Create Post", form: f, title_editable: true %>
+    <%= form_with model: @post, url: "/posts", class: "post-form" do |f| %>
+      <div class="field">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, placeholder: "Name your topic" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :desc, "Description" %><br>
+        <%= f.text_area :desc, placeholder: "Describe it in a few sentences" %>
+      </div>
+
+      <%= f.hidden_field :rating, value: -1 %>
+
+      <div class="field">
+        <%= f.submit "Create Topic", class: "form-submit" %>
+      </div>
     <% end %>
   </div>
 </div>

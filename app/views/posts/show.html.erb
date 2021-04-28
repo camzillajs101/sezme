@@ -2,22 +2,22 @@
 
 <div class="maincontainer">
   <div class="page show">
-    <%= link_to image_tag("icons/arrow-go-back-line.svg"), posts_path, :class => "back-btn" %>
+    <%= link_to image_tag("icons/arrow-go-back-line.svg"), posts_path, class: "back-btn" %>
 
     <div class="indv-post">
       <div class="postinfo">
         <div class="posttitle"><%= @post.title %></div>
-        <p>Rating: <b><%= @post.rating.to_f / 10 %> stars</b> | Posted by user <%= link_to @user.username, user_path(@user.username), class: "userproflink" %></p>
+        <p>Rating: <b><%= @post.rating > 0 ? "#{@post.rating.to_f / 10} stars" : "[unrated]" %></b> | Posted by user <%= link_to @user.username, user_path(@user.username), class: "userproflink" %></p>
         <p><%= @post.desc %></p>
       </div>
 
-      <div class="editpostbtn">
-        <% if user_signed_in? && @post.user_id == current_user.id %>
+      <% if user_signed_in? && @post.user_id == current_user.id %>
+        <div class="side-btn">
           <%= link_to edit_post_path, class: "btn" do %>
             <%= image_tag("icons/edit-2-fill.svg", class: "icon") %> Edit
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
 
     <!-- maybe wrap this in a fieldset -->
@@ -26,12 +26,13 @@
     </div>
 
     <div class="post_reviews list">
-      <% @reviews.each do |f| %>
-        <%= render 'reviews/show', review: f %>
-      <% end %>
-
       <% if @post.reviews.count == 0 %>
         No reviews on this post yet. Be the first to tell the world what you think!
+      <% else %>
+        <h3><%= pluralize(@post.reviews.count, 'review') %></h3>
+        <% @reviews.each do |f| %>
+          <%= render 'reviews/show', review: f %>
+        <% end %>
       <% end %>
     </div>
   </div>
