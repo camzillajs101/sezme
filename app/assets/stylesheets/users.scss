@@ -249,3 +249,26 @@
     padding: 0.5em;
   }
 }
+
+/* ==========
+  show
+========== */
+
+// tabs
+.tabs {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1em;
+  margin-bottom: 1em;
+
+  .tablink {
+    border: none;
+    color: #324B4B;
+    border: 1px solid gray;
+    padding: 0.5em;
+
+    &:is(:hover, :focus) {
+      opacity: 0.8;
+    }
+  }
+}

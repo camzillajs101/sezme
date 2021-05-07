@@ -1,6 +1,6 @@
-<div class="maincontainer">
+<main>
   <div class="page form">
-    <%= link_to image_tag("icons/arrow-go-back-line.svg"), posts_path %>
+    <%= render 'shared/back' %>
 
     <h2>New topic</h2>
     <p>Create a topic to be reviewed. Make sure to describe it neutrally as to not influence reviews.</p>
@@ -23,4 +23,4 @@
       </div>
     <% end %>
   </div>
-</div>
+</main>

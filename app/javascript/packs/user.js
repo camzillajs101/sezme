@@ -8,7 +8,7 @@ $(document).ready(() => {
     $('.user-reviews').show();
   }
 
-  // default show posts
+  // by default show posts
   showPosts();
 
   // click listeners

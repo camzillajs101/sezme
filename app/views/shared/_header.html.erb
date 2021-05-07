@@ -1,15 +1,15 @@
 <header>
   <div class="header-left">
-    <%= link_to "Sezme", posts_path, class: "link" %>
+    <%= link_to "Sezme", posts_path, class: "cool-link" %>
   </div>
 
   <div class="header-middle"> <!-- pages -->
-    <%= link_to "About", "/pages/about", class: "link" %>
+    <%= link_to "About", "/pages/about", class: "cool-link" %>
   </div>
 
   <div class="header-right">
     <% if admin_signed_in? %>
-      <%= link_to "Admin", destroy_admin_session_path, method: :delete, class: "link" %> &nbsp;
+      <%= link_to "Admin", destroy_admin_session_path, method: :delete, class: "cool-link" %> &nbsp;
     <% end %>
     <% if user_signed_in? %>
       <%= check_box_tag :navtoggle %>

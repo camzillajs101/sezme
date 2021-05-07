@@ -1,8 +1,8 @@
 <%= render 'shared/header' %>
 
-<div class="maincontainer">
+<main>
   <div class="page show">
-    <%= link_to image_tag("icons/arrow-go-back-line.svg"), post_path(params[:id]), class: "back-btn" %>
+    <%= render 'shared/back' %>
     <!-- TODO: add info explaining why you can't edit title -->
 
     <div class="indv-post">
@@ -30,4 +30,4 @@
   <div class="sidebar">
     <%= render 'shared/sidebar' %>
   </div>
-</div>
+</main>

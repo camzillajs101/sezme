@@ -126,11 +126,7 @@ nav {
   buttons and links
 ========== */
 
-.userproflink {
-  color: #007b7c;
-}
 .postlink {
-  color: #007b7c;
   font-size: 1.25em;
 }
 .back-btn {
@@ -139,6 +135,9 @@ nav {
 
 /* for links in general */
 .link {
+  color: #007b7c;
+}
+.cool-link { // link but cool
   color: inherit;
   position: relative;
 
@@ -220,7 +219,7 @@ nav {
   main page styling
 ========== */
 
-.maincontainer {
+main {
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;

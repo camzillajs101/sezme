@@ -2,28 +2,27 @@
 
 <%= javascript_pack_tag 'user' %>
 
-<div class="maincontainer">
+<main>
   <div class="page static">
-    <%= link_to image_tag("icons/arrow-go-back-line.svg"), posts_path %>
+    <%= render 'shared/back' %>
     <h2><%= @user.username %></h2>
     <p>Joined on <%= Date::MONTHNAMES[@user.created_at.month] %> <%= @user.created_at.day %>, <%= @user.created_at.year %></p>
+    <p><%= pluralize(@user.posts.count, 'post') %>, <%= pluralize(@user.reviews.count, 'review') %></p>
 
     <div class="tabs">
-      <button class="tablink" id="poststab">Posts</button>
-      <button class="tablink" id="reviewstab">Reviews</button>
+      <a class="tablink" id="poststab">Posts</a>
+      <a class="tablink" id="reviewstab">Reviews</a>
     </div>
 
     <div class="user-posts">
-      <p><%= pluralize(@user.posts.count, 'post') %></p>
       <% @user.posts.each do |post| %>
-        <%= post.title %><br>
+        <%= link_to post.title, post, class: "link" %><br>
       <% end %>
     </div>
     <div class="user-reviews">
-      <p><%= pluralize(@user.reviews.count, 'review') %></p>
       <% @user.reviews.each do |review| %>
-        <%= review.title %><br>
+        <%= link_to review.title, Post.find(review.post_id), class: "link" %><br>
       <% end %>
     </div>
   </div>
-</div>
+</main>

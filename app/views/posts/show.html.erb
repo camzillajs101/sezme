@@ -1,8 +1,8 @@
 <%= render 'shared/header' %>
 
-<div class="maincontainer">
+<main>
   <div class="page show">
-    <%= link_to image_tag("icons/arrow-go-back-line.svg"), posts_path, class: "back-btn" %>
+    <%= render 'shared/back' %>
 
     <div class="indv-post">
       <div class="postinfo">
@@ -40,4 +40,4 @@
   <div class="sidebar">
     <%= render 'shared/sidebar' %>
   </div>
-</div>
+</main>

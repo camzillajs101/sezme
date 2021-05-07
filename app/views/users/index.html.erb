@@ -1,7 +1,8 @@
 <%= render 'shared/header' %>
 
-<div class="maincontainer">
+<main>
   <div class="page index">
+    <%= render 'shared/back' %>
     <p>If you're seeing this, you're an admin, and your email is <%= current_admin.email %>.</p>
 
     <p>If by some chance you're seeing this and you're not an admin, something's gone very wrong. Be a good soul and <a href="mailto:info@sezmereviews.com">report this</a> instead of touching these controls.</p>
@@ -29,4 +30,4 @@
       </table>
     </div>
   </div>
-</div>
+</main>
