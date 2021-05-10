@@ -10,8 +10,13 @@ class PostsController < ApplicationController
     @reviews = @post.reviews.all
     @user = User.find(@post.user_id)
 
+    if params[:review_id]
+      @review = Review.find(params[:review_id])
+      puts @review.title
+    end
+
     # new review
-    @review = @post.reviews.new
+    @newreview = @post.reviews.new
   end
 
   def new

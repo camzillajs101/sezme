@@ -1,7 +1,7 @@
 <%= javascript_pack_tag 'review' %>
 
 <% if user_signed_in? %>
-  <%= form_with url: post_reviews_path(@post), model: @review do |f| %>
+  <%= form_with url: post_reviews_path(@post), model: review do |f| %>
     <div class="field"> <!-- TODO: make better rating select option -->
       <%= f.label :rating, "Rating (0-5)" %>
       <div class="ratinginput"></div>

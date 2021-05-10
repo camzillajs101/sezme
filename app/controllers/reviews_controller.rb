@@ -1,4 +1,8 @@
 class ReviewsController < ApplicationController
+  def show
+    render 'posts/show'
+  end
+
   def create
     @post = Post.find(params[:post_id])
     @review = @post.reviews.new(review_params)
