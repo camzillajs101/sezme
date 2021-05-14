@@ -22,20 +22,16 @@
 
     <!-- maybe wrap this in a fieldset -->
     <div class="newreview-form" id="newreview-form"> <!-- id for link (posts/:id#newreview-form) -->
-      <%= render 'reviews/new', review: @newreview %>
+      <%= render 'reviews/new' %>
     </div>
 
     <div class="post_reviews list">
-      <% if @review %>
-        <%= render 'reviews/show', review: @review %>
+      <% if @post.reviews.count == 0 %>
+        No reviews on this post yet. Be the first to tell the world what you think!
       <% else %>
-        <% if @reviews.size == 0 %>
-          No reviews on this post yet. Be the first to tell the world what you think!
-        <% else %>
-          <h3><%= pluralize(@post.reviews.size, 'review') %></h3>
-          <% @reviews.each do |f| %>
-            <%= render 'reviews/show', review: f %>
-          <% end %>
+        <h3><%= pluralize(@post.reviews.count, 'review') %></h3>
+        <% @reviews.each do |f| %>
+          <%= render 'reviews/show', review: f %>
         <% end %>
       <% end %>
     </div>

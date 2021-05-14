@@ -21,7 +21,7 @@
     </div>
     <div class="user-reviews">
       <% @user.reviews.each do |review| %>
-        <%= link_to review.title, post_path(Post.find(review.post_id), :review => review.id), class: "link" %><br>
+        <%= link_to review.title, Post.find(review.post_id), class: "link" %><br>
       <% end %>
     </div>
   </div>
