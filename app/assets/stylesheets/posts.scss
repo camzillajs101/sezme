@@ -72,6 +72,13 @@
   }
 }
 
+.posts-topbar {
+  display: flex;
+  flex-flow: row nowrap;
+
+  margin: 1em 0;
+}
+
 // TODO: clean this up ⬇
   // TODO: use "v" instead of unicode arrow
 

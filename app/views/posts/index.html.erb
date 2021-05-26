@@ -2,9 +2,15 @@
 
 <div class="maincontainer">
   <div class="page list">
-    <p><%= link_to new_post_path, class: "btn nodecor" do %>
-      <%= image_tag("icons/pencil-fill.svg", class: "icon") %> Create Topic
-    <% end %></p><br>
+    <div class="posts-topbar">
+      <%= link_to new_post_path, class: "btn" do %>
+        <%= image_tag("icons/pencil-fill.svg", class: "icon") %> Create Topic
+      <% end %>
+
+      <div class="search-wrapper">
+
+      </div>
+    </div>
     <% @posts.each do |f| %>
       <div class="post">
         <div class="postinfo">
