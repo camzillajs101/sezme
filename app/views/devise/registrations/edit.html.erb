@@ -43,12 +43,17 @@
       <!-- END account-related info -->
 
       <!-- BEGIN personalization-related settings -->
-      <div class="field">
-        <%= f.fields_for :settings do |settings| %>
-          <%= settings.label :theme %>
-          <%= settings.check_box :theme %>
-        <% end %>
-      </div>
+      <h3>Personalization</h3>
+
+      <%= current_user.settings %><br>
+
+      <%= f.fields_for :settings do |settings| %>
+        <div class="field">
+          <%= settings.label :theme, "Dark mode" %>
+          <%= settings.check_box :theme, checked: current_user.settings[:theme] == "1" ? true : false %> <!-- TODO: clean solution -->
+        </div>
+
+      <% end %>
       <!-- END personalization-related settings -->
 
       <div class="actions">
