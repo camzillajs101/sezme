@@ -55,7 +55,7 @@ class PostsController < ApplicationController
 
   def search
     @posts = Post.tagged_with(params[:query])
-    render :index
+    
   end
 
   private

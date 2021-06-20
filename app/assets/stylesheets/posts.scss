@@ -75,9 +75,32 @@
 .posts-topbar {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: baseline;
 
   margin: 1em 0;
+  padding-right: 2em;
 }
+.search-wrapper {
+
+  .search {
+    // margin-bottom: 0.5em;
+    display: flex;
+    justify-content: flex-start;
+
+    input[type="text"] {
+      flex: 0 1 60%;
+      padding: 1em;
+      border: 1px solid lightgray;
+    }
+    input[type="submit"] {
+      flex: 0 1 20%;
+      border: none;
+      background-color: #33cccc;
+    }
+  }
+}
+
 
 // TODO: clean this up ⬇
   // TODO: use "v" instead of unicode arrow

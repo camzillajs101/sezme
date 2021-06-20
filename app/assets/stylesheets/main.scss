@@ -231,7 +231,7 @@ nav {
 .page {
   display: flex;
   flex-flow: column wrap;
-  flex: 1 2 70%;
+  flex: 0 2 70%;
 
   padding: 1.5em 2em;
   border: 2px solid #aaa;
@@ -258,7 +258,7 @@ nav {
 }
 
 .sidebar {
-  flex: 1 1 calc(30% - 1em); // minus maincontainer's gap
+  flex: 0 1 calc(30% - 1em); // minus maincontainer's gap
   min-width: 20ch;
   min-height: 40vh;
 

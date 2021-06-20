@@ -1,19 +1,11 @@
 <%= render 'shared/header' %>
 
 <div class="maincontainer">
-  <div class="page list">
-    <div class="posts-topbar">
-      <%= link_to new_post_path, class: "btn" do %>
-        <%= image_tag("icons/pencil-fill.svg", class: "icon") %> Create Topic
-      <% end %>
+  <div class="page index">
+    <%= link_to image_tag("icons/arrow-go-back-line.svg"), posts_path, class: "back-btn" %>
 
-      <div class="search-wrapper">
-        <%= form_tag search_posts_path, method: :get, class: "search" do %>
-          <%= text_field_tag :query %>
-          <%= submit_tag "Search" %>
-        <% end %>
-      </div>
-    </div>
+    <%= params[:query] %>
+
     <% @posts.each do |f| %>
       <div class="post">
         <div class="postinfo">
@@ -30,8 +22,5 @@
         </div>
       </div>
     <% end %>
-  </div>
-  <div class="sidebar">
-    <%= render 'shared/sidebar' %> <!-- render render render render render -->
   </div>
 </div>

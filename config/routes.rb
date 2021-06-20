@@ -16,5 +16,5 @@ Rails.application.routes.draw do
 
   get '/pages/:page', to: 'pages#show'
 
-  get '/search', to: 'posts#search'
+  get '/search', to: 'posts#search', as: "search_posts"
 end
