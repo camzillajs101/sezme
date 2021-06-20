@@ -11,4 +11,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :trackable,
          authentication_keys: [:username]
+
+  serialize :settings
 end
