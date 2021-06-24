@@ -15,12 +15,13 @@
  */
 
 /* ==========
-  variables
+ variables
 ========== */
 
 :root {
   --header-bg: #114a66;
-  --header-text: #2DE3B0;
+  --header-text: #2de3b0;
+  --btn-bg: #00a3a3;
 }
 
 /* ==========
@@ -46,4 +47,7 @@ h2, h3 {
 textarea {
   resize: none;
   height: 8em;
+}
+input { /* cause Chrome is a widdle baby and takes everything too literally */
+  font-family: "Open Sans";
 }

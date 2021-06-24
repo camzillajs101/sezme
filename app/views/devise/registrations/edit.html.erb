@@ -56,7 +56,7 @@
 
     <p>Unhappy?</p>
     <div class="actions">
-      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "cancel-acct-btn" %>
+      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure? This action cannot be reversed." }, method: :delete, class: "cancel-acct-btn" %>
     </div>
   </div>
 </main>
