@@ -6,7 +6,7 @@
       <%= flash[:alert] %>
     </div>
 
-    <div class="form-wrapper">
+    <!-- <div class="form-wrapper"> -->
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
           <%= f.text_field :username, autofocus: true, placeholder: "Username" %>
@@ -30,6 +30,6 @@
 
       <!-- wrapped in .links div -->
       <%= render "devise/shared/links" %>
-    </div>
+    <!-- </div> -->
   </div>
 </main>
