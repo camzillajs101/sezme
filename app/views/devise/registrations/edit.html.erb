@@ -1,3 +1,5 @@
+<%= render 'shared/header' %>
+
 <main>
   <div class="page devise-form user-edit-form">
     <%= link_to image_tag("icons/arrow-go-back-line.svg"), posts_path %>
@@ -36,15 +38,25 @@
       </div>
 
       <div class="field">
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+        <%= f.label :current_password %>
+        <span class="info">
+          <%= image_tag("icons/information-line.svg", class: "info-icon") %><br>
+          <span class="info-text">
+            <i>(required to confirm your changes)</i>
+          </span>
+        </span>
+
         <%= f.password_field :current_password, autocomplete: "current-password" %>
       </div><br>
 
       <div class="actions">
-        <%= f.submit "Update account" %>
-      </div>
+        <%= f.submit "Update account", class: "update-acct-btn" %>
+      </div><br>
     <% end %>
 
-    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    <p>Unhappy?</p>
+    <div class="actions">
+      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "cancel-acct-btn" %>
+    </div>
   </div>
 </main>

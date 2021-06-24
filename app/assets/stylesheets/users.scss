@@ -98,7 +98,36 @@
   }
 }
 .user-edit-form {
+  flex: 0 0 50%;
 
+  input {
+    padding: 0.5em 0.7em;
+    border-radius: 0.3em;
+  }
+
+  .field {
+    margin: 1em 0;
+
+    input {
+      @include field-hover;
+
+      width: 40%;
+    }
+  }
+
+  .actions input {
+    @include button-hover;
+
+    width: 30%;
+    border: none;
+    color: white;
+  }
+  .update-acct-btn {
+    background-color: #00a3a3;
+  }
+  .cancel-acct-btn {
+    background-color: #a32900;
+  }
 }
 .user-info-form {
 
@@ -118,7 +147,8 @@
 
     font-size: 0.8em;
     background-color: rgba(240,240,240,0.9);
-    border: 1px solid gray;
+    // border: 1px solid gray;
+    border-radius: 0.2em;
     padding: 0.5em;
   }
 }
