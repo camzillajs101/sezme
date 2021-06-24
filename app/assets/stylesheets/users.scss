@@ -44,9 +44,13 @@
   margin: 0 auto;
 
   form, .links {
-    margin-top: 2em;
+    margin-top: 1em;
   }
 
+  input:not([type="checkbox"]) {
+    width: 100%;
+    border-radius: 1em;
+  }
 
   .field {
     margin: 1em 0;
@@ -55,18 +59,42 @@
     input:not([type="checkbox"]) {
       @include field-hover;
 
-      width: 100%;
-      padding: 0.7em;
-
-      border-radius: 1em;
+      padding: 0.7em 1em;
     }
   }
 
   .actions input {
     @include button-hover;
 
-    width: 100%;
-    padding: 0.7em;
+    background-color: #00a3a3;
+    color: white;
+    border: none;
+    padding: 0.9em 0.7em;
+  }
+
+  // other links
+  .links a {
+    color: #324B4B;
+  }
+
+  .devise-main-links { // trying out sign up and forgot password on same line
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sign-up-link, .log-in-link {
+    // margin-top: 0.5em;
+    margin-right: 1ch;
+    font-size: 0.9em;
+    font-weight: 600;
+  }
+
+  .devise-other-links {
+    margin-top: 1em;
+
+    font-size: 0.8em;
+    font-weight: 300;
   }
 }
 .user-edit-form {
@@ -74,6 +102,36 @@
 }
 .user-info-form {
 
+}
+
+// info thing
+.info {
+  position: relative;
+  margin-left: 0.5ch;
+
+  .info-text {
+    display: none;
+    position: absolute;
+    bottom: 1.3em;
+    left: 2em;
+    white-space: nowrap;
+
+    font-size: 0.8em;
+    background-color: rgba(240,240,240,0.9);
+    border: 1px solid gray;
+    padding: 0.5em;
+  }
+}
+.info-icon {
+  height: 1.1em;
+  width: auto;
+  margin: none;
+  position: relative;
+  top: 0.35ch;
+
+  &:hover ~ .info-text {
+    display: block;
+  }
 }
 
 /* ==========
