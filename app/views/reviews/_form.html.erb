@@ -1,9 +1,9 @@
 <%= javascript_pack_tag 'review' %>
 
 <% if user_signed_in? %>
-  <%= form_with url: post_reviews_path(@post, @review), model: @review do |f| %>
+  <%= form_with url: path, model: @review do |f| %>
     <div class="field">
-      <%= f.label :rating, "Rating (0-5)" %>
+      <%= f.label :rating, "Rating" %>
       <div class="ratinginput"></div>
       <%= f.hidden_field :rating %>
     </div>
@@ -20,7 +20,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Add Review" %>
+      <%= f.submit submit_msg %>
     </div>
   <% end %>
   <h3 id="reviewheader">Write a review</h3>

@@ -7,8 +7,8 @@
     <%= render @post %>
 
     <!-- maybe wrap this in a fieldset -->
-    <div class="newreview-form" id="newreview-form"> <!-- id for link (posts/:id#newreview-form) -->
-      <%= render 'reviews/form' %>
+    <div class="newreview-form" id="newreview-form"> <!-- id is for link (posts/:id#newreview-form) -->
+      <%= render 'reviews/form', path: post_reviews_path(@post, @review), submit_msg: "Add Review" %>
     </div>
 
     <div class="post_reviews list">
