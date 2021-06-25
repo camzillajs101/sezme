@@ -1,12 +1,12 @@
 <%= render 'shared/header' %>
 
 <main>
-  <div class="page list">
+  <div class="page page-index">
     <p><%= link_to new_post_path, class: "btn" do %>
       <%= image_tag("icons/pencil-fill.svg", class: "icon") %> Create Topic
     <% end %></p><br>
     <% @posts.each do |f| %>
-      <div class="post">
+      <div class="index-post">
         <div class="postinfo">
           <%= link_to f, class: "link postlink" do %>
             <%= f.title %> | <%= f.rating > 0 ? "#{f.rating.to_f / 10} stars" : "[unrated]" %>
@@ -14,6 +14,7 @@
           <p>by user <%= link_to User.find(f.user_id).username, user_path(User.find(f.user_id).username), class: "link" %></p>
           <p><%= pluralize(f.reviews.count, 'review') %> so far</p>
         </div>
+        
         <div class="side-btn">
           <%= link_to "#{post_path(f.id)}#newreview-form", class: "btn" do %>
             <%= image_tag("icons/star-half-fill.svg", class: "icon") %> Review

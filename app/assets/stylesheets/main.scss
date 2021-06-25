@@ -228,32 +228,17 @@ main {
 }
 
 .page {
-  display: flex;
-  flex-flow: column wrap;
   flex: 1 2 70%;
 
+  // looks
   padding: 1.5em 2em;
-  border: 2px solid #aaa;
-  border-radius: 0.25em;
   background-color: white;
   box-shadow: 0 2em 2em 1em #ccc;
+  border: 2px solid #aaa;
+  border-radius: 0.25em;
+}
+.page-index {
 
-  &.list {
-    gap: 0.5em;
-  }
-  &.show {
-
-  }
-  &.static {
-    flex: 0 1 600px; /* is it bad to do this? I don't think so...right? */
-    min-height: 70vh;
-    max-width: 100%;
-  }
-  &.form {
-    flex: 0 1 50%;
-    min-height: 60vh;
-    margin: 10vh auto;
-  }
 }
 
 .sidebar {

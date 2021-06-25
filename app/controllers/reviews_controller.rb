@@ -5,16 +5,6 @@ class ReviewsController < ApplicationController
     @user = User.find(@post.user_id)
   end
 
-  def edit
-    @review = Review.find(params[:id])
-    @post = Post.find(@review.post_id)
-    @user = User.find(@post.user_id)
-  end
-
-  def update
-
-  end
-
   def create
     @post = Post.find(params[:post_id])
     @review = @post.reviews.new(review_params)
@@ -28,6 +18,27 @@ class ReviewsController < ApplicationController
       @review.errors.full_messages.each do |e|
         puts e
       end
+    end
+  end
+
+  def edit
+    @review = Review.find(params[:id])
+    @post = Post.find(@review.post_id)
+    @user = User.find(@post.user_id)
+
+    if @review.user_id != current_user.id
+      redirect_to post_review_path(@post, @review)
+    end
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    @post = Post.find(@review.post_id)
+
+    if @review.update(review_params)
+      redirect_to post_review_path(@post, @review)
+    else
+      render :edit
     end
   end
 

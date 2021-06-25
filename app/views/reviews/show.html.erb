@@ -5,10 +5,10 @@
     <%= render 'shared/back' %>
 
     <%= render @post %>
-
-    <div class="post_reviews list">
-      <h3>Showing single review. <%= link_to "See all reviews", @post, class: "textlink" %></h3>
+    <hr>
+    <div class="post_reviews">
       <%= render @showreview %>
+      <h3>Showing single review. <%= link_to "See all reviews", @post, class: "textlink" %></h3>
     </div>
   </div>
   <div class="sidebar">

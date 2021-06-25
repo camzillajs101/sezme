@@ -1,6 +1,6 @@
-<div class="indv-post">
-  <div class="postinfo">
-    <div class="posttitle"><%= @post.title %></div>
+<div class="show-post">
+  <div class="post-info">
+    <div class="post-title"><%= @post.title %></div>
     <% if @post.url %><!-- if this stops working, change to: if @post.url && @post.url != "" -->
       <div class="post-url">
         <%= link_to @post.url, target: '_blank' do %>
