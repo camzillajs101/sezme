@@ -8,10 +8,8 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @reviews = @post.reviews.all
-    @user = User.find(@post.user_id)
-
-    # new review
     @review = @post.reviews.new
+    @user = User.find(@post.user_id)
   end
 
   def new

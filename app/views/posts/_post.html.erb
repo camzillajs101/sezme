@@ -1,0 +1,23 @@
+<div class="indv-post">
+  <div class="postinfo">
+    <div class="posttitle"><%= @post.title %></div>
+    <% if @post.url %><!-- if this stops working, change to: if @post.url && @post.url != "" -->
+      <div class="post-url">
+        <%= link_to @post.url, target: '_blank' do %>
+          <%= truncate(@post.url, :length => 50) %>
+          <%= image_tag("icons/external-link-line.svg", class: 'icon') %>
+        <% end %>
+      </div>
+    <% end %>
+    <p>Rating: <b><%= @post.rating > 0 ? "#{@post.rating.to_f / 10} stars" : "[unrated]" %></b> | Posted by user <%= link_to @user.username, user_path(@user.username), class: "userproflink" %></p>
+    <p><%= @post.desc %></p>
+  </div>
+
+  <% if user_signed_in? && @post.user_id == current_user.id %>
+    <div class="side-btn">
+      <%= link_to edit_post_path, class: "btn" do %>
+        <%= image_tag("icons/edit-2-fill.svg", class: "icon") %> Edit
+      <% end %>
+    </div>
+  <% end %>
+</div>

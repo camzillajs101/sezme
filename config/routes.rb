@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root 'posts#index', as: :posts
   resources :posts, except: [:index, :destroy] do
-    resources :reviews, only: [:edit, :create, :destroy]
+    resources :reviews, except: :index
   end
   get '/users/:username', to: 'users#show', as: :user
   get '/users/', to: 'users#index', as: :users
