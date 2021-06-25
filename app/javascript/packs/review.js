@@ -1,6 +1,4 @@
 $(document).ready(() => {
-  $('input[name="review[rating]"]').val(-1);
-
   function fill(id){
     $(`#star-${id}`).addClass('filled');
   }
@@ -13,7 +11,14 @@ $(document).ready(() => {
     $('.ratinginput').append(`<div id="star-${i}" class="star"></div>`);
   }
 
-  let hold = -1; // represents which rating the user has selected; starts at -1 to signify no hold
+  let hiddeninput = $('input[name="review[rating]"]').val() / 10;
+  if (hiddeninput !== NaN){
+    for (let i = 0; i < hiddeninput; i++){
+      fill(i);
+    }
+  }
+
+  let hold = hiddeninput !== NaN ? hiddeninput - 1 : -1; // represents which rating the user has selected; starts at -1 to signify no hold
 
   $('.star').hover(e => { // TODO: dry this up!
     let id = Number(e.target.id.substring(5,6));
