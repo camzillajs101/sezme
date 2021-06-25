@@ -1,13 +1,13 @@
 <%= render 'shared/header' %>
 
 <main>
-  <div class="page show">
+  <div class="page">
     <%= render 'shared/back' %>
     <!-- TODO: add info explaining why you can't edit title -->
 
-    <div class="indv-post">
-      <div class="postinfo">
-        <div class="posttitle"><%= @post.title %></div>
+    <div class="show-post">
+      <div class="post-info">
+        <div class="post-title"><%= @post.title %></div>
         <p>Rating: <b><%= @post.rating > 0 ? "#{@post.rating.to_f / 10} stars" : "[unrated]" %></b></p>
       </div>
     </div>
