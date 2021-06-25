@@ -1,4 +1,12 @@
 class ReviewsController < ApplicationController
+  def edit
+    @review = Review.find(params[:id])
+  end
+
+  def update
+
+  end
+
   def create
     @post = Post.find(params[:post_id])
     @review = @post.reviews.new(review_params)

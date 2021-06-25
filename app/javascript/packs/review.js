@@ -8,6 +8,7 @@ $(document).ready(() => {
     $(`#star-${id}`).removeClass('filled');
   }
 
+  $('.ratinginput').html('');
   for (let i = 0; i < 5; i++){
     $('.ratinginput').append(`<div id="star-${i}" class="star"></div>`);
   }
