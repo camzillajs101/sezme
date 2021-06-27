@@ -49,3 +49,6 @@ textarea {
   resize: none;
   height: 8em;
 }
+input { /* because chrome is a widdle baby */
+  font-family: "Open Sans", "open-sans", "Arial";
+}
