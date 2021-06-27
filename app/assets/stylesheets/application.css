@@ -19,6 +19,7 @@
 ========== */
 
 :root {
+  --root-bg: #ececec;
   --header-bg: #114a66;
   --header-text: #2de3b0;
   --btn-bg: #00a3a3;
@@ -34,8 +35,8 @@
 body {
  margin: 0;
  font-size: 16px;
- font-family: "Open Sans";
- background-color: #ececec;
+ font-family: "Open Sans", "open-sans", "Arial";
+ background-color: var(--root-bg);
 }
 a {
   text-decoration: none;
@@ -47,7 +48,4 @@ h2, h3 {
 textarea {
   resize: none;
   height: 8em;
-}
-input { /* cause Chrome is a widdle baby and takes everything too literally */
-  font-family: "Open Sans";
 }
