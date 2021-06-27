@@ -35,6 +35,12 @@
 
 // login/signup forms
 
+@media (max-width: 400px){
+  .user-edit-form {
+    margin: 0 auto;
+  }
+}
+
 .devise-form {
   .field input { // include hover animations on all inputs
     @include field-hover;
@@ -74,7 +80,8 @@
 
 .user-entry-form {
   flex: 0 0 30%;
-  margin: 0 auto;
+  min-width: 320px;
+  margin: 5% auto;
 
   form, .links {
     margin-top: 1em;
@@ -101,10 +108,12 @@
 }
 .user-edit-form {
   flex: 0 0 50%;
+  min-width: 330px;
 
   input {
     padding: 0.5em 0.7em;
     border-radius: 0.3em;
+    min-width: 250px;
   }
 
   .field {
@@ -116,7 +125,7 @@
   }
 
   .actions input {
-    width: 30%;
+    width: 40%;
   }
   .update-acct-btn {
     background-color: var(--btn-bg);
@@ -127,7 +136,8 @@
 }
 .user-info-form {
   flex: 0 0 35%;
-  margin: 0 auto;
+  min-width: 350px;
+  margin: 5% auto;
 
   form {
     margin: 1em 0;
