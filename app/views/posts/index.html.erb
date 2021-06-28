@@ -14,9 +14,9 @@
           <p>by user <%= link_to User.find(f.user_id).username, user_path(User.find(f.user_id).username), class: "link" %></p>
           <p><%= pluralize(f.reviews.count, 'review') %> so far</p>
         </div>
-        
+
         <div class="side-btn">
-          <%= link_to "#{post_path(f.id)}#newreview-form", class: "btn" do %>
+          <%= link_to "#{post_path(f.id)}#new-review", class: "btn" do %>
             <%= image_tag("icons/star-half-fill.svg", class: "icon") %> Review
           <% end %>
         </div>

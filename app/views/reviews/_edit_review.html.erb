@@ -7,18 +7,20 @@
     </div>
 
     <div class="field">
-      <%= f.label :title %><br>
+      <%= f.label :title %>
       <%= f.text_field :title, placeholder: "A brief summary of your review" %>
     </div>
 
     <div class="field">
-      <%= f.label :desc, "Description" %><br>
+      <%= f.label :desc, "Description" %>
       <%= f.text_area :desc, rows: "4", placeholder: "Write your review of the topic here..." %>
       <div class="charcount">0/2000</div>
     </div>
 
     <div class="actions">
-      <%= link_to "Cancel", "#", remote: true, class: "cancel-edit-review-btn" %><%= f.submit "Save Review" %>
+      <%= link_to "Cancel", "#", remote: true, class: "cancel-edit-review-btn" %>
+      <%= f.submit "Save Review" %>
     </div>
   <% end %>
+  <h3 class="reviewheader">Edit your review</h3>
 </div>

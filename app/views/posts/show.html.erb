@@ -6,10 +6,14 @@
 
     <%= render @post %>
 
+    <hr>
+
     <!-- maybe wrap this in a fieldset -->
-    <div class="review-form-wrapper" id="new-review"> <!-- id is for link (posts/:id#newreview-form) -->
+    <div class="review-form-wrapper new-review-form-wrapper" id="new-review"> <!-- id is for link (posts/:id#newreview-form) -->
       <%= render 'reviews/new_review', path: post_reviews_path(@post, @review), submit_msg: "Add Review" %>
     </div>
+
+    <hr><br>
 
     <div class="post_reviews list">
       <% if @reviews.count == 0 %>

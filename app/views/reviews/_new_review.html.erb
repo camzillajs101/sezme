@@ -22,8 +22,9 @@
     <div class="actions">
       <%= f.submit submit_msg %>
     </div>
+    <h3 class="reviewheader">Write a review</h3>
   <% end %>
-  <h3 class="reviewheader">Write a review</h3>
+
 <% else %>
   <p><%= link_to "Sign in", new_user_session_path, class: "textlink" %> to leave a review</p>
 <% end %>
