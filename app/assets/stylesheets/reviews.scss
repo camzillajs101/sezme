@@ -13,12 +13,12 @@
   form styling
 ========== */
 
-.newreview-form {
+.review-form-wrapper {
   position: relative;
   margin: 2em 0;
   padding: 0.5em 2em;
 
-  #reviewheader {
+  .reviewheader {
     position: absolute;
     top: 0;
     right: 0;
@@ -60,7 +60,7 @@
   .field {
     position: relative;
   }
-  .charlimit {
+  .charcount {
     position: absolute;
     right: 1.2em;
     bottom: 0.3em;
@@ -71,7 +71,7 @@
 
     padding: 0.2em;
   }
-  textarea:focus ~ .charlimit {
+  textarea:focus ~ .charcount {
     color: black;
   }
 }

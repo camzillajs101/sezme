@@ -1,9 +1,9 @@
-<div class="review">
+<div class="review" id="review-<%= review.id %>">
   <p><b><%= review.title %></b> | <%= pluralize(review.rating / 10, 'star') %> | <%= link_to User.find(review.user_id).username, user_path(User.find(review.user_id).username), class: "userproflink" %></p>
   <p><%= review.desc %></p>
   <p>(score)
     <% if user_signed_in? && review.user_id == current_user.id %>
-      | <%= link_to image_tag("icons/edit-2-fill.svg", class: "icon"), edit_post_review_path(@post, review) %> | <%= link_to image_tag("icons/delete-bin-fill.svg", class: "icon"), post_review_path(@post, review), method: :delete, data: { confirm: "Delete this review?" } %>
+      | <%= link_to image_tag("icons/edit-2-fill.svg", class: "icon"), edit_post_review_path(@post, review), remote: true %> | <%= link_to image_tag("icons/delete-bin-fill.svg", class: "icon"), post_review_path(@post, review), method: :delete, data: { confirm: "Delete this review?" } %>
     <% end %>
   </p>
 </div>

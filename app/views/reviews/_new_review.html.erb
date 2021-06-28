@@ -1,7 +1,7 @@
 <%= javascript_pack_tag 'review' %>
 
 <% if user_signed_in? %>
-  <%= form_with url: path, model: @review do |f| %>
+  <%= form_with url: path, model: @review, class: "new-review-form" do |f| %>
     <div class="field">
       <%= f.label :rating, "Rating" %>
       <div class="ratinginput"></div>
@@ -16,14 +16,14 @@
     <div class="field">
       <%= f.label :desc, "Description" %><br>
       <%= f.text_area :desc, rows: "4", placeholder: "Write your review of the topic here..." %>
-      <div class="charlimit">0/2000</div>
+      <div class="charcount">0/2000</div>
     </div>
 
     <div class="actions">
       <%= f.submit submit_msg %>
     </div>
   <% end %>
-  <h3 id="reviewheader">Write a review</h3>
+  <h3 class="reviewheader">Write a review</h3>
 <% else %>
   <p><%= link_to "Sign in", new_user_session_path, class: "textlink" %> to leave a review</p>
 <% end %>

@@ -1,0 +1,82 @@
+// below code runs whenever action reviews#edit is executed. Renders edit form and adds js for dynamic elements
+
+document.querySelector("#review-<%= @review.id %>").innerHTML = ("<%= j render 'edit_review' %>");
+
+$('.cancel-edit-review-btn').click(() => { // GENIUS
+  document.querySelector("#review-<%= @review.id %>").innerHTML = ("<%= j render @review %>");
+});
+
+function fill(id){
+  $(`#edit-review-form-star-${id}`).addClass('filled');
+}
+function line(id){
+  $(`#edit-review-form-star-${id}`).removeClass('filled');
+}
+
+$('.edit-review-form .ratinginput').html('');
+for (let i = 0; i < 5; i++){
+  $('.edit-review-form .ratinginput').append(`<div id="edit-review-form-star-${i}" class="star"></div>`);
+}
+
+if (typeof hiddeninput_<%= @review.id %> !== 'undefined') { // this is terrible code but...(testing)...it works
+  hiddeninput_<%= @review.id %> = $('#review-<%= @review.id %> input[name="review[rating]"]').val() / 10;
+} else {
+  var hiddeninput_<%= @review.id %> = $('#review-<%= @review.id %> input[name="review[rating]"]').val() / 10;
+}
+
+if (hiddeninput_<%= @review.id %> !== NaN){
+  console.log(hiddeninput_<%= @review.id %>);
+  for (let i = 0; i < hiddeninput_<%= @review.id %>; i++){
+    console.log("lol",i);
+    fill(i);
+  }
+}
+
+if (typeof hold_<%= @review.id %> !== 'undefined') { // represents which rating the user has selected; starts at -1 to signify no hold
+  hold_<%= @review.id %> = hiddeninput_<%= @review.id %> !== NaN ? hiddeninput_<%= @review.id %> - 1 : -1;
+} else {
+  var hold_<%= @review.id %> = hiddeninput_<%= @review.id %> !== NaN ? hiddeninput_<%= @review.id %> - 1 : -1;
+}
+
+$('.star').hover(e => {
+  console.log("hey");
+  let id = Number(e.target.id.substring(22,23));
+  if (e.type === "mouseenter"){  // if mouseenter:
+    for (let i = 0; i < 5; i++){ // run through stars and fill them up to event id
+      if (i <= id){
+        fill(i);
+      } else {                   // make sure the rest after event id are empty
+        line(i);
+      }
+    }
+  } else {                       // if mouseleave:
+    for (let i = 0; i < 5; i++){ // run through stars and [finish explanation]
+      if (i <= hold_<%= @review.id %>){
+        fill(i);
+      } else {
+        line(i);
+      }
+    }
+  }
+});
+
+$('.star').click(e => {
+  hold_<%= @review.id %> = Number(e.target.id.substring(22,23));
+  $('input[name="review[rating]"]').val((hold_<%= @review.id %>+1)*10);
+});
+
+function updateCharCount(){
+  let length = $('.edit-review-form textarea').val().length;
+  $('.edit-review-form .charcount').text(length+"/2000");
+  if (length > 2000){
+    $('.edit-review-form .charcount').css('color','red');
+  } else {
+    $('.edit-review-form .charcount').css('color','');
+  }
+}
+
+updateCharCount(); // run once to set
+
+$('.edit-review-form textarea').on('input', () => {
+  updateCharCount();
+});

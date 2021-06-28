@@ -24,11 +24,6 @@ class ReviewsController < ApplicationController
   def edit
     @review = Review.find(params[:id])
     @post = Post.find(@review.post_id)
-    @user = User.find(@post.user_id)
-
-    if @review.user_id != current_user.id
-      redirect_to post_review_path(@post, @review)
-    end
   end
 
   def update
