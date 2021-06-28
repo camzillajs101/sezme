@@ -1,26 +1,18 @@
 <div class="review-form-wrapper edit-review-form-wrapper">
   <%= form_with url: post_review_path(@post, @review), model: @review, class: "edit-review-form" do |f| %>
-    <div class="field">
-      <%= f.label :rating, "Rating" %>
-      <div class="ratinginput"></div>
-      <%= f.hidden_field :rating %>
-    </div>
+    <%= f.label :rating, "Rating" %>
+    <div class="ratinginput"></div>
+    <%= f.hidden_field :rating %>
 
-    <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title, placeholder: "A brief summary of your review" %>
-    </div>
+    <%= f.label :title %>
+    <%= f.text_field :title, placeholder: "A brief summary of your review" %>
 
-    <div class="field">
-      <%= f.label :desc, "Description" %>
-      <%= f.text_area :desc, rows: "4", placeholder: "Write your review of the topic here..." %>
-      <div class="charcount">0/2000</div>
-    </div>
+    <%= f.label :desc, "Description" %>
+    <%= f.text_area :desc, rows: "4", placeholder: "Write your review of the topic here..." %>
+    <div class="charcount">0/2000</div>
 
-    <div class="actions">
-      <%= link_to "Cancel", "#", remote: true, class: "cancel-edit-review-btn" %>
-      <%= f.submit "Save Review" %>
-    </div>
+    <%= f.submit "Save Review" %>
+    <%= link_to "Cancel", "#", remote: true, class: "cancel-edit-review-btn" %>
   <% end %>
   <h3 class="reviewheader">Edit your review</h3>
 </div>

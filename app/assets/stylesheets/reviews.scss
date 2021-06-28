@@ -19,65 +19,54 @@
 
   .reviewheader {
     position: absolute;
-    top: -0.8em;
+    top: -0.7em;
     right: 0;
     font-size: 1.2rem;
     margin: none;
   }
 
-  .field {
-    margin-bottom: 0.5em;
-    position: relative;
-
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-
-    input, textarea, .ratinginput-wrapper {
-      width: 80%;
-      padding: 0.3em 0.35em;
-      font-family: inherit;
-      font-size: 0.85em;
-    }
-  }
-  .actions {
-    display: flex;
-    justify-content: flex-end;
+  form {
+    display: grid;
+    grid-row-gap: 0.5em;
+    grid-template-columns: 0.2fr auto 0.25fr;
   }
 
-  .charcount {
-    position: absolute;
-    right: 1.2em;
-    bottom: 0.3em;
-
-    font-size: 0.8em;
-    color: lightgray;
-    transition: color 250ms;
-
-    padding: 0.2em;
+  input:not([type="submit"]), textarea {
+    grid-column: 2 / 4;
+    padding: 0.3em 0.35em;
+    font-family: inherit;
+    font-size: 0.85em;
   }
-  textarea:focus ~ .charcount {
-    color: black;
+  input[type="submit"] {
+    grid-column: 3 / 4;
   }
 }
-.new-review-form-wrapper {
 
+.charcount {
+  position: absolute;
+  right: 1.2em;
+  bottom: 2.8em;
 
-  textarea {
-    height: 8em;
-  }
+  font-size: 0.8em;
+  color: lightgray;
+  transition: color 250ms;
+
+  padding: 0.2em;
 }
-.edit-review-form-wrapper {
-  width: 60%;
+textarea:focus ~ .charcount {
+  color: black;
+}
 
-  textarea {
-    height: 6em;
-  }
+.cancel-edit-review-btn {
+  justify-self: end;
+  margin-right: 1em;
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
 }
 
 .ratinginput {
   display: flex;
-  width: 80%;
+  grid-column: 2 / 4;
 
   .star {
     height: 1.25rem;
@@ -91,6 +80,16 @@
     &:not(.filled) {
       background-image: url(asset_path('icons/star-line.svg'));
     }
+  }
+}
+
+@media (max-width: 500px){ // what's the best way to do this?
+  .review-form-wrapper form {
+    display: flex;
+    flex-flow: column wrap;
+  }
+  .edit-review-form-wrapper .charcount {
+    bottom: 5.2em;
   }
 }
 

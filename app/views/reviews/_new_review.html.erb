@@ -2,26 +2,20 @@
 
 <% if user_signed_in? %>
   <%= form_with url: path, model: @review, class: "new-review-form" do |f| %>
-    <div class="field">
-      <%= f.label :rating, "Rating" %>
-      <div class="ratinginput"></div>
-      <%= f.hidden_field :rating %>
-    </div>
 
-    <div class="field">
-      <%= f.label :title %><br>
-      <%= f.text_field :title, placeholder: "A brief summary of your review" %>
-    </div>
+    <%= f.label :rating, "Rating" %>
+    <div class="ratinginput"></div>
+    <%= f.hidden_field :rating %>
 
-    <div class="field">
-      <%= f.label :desc, "Description" %><br>
-      <%= f.text_area :desc, rows: "4", placeholder: "Write your review of the topic here..." %>
-      <div class="charcount">0/2000</div>
-    </div>
+    <%= f.label :title %>
+    <%= f.text_field :title, placeholder: "A brief summary of your review" %>
 
-    <div class="actions">
-      <%= f.submit submit_msg %>
-    </div>
+    <%= f.label :desc, "Description" %>
+    <%= f.text_area :desc, rows: "4", placeholder: "Write your review of the topic here..." %>
+    <div class="charcount">0/2000</div>
+
+    <%= f.submit submit_msg %>
+
     <h3 class="reviewheader">Write a review</h3>
   <% end %>
 
