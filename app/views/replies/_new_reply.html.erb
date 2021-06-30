@@ -1,0 +1,10 @@
+<%= form_with model: @reply, url: review_replies_path(@review, @reply) do |f| %>
+  <div class="field">
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Cancel", "#", remote: true, class: "cancel-reply-btn" %>
+    <%= f.submit "Reply" %>
+  </div>
+<% end %>

@@ -1,0 +1,5 @@
+document.querySelector("#review-<%= @review.id %> .new-reply-wrapper").innerHTML = ("<%= j render 'new_reply' %>");
+
+$('.cancel-reply-btn').click(() => {
+  document.querySelector("#review-<%= @review.id %> .new-reply-wrapper").innerHTML = ("");
+});

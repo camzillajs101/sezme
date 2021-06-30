@@ -2,10 +2,14 @@
   <p><b><%= review.title %></b> | <%= pluralize(review.rating / 10, 'star') %> | <%= link_to User.find(review.user_id).username, user_path(User.find(review.user_id).username), class: "userproflink" %></p>
   <p><%= review.desc %></p>
   <p>(score)
-    | <%= link_to image_tag("icons/reply-fill.svg", class: "icon"), "", remote: true %>
+    | <%= link_to image_tag("icons/reply-fill.svg", class: "icon"), new_review_reply_path(review), remote: true %>
     <% if user_signed_in? && review.user_id == current_user.id %>
       | <%= link_to image_tag("icons/edit-2-fill.svg", class: "icon"), edit_review_path(review), remote: true %>
       | <%= link_to image_tag("icons/delete-bin-fill.svg", class: "icon"), review_path(review), method: :delete, data: { confirm: "Delete this review?" } %>
     <% end %>
   </p>
+
+  <div class="reply new-reply-wrapper"></div><!-- empty until reply btn is clicked -->
+
+  <%= render review.replies %>
 </div>
