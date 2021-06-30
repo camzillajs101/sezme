@@ -1,0 +1,5 @@
+document.querySelector("#reply-<%= @reply.id %>").innerHTML = ("<%= j render 'edit_reply' %>");
+
+$('.cancel-reply-btn').click(() => {
+  document.querySelector("#reply-<%= @reply.id %>").innerHTML = ("<%= j render @reply %>");
+});
