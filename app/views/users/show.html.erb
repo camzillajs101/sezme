@@ -6,7 +6,7 @@
   <div class="page static">
     <%= render 'shared/back' %>
     <h2><%= @user.username %></h2>
-    <p>Joined on <%= Date::MONTHNAMES[@user.created_at.month] %> <%= @user.created_at.day %>, <%= @user.created_at.year %></p>
+    <p>Joined on <%= @user.created_at.strftime("%B %-d, %Y") %></p>
     <p><%= pluralize(@user.posts.count, 'post') %>, <%= pluralize(@user.reviews.count, 'review') %></p>
 
     <div class="tabs">
@@ -24,5 +24,8 @@
         <%= link_to review.title, post_review_path(review.post_id,review.id), class: "link" %><br>
       <% end %>
     </div>
+  </div>
+  <div class="sidebar">
+    <%= render 'shared/sidebar' %>
   </div>
 </main>
