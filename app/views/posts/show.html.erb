@@ -26,6 +26,12 @@
   </div>
 
   <div class="sidebar">
-    <%= render 'shared/sidebar' %>
+    <h2>Stats for this post</h2>
+
+    <p>Posted on <%= @post.created_at.strftime("%B %-d, %Y") %></p>
+
+    <% for i in 1..5 %>
+      <%= 6-i %>-star: <progress value="<%= Post.stats(@post.id,6-i) %>" max="100"></progress> <%= Post.stats(@post.id,6-i) %>%<br>
+    <% end %>
   </div>
 </main>
