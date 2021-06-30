@@ -25,4 +25,18 @@ class Post < ApplicationRecord
       return "#{rating} stars"
     end
   end
+
+  def self.stats(id,rating)
+    reviews = Post.find(id).reviews
+    total = [reviews.count, 1].max
+    count = 0
+
+    reviews.each do |review|
+      if review.rating == rating * 10
+        count += 1
+      end
+    end
+
+    return (count / total.to_f * 100).to_i
+  end
 end
