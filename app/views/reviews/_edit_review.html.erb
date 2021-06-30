@@ -1,5 +1,5 @@
 <div class="review-form-wrapper edit-review-form-wrapper">
-  <%= form_with url: post_review_path(@post, @review), model: @review, class: "edit-review-form" do |f| %>
+  <%= form_with url: review_path(@review), model: @review, class: "edit-review-form" do |f| %>
     <%= f.label :rating, "Rating" %>
     <div class="ratinginput"></div>
     <%= f.hidden_field :rating %>

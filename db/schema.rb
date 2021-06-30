@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_24_215331) do
+ActiveRecord::Schema.define(version: 2021_06_30_182503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 2021_06_24_215331) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "url"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.string "body"
+    t.bigint "review_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["review_id"], name: "index_replies_on_review_id"
+    t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -105,5 +115,7 @@ ActiveRecord::Schema.define(version: 2021_06_24_215331) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "replies", "reviews"
+  add_foreign_key "replies", "users"
   add_foreign_key "taggings", "tags"
 end

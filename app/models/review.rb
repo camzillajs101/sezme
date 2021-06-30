@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :post
+  has_many :replies
 
   validates :title, :desc, presence: true
   validates :desc, length: { maximum: 2000 }

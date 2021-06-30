@@ -1,7 +1,7 @@
 <%= javascript_pack_tag 'review' %>
 
 <% if user_signed_in? %>
-  <%= form_with url: path, model: @review, class: "new-review-form" do |f| %>
+  <%= form_with url: post_reviews_path(@post, @review), model: @review, class: "new-review-form" do |f| %>
 
     <%= f.label :rating, "Rating" %>
     <div class="ratinginput"></div>
@@ -14,7 +14,7 @@
     <%= f.text_area :desc, rows: "4", placeholder: "Write your review of the topic here..." %>
     <div class="charcount">0/2000</div>
 
-    <%= f.submit submit_msg %>
+    <%= f.submit "Add Review" %>
 
     <h3 class="reviewheader">Write a review</h3>
   <% end %>
