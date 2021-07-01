@@ -2,6 +2,10 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
 
   def index
+    # if user_signed_in? && current_user.sign_in_count == 0 # for new users
+    #   redirect_to "/pages/welcome"
+    # end
+
     @posts = Post.order(id: :asc)
   end
 

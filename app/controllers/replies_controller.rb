@@ -23,7 +23,7 @@ class RepliesController < ApplicationController
     @reply = Reply.find(params[:id])
 
     if @reply.update(reply_params)
-      render post_path(Post.find(Review.find(@reply.review_id).post_id))
+      redirect_to_post
     else
       render :edit
     end

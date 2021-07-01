@@ -1,0 +1,15 @@
+<%= render 'shared/header' %>
+
+<main>
+  <div class="page page-static">
+    <%= render 'shared/back' %>
+
+    <h1 class="large-header">Welcome to Sezme!</h1>
+
+    <p>Hi, and welcome to Sezme.</p>
+    <p>This site may be a little confusing for new users, so I created this welcome page to help new users out.</p>
+    <p>Sezme is a site for people to review and discuss topics. At any time, users can either add a new topic by clicking the "Create Topic" button at the top of the main page (or by clicking <%= link_to "this link", new_post_path, class: "link" %>), or review a topic by clicking on a post from the main page. Topics can be anything from general ideas to specific items, e.g. The United States of America, or that book across the room from you right now. However, avoid making topics too specific as users won't have anything to talk about. <a href="/pages/help#post-guidelines" class="link">Click here (not functional yet)</a> for detailed guidelines on making a post.</p>
+    <p>Users can always create a topic or review any post, so feel free to give your opinion on any topic. That's what the site is for!</p>
+    <p>At the top of your screen, you'll find a header bar. From the left, these items are: a link to Sezme's main page; a list of our informative pages; and a user menu. (If you're not signed in, you'll find buttons to sign in and register in lieu of the last item.) By hovering over this dropdown, you can either look at your user profile, edit your account settings, or log out.</p>
+  </div>
+</main>

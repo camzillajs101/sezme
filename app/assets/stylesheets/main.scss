@@ -33,6 +33,11 @@ header {
     margin: 0.5em 0;
   }
 }
+.header-middle {
+  a {
+    margin: 0 0.5em;
+  }
+}
 .header-right {
   margin: 0;
   padding: 0.5em 0;
@@ -239,6 +244,10 @@ main {
 }
 .page-index {
 
+}
+.page-static {
+  flex: 0 1 70%;
+  margin: 0 auto;
 }
 
 .sidebar {
