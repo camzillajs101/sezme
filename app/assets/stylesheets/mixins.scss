@@ -1,0 +1,17 @@
+@mixin button-hover($opacity: 0.8) {
+  transition: opacity 200ms;
+
+  &:is(:hover, :focus){
+    opacity: $opacity;
+    cursor: pointer;
+  }
+}
+@mixin field-hover {
+  border: 1px solid lightgray;
+  transition: border 200ms;
+
+  &:is(:hover, :focus){
+    outline: none;
+    border: 1px solid gray;
+  }
+}

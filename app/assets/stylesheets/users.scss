@@ -2,26 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+@import "mixins";
+
 // devise styling
-
-// mixins
-@mixin button-hover($opacity: 0.8) {
-  transition: opacity 200ms;
-
-  &:is(:hover, :focus){
-    opacity: $opacity;
-    cursor: pointer;
-  }
-}
-@mixin field-hover {
-  border: 1px solid lightgray;
-  transition: border 200ms;
-
-  &:is(:hover, :focus){
-    outline: none;
-    border: 1px solid gray;
-  }
-}
 
 .devise-errors {
   // margin-bottom: 1em;

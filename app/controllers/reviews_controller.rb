@@ -35,21 +35,14 @@ class ReviewsController < ApplicationController
 
     if @review.update(review_params)
       if @post.reviews.count > 1
-        # puts "\n\n\n\n after removal:"
-        # puts "rating = #{@post.rating} + (#{@post.rating} - #{@oldrating}) / (#{@post.reviews.count} - 1) ="
         @post.rating = @post.rating + (@post.rating - @oldrating) / (@post.reviews.count - 1) # removes current rating
-        # puts @post.rating
-
-        # puts "\n\n\n\n after re-addition:"
-        # puts "rating = #{@post.rating} + (#{@newrating} - #{@post.rating}) / #{@post.reviews.count} ="
         @post.rating = @post.rating + (@newrating - @post.rating) / (@post.reviews.count) # re-calculates with new rating
-        # puts @post.rating
       else # if this is the only review, just set the post's rating to the new rating
         @post.rating = @newrating
       end
       @post.save
 
-      redirect_to post_review_path(@post, @review)
+      redirect_to @review
     else
       render :edit
     end
@@ -63,7 +56,7 @@ class ReviewsController < ApplicationController
     @post.save
 
     @review.destroy
-    redirect_to post_path(params[:post_id])
+    redirect_to @post
   end
 
   private

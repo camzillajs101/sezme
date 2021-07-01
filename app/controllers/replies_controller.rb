@@ -23,7 +23,7 @@ class RepliesController < ApplicationController
     @reply = Reply.find(params[:id])
 
     if @reply.update(reply_params)
-      redirect_to_post
+      render post_path(Post.find(Review.find(@reply.review_id).post_id))
     else
       render :edit
     end
@@ -40,6 +40,6 @@ class RepliesController < ApplicationController
       params.require(:reply).permit(:body).merge(user_id: current_user.id)
     end
     def redirect_to_post
-      redirect_to post_path(Post.find(Review.find(@reply.review_id).post_id))
+      redirect_to post_path(Post.find(Review.find(@reply.review_id).post_id)) + "#reply-#{@reply.id}"
     end
 end

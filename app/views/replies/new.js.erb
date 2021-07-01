@@ -1,4 +1,4 @@
-document.querySelector("#review-<%= @review.id %> .new-reply-wrapper").innerHTML = ("<%= j render 'new_reply' %>");
+document.querySelector("#review-<%= @review.id %> .new-reply-wrapper").innerHTML = ("<%= j render 'form', path: review_replies_path(@review, @reply), submit_msg: 'Reply' %>");
 
 $('.cancel-reply-btn').click(() => {
   document.querySelector("#review-<%= @review.id %> .new-reply-wrapper").innerHTML = ("");
