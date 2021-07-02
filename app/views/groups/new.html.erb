@@ -1,0 +1,32 @@
+<%= render 'shared/header' %>
+
+<main>
+  <div class="page">
+    <%= render 'shared/back' %>
+
+    <h2>New Group</h2>
+
+    <%= form_with model: @group, url: groups_path do |f| %>
+      <div class="field">
+        <%= f.label :title %><br>
+        <%= f.text_field :title %>
+      </div>
+
+      <div class="field">
+        <%= f.label :users_list %><br>
+        <%= f.text_field :users_list, list: 'users_list' %>
+
+        <datalist id="users_list">
+          <%= options_for_select(User.all.map { |user| [user.username,user.id] }) %>
+        </datalist>
+      </div>
+
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+  <div class="sidebar">
+
+  </div>
+</main>

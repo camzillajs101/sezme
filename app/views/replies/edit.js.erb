@@ -3,3 +3,7 @@ document.querySelector("#reply-<%= @reply.id %>").innerHTML = ("<%= j render 'fo
 $('.cancel-reply-btn').click(() => {
   document.querySelector("#reply-<%= @reply.id %>").innerHTML = ("<%= j render @reply %>");
 });
+
+$('#reply-<%= @reply.id %> textarea').on('input', () => {
+  $('#reply-<%= @reply.id %> .actions input').prop("disabled",$('#reply-<%= @reply.id %> textarea').val() === "");
+});

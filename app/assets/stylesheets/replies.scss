@@ -4,8 +4,34 @@
 
 @import "mixins";
 
+.replies-wrapper {
+  margin-left: 6%;
+}
+#repliestoggle {
+  display: none;
+
+  &:not(:checked) {
+    ~ label .icon {
+      transform: rotate(180deg) translateY(-2px);
+    }
+
+    ~ .replies-wrapper {
+      display: none;
+    }
+  }
+
+  ~ label {
+    cursor: pointer;
+    margin-left: 3%;
+  }
+}
+
 .reply {
-  margin: 1.5em 0 0 6%;
+  margin: 0.5em 0;
+
+  p {
+    margin: 0.75em 0;
+  }
 }
 
 .reply-form {
@@ -33,7 +59,6 @@
     text-align: right;
 
     * {
-      @include button-hover;
       border: none;
       border-radius: 0.2em;
       padding: 0.4em 0.8em;
@@ -41,11 +66,22 @@
     }
 
     a {
+      @include button-hover;
       color: black;
     }
     input {
-      background-color: var(--btn-bg);
-      color: white;
+      transition: background-color 100ms, color 100ms;
+
+      &:not([disabled]){
+        @include button-hover;
+
+        background-color: var(--btn-bg);
+        color: white;
+      }
+      &[disabled] {
+        background-color: #eee;
+        color: lightgray;
+      }
     }
   }
 }

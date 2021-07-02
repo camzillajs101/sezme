@@ -9,7 +9,17 @@
     <% end %>
   </p>
 
-  <div class="reply new-reply-wrapper"></div><!-- empty until reply btn is clicked -->
+  <% if review.replies.any? %>
+    <%= check_box_tag :repliestoggle %>
+    <%= label_tag :repliestoggle do %>
+      <%= image_tag("icons/arrow-down-s-fill.svg", class: "icon") %>
+      <b><%= review.replies.count %> replies</b>
+    <% end %>
+  <% end %>
 
-  <%= render review.replies %>
+  <div class="replies-wrapper">
+    <div class="reply new-reply-wrapper"></div><!-- empty until reply btn is clicked -->
+
+    <%= render review.replies %>
+  </div>
 </div>

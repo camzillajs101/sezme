@@ -3,3 +3,8 @@ document.querySelector("#review-<%= @review.id %> .new-reply-wrapper").innerHTML
 $('.cancel-reply-btn').click(() => {
   document.querySelector("#review-<%= @review.id %> .new-reply-wrapper").innerHTML = ("");
 });
+
+$('#review-<%= @review.id %> .actions input').prop("disabled",true);
+$('#review-<%= @review.id %> textarea').on('input', () => {
+  $('#review-<%= @review.id %> .actions input').prop("disabled",$('#review-<%= @review.id %> textarea').val() === "");
+});

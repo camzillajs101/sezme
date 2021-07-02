@@ -1,0 +1,14 @@
+<%= render 'shared/header' %>
+
+<main>
+  <div class="page">
+    <%= render 'shared/back' %>
+
+    <% @groups.each do |group| %>
+      <%= group.title %>
+    <% end %>
+  </div>
+  <div class="sidebar">
+
+  </div>
+</main>
