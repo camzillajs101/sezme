@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :replies, shallow: true, except: :index
     end
   end
+  resources :groups
   get '/users/:username', to: 'users#show', as: :user
   get '/users/', to: 'users#index', as: :users
 
