@@ -10,11 +10,11 @@
   </p>
 
   <% if review.replies.any? %>
-    <%= check_box_tag :repliestoggle %>
-    <%= label_tag :repliestoggle do %>
+    <input type="checkbox" id="repliestoggle-<%= review.id %>" class="repliestoggle">
+    <label for="repliestoggle-<%= review.id %>">
       <%= image_tag("icons/arrow-down-s-fill.svg", class: "icon") %>
-      <b><%= review.replies.count %> replies</b>
-    <% end %>
+      <b><%= pluralize(review.replies.count, 'reply') %></b>
+    </label>
   <% end %>
 
   <div class="replies-wrapper">
