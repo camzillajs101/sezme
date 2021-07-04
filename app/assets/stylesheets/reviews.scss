@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+@import 'mixins';
+
 #reviewheader {
   float: right;
 }
@@ -13,6 +15,8 @@
   form styling
 ========== */
 
+// TODO: so messy; organize forms also
+
 .review-form-wrapper {
   position: relative;
   margin: 2em 0;
@@ -21,8 +25,7 @@
     position: absolute;
     top: -0.7em;
     right: 0;
-    font-size: 1.2rem;
-    margin: none;
+    font-size: 1.2em;
   }
 
   form {
@@ -31,14 +34,38 @@
     grid-template-columns: 0.2fr auto 0.25fr;
   }
 
+  input, textarea {
+    padding: 0.4em 0.5em;
+    border-radius: 0.2em;
+  }
   input:not([type="submit"]), textarea {
     grid-column: 2 / 4;
-    padding: 0.3em 0.35em;
     font-family: inherit;
     font-size: 0.85em;
+
+    @include field-hover;
   }
   input[type="submit"] {
     grid-column: 3 / 4;
+    background-color: var(--btn-bg);
+    border: none;
+    color: white;
+
+    @include button-hover;
+    @include disabled-gray-out;
+  }
+  a {
+    justify-self: end;
+    margin-right: 1em;
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+    color: black;
+  }
+  input[type="submit"], a {
+    border: none;
+    border-radius: 0.2em;
+    padding: 0.4em 0.8em;
+    font-size: 0.9em;
   }
 }
 
@@ -57,12 +84,7 @@ textarea:focus ~ .charcount {
   color: black;
 }
 
-.cancel-edit-review-btn {
-  justify-self: end;
-  margin-right: 1em;
-  grid-column: 2 / 3;
-  grid-row: 4 / 5;
-}
+
 
 .ratinginput {
   display: flex;
@@ -92,47 +114,3 @@ textarea:focus ~ .charcount {
     bottom: 5.2em;
   }
 }
-
-// {
-//   margin: 2em 0;
-//   padding: 0.5em 2em;
-//
-//   .reviewheader {
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     font-size: 1.2rem;
-//   }
-//
-//   .field + .field {
-//     margin-top: 0.5em;
-//   }
-//   .actions {
-//     margin-top: 1em;
-//   }
-//
-//   input:not([type="submit"]) {
-//     width: 33%;
-//     padding: 0.5em;
-//   }
-//
-//   textarea {
-//     width: 100%;
-//     padding: 0.3em 0.5em;
-//   }
-//
-//   input, textarea {
-//     font-size: 0.8em;
-//     font-family: inherit;
-//     margin-top: 0.3em;
-//
-//     border: 1px solid lightgray;
-//     border-radius: 0.3em;
-//     transition: border 200ms;
-//
-//     &:is(:hover, :focus) {
-//       border: 1px solid gray;
-//       outline: none;
-//     }
-//   }
-// }

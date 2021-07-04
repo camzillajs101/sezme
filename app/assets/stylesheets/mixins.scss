@@ -15,3 +15,17 @@
     border: 1px solid gray;
   }
 }
+@mixin disabled-gray-out {
+  transition: background-color 100ms, color 100ms;
+
+  &:not([disabled]){
+    @include button-hover;
+
+    background-color: var(--btn-bg);
+    color: white;
+  }
+  &[disabled] {
+    background-color: #eee;
+    color: lightgray;
+  }
+}
