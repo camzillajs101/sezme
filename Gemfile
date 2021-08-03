@@ -58,3 +58,6 @@ gem 'devise'
 
 # jquery
 gem 'jquery-rails'
+
+# kaminari for pagination
+gem 'kaminari'

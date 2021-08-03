@@ -9,6 +9,32 @@
 }
 .review {
   margin: 30px 0px;
+
+  .review-info-line {
+    display: flex;
+
+    > * + *::before { // wtf
+      content: '|';
+      margin: 0 0.5ch;
+    }
+  }
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+}
+.display-star {
+  width: 1.2rem;
+  height: 1.2rem;
+  background-size: contain;
+
+  &.filled {
+    background-image: url(asset_path('icons/star-fill.svg'));
+  }
+  &:not(.filled) {
+    background-image: url(asset_path('icons/star-line.svg'));
+  }
 }
 
 /* ==========
@@ -83,8 +109,6 @@
 textarea:focus ~ .charcount {
   color: black;
 }
-
-
 
 .ratinginput {
   display: flex;
