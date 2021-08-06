@@ -1,9 +1,9 @@
 // below code runs whenever action reviews#edit is executed. Renders edit form and adds js for dynamic elements
 
-document.querySelector("#review-<%= @review.id %>").innerHTML = ("<%= j render 'edit_review' %>");
+document.querySelector("#review-<%= @review.id %>").innerHTML = "<%= j render 'edit_review' %>";
 
 $('.cancel-edit-review-btn').click(() => { // GENIUS
-  document.querySelector("#review-<%= @review.id %>").innerHTML = ("<%= j render @review %>");
+  document.querySelector("#review-<%= @review.id %>").innerHTML = "<%= j render @review %>";
 });
 
 function fill(id){

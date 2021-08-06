@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   root 'posts#index', as: :posts
   resources :posts, except: [:index, :destroy] do # yes, although this is three levels of nesting, because they're shallow, the paths never get more than two levels deep
     resources :reviews, shallow: true, except: :index do
-      resources :replies, shallow: true, except: :index
+      resources :replies, shallow: true, except: :show
     end
   end
   resources :groups

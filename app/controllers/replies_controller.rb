@@ -1,4 +1,8 @@
 class RepliesController < ApplicationController
+  def index
+    @review = Review.find(params[:review_id])
+  end
+
   def new
     @review = Review.find(params[:review_id])
     @reply = @review.replies.new

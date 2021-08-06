@@ -1,7 +1,7 @@
-document.querySelector("#reply-<%= @reply.id %>").innerHTML = ("<%= j render 'form', path: reply_path(@reply), submit_msg: 'Save' %>");
+document.querySelector("#reply-<%= @reply.id %>").innerHTML = "<%= j render 'form', path: reply_path(@reply), submit_msg: 'Save' %>";
 
 $('.cancel-reply-btn').click(() => {
-  document.querySelector("#reply-<%= @reply.id %>").innerHTML = ("<%= j render @reply %>");
+  document.querySelector("#reply-<%= @reply.id %>").innerHTML = "<%= j render @reply %>";
 });
 
 $('#reply-<%= @reply.id %> textarea').on('input', () => {

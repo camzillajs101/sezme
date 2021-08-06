@@ -1,0 +1,5 @@
+$('#review-<%= @review.id %> .show-more-link').before("<%= j render @review.replies.page(params[:page]).per(2) %>");
+
+<% if @review.replies.page(params[:page]).per(2).last_page? %>
+  $('#review-<%= @review.id %> .show-more-link').hide();
+<% end %>

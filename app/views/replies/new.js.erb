@@ -1,7 +1,9 @@
-document.querySelector("#review-<%= @review.id %> .new-reply-wrapper").innerHTML = ("<%= j render 'form', path: review_replies_path(@review, @reply), submit_msg: 'Reply' %>");
+document.querySelector("#review-<%= @review.id %> .new-reply-wrapper").innerHTML = "<%= j render 'form', path: review_replies_path(@review, @reply), submit_msg: 'Reply' %>";
+// open replies dropdown if not already
+$('#repliestoggle-<%= @review.id %>').prop("checked",true);
 
 $('.cancel-reply-btn').click(() => {
-  document.querySelector("#review-<%= @review.id %> .new-reply-wrapper").innerHTML = ("");
+  document.querySelector("#review-<%= @review.id %> .new-reply-wrapper").innerHTML = "";
 });
 
 $('#review-<%= @review.id %> .actions input').prop("disabled",true);

@@ -19,7 +19,17 @@
       <% if @reviews.count == 0 %>
         No reviews on this post yet. Be the first to tell the world what you think!
       <% else %>
-        <h3><%= pluralize(@reviews.count, 'review') %></h3>
+        <div class="reviews-top-bar">
+          <h3><%= pluralize(@reviews.count, 'review') %></h3>
+          <div class="tabs">
+            <%= link_to "Newest", post_path(@post, :sort => "new"), name: "new", class: "cool-link" %>
+            <%= link_to "Oldest", post_path(@post, :sort => "old"), name: "old", class: "cool-link" %>
+            <%= link_to "Highest Rating", post_path(@post, :sort => "rate_high"), name: "rate_high", class: "cool-link" %>
+            <%= link_to "Lowest Rating", post_path(@post, :sort => "rate_low"), name: "rate_low", class: "cool-link" %>
+            <%= tab_link "Hello", post_path(@post, :sort => "hey") %>
+          </div>
+        </div>
+
         <%= render @reviews %>
       <% end %>
     </div>

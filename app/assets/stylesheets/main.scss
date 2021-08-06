@@ -258,3 +258,30 @@ main {
   border: 1px solid #aaa;
   background-color: white;
 }
+
+/* ==========
+  misc.
+========== */
+
+.tabs {
+  a.active-tab {
+    color: red;
+  }
+}
+
+.comment-info-line {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.5ch;
+
+  // RULE: all tags inside a .comment-info-line div get a pipe added before them, except tags with class .no-🚰.
+  > * + *:not(.no-🚰)::before { // wtf
+    content: '|';
+    color: black;
+    margin-right: 0.5ch;
+  }
+}
+.small-info-line {
+  font-size: 0.85em;
+  margin-top: 0.5em;
+}

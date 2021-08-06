@@ -1,22 +1,31 @@
 <div class="review" id="review-<%= review.id %>">
-  <div class="review-info-line">
+  <div class="comment-info-line">
     <b><%= review.title %></b>
     <%= render 'shared/stars', rating: review.rating / 10 %>
-    <%= link_to User.find(review.user_id).username, user_path(User.find(review.user_id).username), class: "userproflink" %>
+  </div>
+
+  <div class="comment-info-line small-info-line">
+    <%= link_to User.find(review.user_id).username, user_path(User.find(review.user_id).username), class: "link" %>
+    <i><%= time_ago_in_words(review.created_at) %> ago</i>
+    <% if review.updated_at != review.created_at %>
+      <i class="no-🚰">(edited)</i>
+    <% end %>
   </div>
 
   <p><%= review.desc %></p>
-  <p>(score)
+
+  <div class="comment-info-line">
+    <span>(score)</span>
     <% if user_signed_in? %>
-      | <%= link_to image_tag("icons/reply-fill.svg", class: "icon"), new_review_reply_path(review), remote: true %>
+      <%= link_to "Reply", new_review_reply_path(review), remote: true, class: "link" %>
       <% if review.user_id == current_user.id %>
-        | <%= link_to image_tag("icons/edit-2-fill.svg", class: "icon"), edit_review_path(review), remote: true %>
-        | <%= link_to image_tag("icons/delete-bin-fill.svg", class: "icon"), review_path(review), method: :delete, data: { confirm: "Delete this review?" } %>
+        <%= link_to image_tag("icons/edit-2-fill.svg", class: "icon"), edit_review_path(review), remote: true %>
+        <%= link_to image_tag("icons/delete-bin-fill.svg", class: "icon"), review_path(review), method: :delete, data: { confirm: "Delete this review?" } %>
       <% end %>
     <% end %>
-  </p>
+  </div>
 
-  <% if review.replies.any? %>
+  <% if review.replies.any? %><br>
     <input type="checkbox" id="repliestoggle-<%= review.id %>" class="repliestoggle">
     <label for="repliestoggle-<%= review.id %>">
       <%= image_tag("icons/arrow-down-s-fill.svg", class: "icon") %>
@@ -28,5 +37,11 @@
     <div class="reply new-reply-wrapper"></div><!-- empty until reply btn is clicked -->
 
     <%= render review.replies.page(1).per(2) %>
+
+    <% if review.replies.any? && !review.replies.page(1).per(2).last_page? %>
+      <div class="show-more-link">
+        <%= link_to "Show more", review_replies_path(review, :page => 2), remote: true %>
+      </div>
+    <% end %>
   </div>
 </div>

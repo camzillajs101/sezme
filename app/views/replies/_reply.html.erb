@@ -1,18 +1,19 @@
 <div class="reply" id="reply-<%= reply.id %>">
-  <p>
+  <div class="comment-info-line">
     <b><%= User.find(reply.user_id).username %></b>
+    <i><%= time_ago_in_words(reply.created_at) %> ago</i>
     <% if reply.updated_at != reply.created_at %>
-      <i>(edited)</i>
+      <i class="no-🚰">(edited)</i>
     <% end %>
-  </p>
+  </div>
 
   <p><%= reply.body %></p>
 
-  <p>
-    (score)
+  <div class="comment-info-line">
+    <span>(score)</span>
     <% if user_signed_in? && reply.user_id == current_user.id %>
-      | <%= link_to image_tag("icons/edit-2-fill.svg", class: "icon"), edit_reply_path(reply), remote: true %>
-      | <%= link_to image_tag("icons/delete-bin-fill.svg", class: "icon"), reply_path(reply), method: :delete, data: { confirm: "Delete this reply?" } %>
+      <%= link_to image_tag("icons/edit-2-fill.svg", class: "icon"), edit_reply_path(reply), remote: true %>
+      <%= link_to image_tag("icons/delete-bin-fill.svg", class: "icon"), reply_path(reply), method: :delete, data: { confirm: "Delete this reply?" } %>
     <% end %>
-  </p>
+  </div>
 </div>
