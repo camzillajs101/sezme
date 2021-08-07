@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.top-bar {
+  margin: 0.5em 0;
+  display: flex;
+  flex-flow: row wrap-reverse;
+  justify-content: space-between;
+}
+
 .index-post {
   width: 100%;
   display: flex;
