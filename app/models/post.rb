@@ -39,4 +39,21 @@ class Post < ApplicationRecord
 
     return (count / total.to_f * 100).to_i
   end
+
+  def self.sort(method)
+    case method
+    when "new"
+      self.order(id: :desc)
+    when "popular"
+      # sort it by score or something in the future
+      self.order(id: :asc)
+    when "most_reviews"
+      # no idea how this works
+      self.left_joins(:reviews).group(:id).order('COUNT(reviews.id) DESC').limit(10)
+    when "highest_rating"
+
+    else
+      self.order(id: :asc)
+    end
+  end
 end

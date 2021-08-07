@@ -6,44 +6,14 @@ class PostsController < ApplicationController
     #   redirect_to "/pages/welcome"
     # end
 
-    case params[:sort]
-    when "new"
-      @posts = Post.order(id: :desc)
-    when "popular"
-      # sort it by score or something in the future
-      @posts = Post.order(id: :asc)
-    when "most_reviews"
-      # no idea how this works
-      @posts = Post.left_joins(:reviews).group(:id).order('COUNT(reviews.id) DESC').limit(10)
-    when "highest_rating"
-
-    else
-      @posts = Post.order(id: :asc)
-    end
+    @posts = Post.sort(params[:sort])
   end
 
   def show
     @post = Post.find(params[:id])
-    case params[:sort]
-    when "new"
-      @reviews = @post.reviews.order(created_at: :desc)
-    when "old"
-      @reviews = @post.reviews.order(created_at: :asc)
-    when "rate_high"
-      @reviews = @post.reviews.order(rating: :desc)
-    when "rate_low"
-      @reviews = @post.reviews.order(rating: :asc)
-    else
-      @reviews = @post.reviews.order(id: :asc)
-
-      # if user_signed_in?
-      #   @reviews = @post.reviews.find(user_id: current_user.id)
-      # else
-      #   @reviews = @post.reviews.order(id: :asc)
-      # end
-    end
-    @review = @post.reviews.new
     @user = User.find(@post.user_id)
+    @reviews = Review.sort(@post,params[:sort])
+    @review = @post.reviews.new
   end
 
   def new

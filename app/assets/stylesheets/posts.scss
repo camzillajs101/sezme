@@ -28,6 +28,10 @@
 }
 .side-btn {
   flex-shrink: 0;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-end;
+  gap: 0.5em;
 }
 
 .post_reviews {
@@ -46,6 +50,7 @@
   }
   .side-btn {
     margin: 1em 0;
+    align-items: flex-start;
   }
 
   /* set width of all pages to be 100% */
