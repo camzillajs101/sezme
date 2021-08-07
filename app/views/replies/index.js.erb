@@ -1,5 +1,7 @@
-$('#review-<%= @review.id %> .show-more-link').before("<%= j render @review.replies.page(params[:page]).per(2) %>");
+$('#review-<%= @review.id %> .show-more-link').before("<%= j render @replies.page(params[:page]).per(2) %>");
 
-<% if @review.replies.page(params[:page]).per(2).last_page? %>
+<% if @replies.page(params[:page]).per(2).last_page? %>
   $('#review-<%= @review.id %> .show-more-link').hide();
+<% else %>
+  $('#review-<%= @review.id %> .show-more-link').html(`<%= link_to 'Show more', review_replies_path(@review, :page => params[:page].to_i + 1), remote: true %>`);
 <% end %>

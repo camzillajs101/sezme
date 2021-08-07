@@ -1,6 +1,7 @@
 class RepliesController < ApplicationController
   def index
     @review = Review.find(params[:review_id])
+    @replies = @review.replies.order(created_at: :asc)
   end
 
   def new

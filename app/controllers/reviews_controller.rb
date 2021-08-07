@@ -1,8 +1,9 @@
 class ReviewsController < ApplicationController
   def show
-    @showreview = Review.find(params[:id])
-    @post = Post.find(@showreview.post_id)
+    @review = Review.find(params[:id])
+    @post = Post.find(@review.post_id)
     @user = User.find(@post.user_id)
+    @replies = @review.replies.order(created_at: :asc)
   end
 
   def create
