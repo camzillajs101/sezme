@@ -17,5 +17,18 @@ require("jquery")
 // const imagePath = (name) => images(name, true)
 
 $(document).ready(() => {
-  
+  // let params = location.search;
+  //
+  // if (params.includes("sort=")){
+  //   // flawless
+  //   let index = params.indexOf("sort=") + 5;
+  //
+  //   let char = params.substring(index,index+1);
+  //   let word = "";
+  //   for (let i = index; char !== "&" && char !== ""; char = params.substring(++i,i+1)){
+  //     word += char;
+  //   }
+  //
+  //   $(`*[name="${word}"]`).addClass("active-tab");
+  // }
 });

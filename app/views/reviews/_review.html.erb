@@ -4,7 +4,7 @@
     <%= render 'shared/stars', rating: review.rating / 10 %>
   </div>
 
-  <div class="comment-info-line small-info-line">
+  <div class="comment-info-line small-info review-info">
     <%= link_to User.find(review.user_id).username, user_path(User.find(review.user_id).username), class: "link" %>
     <i><%= time_ago_in_words(review.created_at) %> ago</i>
     <% if review.updated_at != review.created_at %>

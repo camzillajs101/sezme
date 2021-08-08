@@ -281,16 +281,18 @@ main {
     margin-right: 0.5ch;
   }
 }
-.small-info-line {
-  font-size: 0.85em;
-  margin-top: 0.5em;
-}
 
 .small-info {
   font-weight: 100;
-  font-size: 0.8em;
+  font-size: 0.85em;
+}
+.review-info {
+  margin-top: 0.85em;
+}
+.root-review-info {
   font-style: italic;
   color: gray;
+  font-size: 0.8em;
 
   &:hover {
     text-decoration: underline;

@@ -23,9 +23,10 @@
         </div>
 
         <div class="side-btn">
+          <!-- probably not the best way to do this, but I can't think of a better one. -->
           <% user_review = post.reviews.find_by(user_id: user_signed_in? ? current_user.id : nil) %>
           <% if user_review != nil %>
-            <%= link_to "You rated this topic on #{user_review.created_at.strftime("%Y-%m-%d")}", user_review, class: "small-info" %>
+            <%= link_to "You rated this topic on #{user_review.created_at.strftime("%Y-%m-%d")}", user_review, class: "small-info root-review-info" %>
             <%= render 'shared/stars', rating: user_review.rating / 10 %>
             <%= truncate(user_review.title, length: 30) %>
           <% else %>
