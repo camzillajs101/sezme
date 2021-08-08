@@ -1,8 +1,15 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :reviews
+  has_many :reviews, inverse_of: :post
 
   validates :title, :desc, presence: true
+
+  def update_review_average
+    update review_average: reviews.average(:rating)
+  end
+  def update_review_count
+    update review_count: reviews.count
+  end
 
   def self.rating(id)
     reviews = Post.find(id).reviews
@@ -43,15 +50,16 @@ class Post < ApplicationRecord
   def self.sort(method)
     case method
     when "new"
-      self.order(id: :desc)
+      self.order(created_at: :desc)
     when "popular"
       # sort it by score or something in the future
       self.order(id: :asc)
     when "most_reviews"
-      # no idea how this works
-      self.left_joins(:reviews).group(:id).order('COUNT(reviews.id) DESC').limit(10)
+      self.order(review_count: :desc)
     when "highest_rating"
-
+      self.order(review_average: :desc)
+    when "unrated"
+      self.where(review_count: 0)
     else
       self.order(id: :asc)
     end

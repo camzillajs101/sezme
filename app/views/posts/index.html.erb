@@ -10,6 +10,8 @@
       <div class="tabs">
         <%= link_to "Newest", posts_path(:sort => "new") %>
         <%= link_to "Most Reviews", posts_path(:sort => "most_reviews") %>
+        <%= link_to "Highest Rating", posts_path(:sort => "highest_rating") %>
+        <%= link_to "Unrated", posts_path(:sort => "unrated") %>
       </div>
     </div>
     <% @posts.each do |post| %>
