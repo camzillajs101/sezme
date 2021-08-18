@@ -29,6 +29,10 @@
           </div>
         </div>
 
+        <% if params[:exception] && /\A\d+\z/.match(params[:exception]) %>
+          <h3>Showing only reviews with <%= params[:exception] %> stars. <%= link_to "See all reviews", @post, class: "link" %></h3>
+        <% end %>
+
         <%= render @reviews %>
       <% end %>
     </div>
@@ -40,7 +44,10 @@
     <p>Posted on <%= @post.created_at.strftime("%B %-d, %Y") %></p>
 
     <% for i in 1..5 %>
-      <%= 6-i %>-star: <progress value="<%= Post.stats(@post.id,6-i) %>" max="100"></progress> <%= Post.stats(@post.id,6-i) %>%<br>
+      <%= link_to post_path(@post, :exception => 6-i) do %>
+        <%= 6-i %>-star:
+      <% end %>
+      <progress value="<%= Post.stats(@post.id,6-i) %>" max="100"></progress> <%= Post.stats(@post.id,6-i) %>%<br>
     <% end %>
   </div>
 </main>

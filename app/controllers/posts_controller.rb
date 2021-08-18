@@ -14,6 +14,10 @@ class PostsController < ApplicationController
     @user = User.find(@post.user_id)
     @reviews = Review.sort(@post,params[:sort])
     @review = @post.reviews.new
+
+    if params[:exception]
+      @reviews = @reviews.where(rating: params[:exception].to_i * 10)
+    end
   end
 
   def new
