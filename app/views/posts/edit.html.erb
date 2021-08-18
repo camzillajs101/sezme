@@ -8,7 +8,7 @@
     <div class="show-post">
       <div class="post-info">
         <div class="post-title"><%= @post.title %></div>
-        <p>Rating: <b><%= @post.rating > 0 ? "#{@post.rating.to_f / 10} stars" : "[unrated]" %></b></p>
+        <p>Rating: <b><%= Post.readablerating(@post.id) %></b></p>
       </div>
     </div>
 
@@ -22,8 +22,6 @@
         <%= f.label :desc, "Description" %><br>
         <%= f.text_area :desc, placeholder: "Describe it in a few sentences" %>
       </div>
-
-      <%= f.hidden_field :rating %>
 
       <p>Remember to describe your topic thoroughly and neutrally.</p>
 
