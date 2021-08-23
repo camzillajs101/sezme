@@ -12,9 +12,11 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = User.find(@post.user_id)
-    @reviews = Review.sort(@post,params[:sort])
+    @reviews = Review.sort(@post, params[:sort])
     @review = @post.reviews.new
-    @post_vote = @post.votes.find_by(user_id: current_user.id)
+    if user_signed_in?
+      @post_vote = @post.votes.find_by(user_id: current_user.id)
+    end
 
     if params[:exception]
       @reviews = @reviews.where(rating: params[:exception].to_i * 10)
