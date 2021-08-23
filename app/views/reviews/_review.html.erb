@@ -15,8 +15,15 @@
   <p><%= review.desc %></p>
 
   <div class="comment-info-line">
-    <span>(score)</span>
+    <span class="likes-count review-likes-count" id="review-<%= review.id %>-likes-count">
+      <%= pluralize(review.votes.where(value: 0).count, 'like') %>
+    </span>
     <% if user_signed_in? %>
+      <% if !review.votes.exists?(user_id: current_user.id) %>
+        <%= like_btn(0, review) %>
+      <% else %>
+        <%= unlike_btn(review.votes.find_by(user_id: current_user.id)) %>
+      <% end %>
       <%= link_to "Reply", new_review_reply_path(review), remote: true, class: "link" %>
       <% if review.user_id == current_user.id %>
         <%= link_to image_tag("icons/edit-2-fill.svg", class: "icon"), edit_review_path(review), remote: true %>

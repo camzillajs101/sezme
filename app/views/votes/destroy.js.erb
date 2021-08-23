@@ -1,0 +1,2 @@
+$('#<%= @vote.voteable_type.downcase %>-<%= @vote.voteable_id %>-unlike-btn').replaceWith('<%= like_btn(0, @model) %>');
+$('#<%= @vote.voteable_type.downcase %>-<%= @vote.voteable_id %>-likes-count').html('<%= pluralize(@model.votes.where(value: 0).count, "like") %>');

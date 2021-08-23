@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
   end
   resources :groups
+  resources :votes, only: [:create, :destroy]
   get '/users/:username', to: 'users#show', as: :user
   get '/users/', to: 'users#index', as: :users
 

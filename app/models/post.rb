@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :reviews, inverse_of: :post
+  has_many :votes, as: :voteable, dependent: :destroy
 
   validates :title, :desc, presence: true
 

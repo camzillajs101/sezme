@@ -13,9 +13,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to @post
     else
-      @review.errors.full_messages.each do |e|
-        puts e
-      end
+      
     end
   end
 

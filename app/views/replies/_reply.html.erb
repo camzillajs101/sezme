@@ -10,8 +10,15 @@
   <p><%= reply.body %></p>
 
   <div class="comment-info-line">
-    <span>(score)</span>
+    <span class="likes-count reply-likes-count" id="reply-<%= reply.id %>-likes-count">
+      <%= pluralize(reply.votes.where(value: 0).count, 'like') %>
+    </span>
     <% if user_signed_in? && reply.user_id == current_user.id %>
+      <% if !reply.votes.exists?(user_id: current_user.id) %>
+        <%= like_btn(0, reply) %>
+      <% else %>
+        <%= unlike_btn(reply.votes.find_by(user_id: current_user.id)) %>
+      <% end %>
       <%= link_to image_tag("icons/edit-2-fill.svg", class: "icon"), edit_reply_path(reply), remote: true %>
       <%= link_to image_tag("icons/delete-bin-fill.svg", class: "icon"), reply_path(reply), method: :delete, data: { confirm: "Delete this reply?" } %>
     <% end %>

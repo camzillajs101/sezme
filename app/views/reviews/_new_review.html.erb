@@ -1,5 +1,7 @@
 <%= javascript_pack_tag 'review' %>
 
+<%= render 'shared/errors', object: @review %>
+
 <% if user_signed_in? %>
   <%= form_with url: post_reviews_path(@post, @review), model: @review, class: "new-review-form" do |f| %>
 

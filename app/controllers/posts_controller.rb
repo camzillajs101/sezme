@@ -14,6 +14,7 @@ class PostsController < ApplicationController
     @user = User.find(@post.user_id)
     @reviews = Review.sort(@post,params[:sort])
     @review = @post.reviews.new
+    @post_vote = @post.votes.find_by(user_id: current_user.id)
 
     if params[:exception]
       @reviews = @reviews.where(rating: params[:exception].to_i * 10)
@@ -36,9 +37,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    if @post.user_id != current_user.id
-      redirect_to @post
-    end
+    verify_ownership(@post)
   end
 
   def update
