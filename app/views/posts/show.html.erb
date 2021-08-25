@@ -44,7 +44,7 @@
     <p>Posted on <%= @post.created_at.strftime("%B %-d, %Y") %></p>
 
     <% for i in 1..5 %>
-      <%= link_to post_path(@post, :exception => 6-i) do %>
+      <%= link_to post_path(@post, :exception => 6-i), class: "link" do %>
         <%= 6-i %>-star:
       <% end %>
       <progress value="<%= Post.stats(@post.id,6-i) %>" max="100"></progress> <%= Post.stats(@post.id,6-i) %>%<br>

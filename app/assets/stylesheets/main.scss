@@ -273,6 +273,7 @@ main {
   display: flex;
   flex-flow: row wrap;
   gap: 0.5ch;
+  font-weight: 100;
 
   // RULE: all tags inside a .comment-info-line div get a pipe added before them, except tags with class .no-🚰.
   > * + *:not(.no-🚰)::before { // wtf

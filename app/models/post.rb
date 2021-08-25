@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   has_many :reviews, inverse_of: :post
   has_many :votes, as: :voteable, dependent: :destroy
 
+  acts_as_punchable
+
   validates :title, :desc, presence: true
 
   def update_review_average

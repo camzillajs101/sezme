@@ -11,6 +11,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post.punch(request)
     @user = User.find(@post.user_id)
     @reviews = Review.sort(@post, params[:sort])
     @review = @post.reviews.new

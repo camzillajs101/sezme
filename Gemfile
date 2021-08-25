@@ -61,3 +61,6 @@ gem 'jquery-rails'
 
 # kaminari for pagination
 gem 'kaminari'
+
+# punching bag
+gem 'punching_bag'
