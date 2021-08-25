@@ -215,14 +215,20 @@
 }
 .user-posts-reviews {
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
   width: 100%;
+  gap: 1em;
+
+  > div {
+    min-width: 10px;
+  }
 }
 .user-posts {
-  flex: 48% 0 1;
+  flex: 48% 1 1;
 }
 .user-reviews {
-  flex: 48% 0 1;
+  flex: 48% 1 1;
 }
 .user-post {
   margin: 1em 0;
@@ -244,9 +250,10 @@
     border: 1px solid gray;
   }
 
-  h4 {
+  h4, h5 {
     margin: 0.5em 0;
     display: flex;
+    flex-flow: row wrap;
     gap: 1ch;
   }
 }

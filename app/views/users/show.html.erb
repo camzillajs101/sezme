@@ -22,7 +22,8 @@
         <h2><%= pluralize(@user.reviews.count, 'review') %></h2>
         <% @user.reviews.each do |review| %>
           <div class="user-review">
-            <h4><%= link_to review.title, review, class: "link" %> <%= render 'shared/stars', rating: review.rating / 10 %></h4>
+            <h5><%= link_to review.post.title, review.post, class: "link" %></h5>
+            <h4><%= link_to review.title, review, class: "link" %><%= render 'shared/stars', rating: review.rating / 10 %></h4>
             <p><%= review.desc %></p>
           </div>
         <% end %>
