@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  function showPosts(){
+  /* function showPosts(){
     $('.user-reviews').hide();
     $('.user-posts').show();
   }
@@ -17,5 +17,5 @@ $(document).ready(() => {
   });
   $('#reviewstab').click(() => {
     showReviews();
-  })
+  }); */
 });

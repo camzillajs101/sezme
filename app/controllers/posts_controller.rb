@@ -16,6 +16,7 @@ class PostsController < ApplicationController
     @review = @post.reviews.new
     if user_signed_in?
       @post_vote = @post.votes.find_by(user_id: current_user.id)
+      @user_review = @reviews.find_by(user_id: current_user.id)
     end
 
     if params[:exception]

@@ -213,3 +213,40 @@
     @include button-hover(0.6);
   }
 }
+.user-posts-reviews {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.user-posts {
+  flex: 48% 0 1;
+}
+.user-reviews {
+  flex: 48% 0 1;
+}
+.user-post {
+  margin: 1em 0;
+  padding: 0.5em 2em;
+  border: 1px solid white;
+  transition: border 200ms;
+
+  &:is(:hover, :focus) {
+    border: 1px solid gray;
+  }
+}
+.user-review {
+  margin: 1em 0;
+  padding: 0.5em 2em;
+  border: 1px solid white;
+  transition: border 200ms;
+
+  &:is(:hover, :focus) {
+    border: 1px solid gray;
+  }
+
+  h4 {
+    margin: 0.5em 0;
+    display: flex;
+    gap: 1ch;
+  }
+}

@@ -7,25 +7,35 @@
     <%= render 'shared/back' %>
     <h2><%= @user.username %></h2>
     <p>Joined on <%= @user.created_at.strftime("%B %-d, %Y") %></p>
-    <p><%= pluralize(@user.posts.count, 'post') %>, <%= pluralize(@user.reviews.count, 'review') %></p>
 
-    <div class="tabs">
-      <a class="tablink" id="poststab">Posts</a>
-      <a class="tablink" id="reviewstab">Reviews</a>
-    </div>
-
-    <div class="user-posts">
-      <% @user.posts.each do |post| %>
-        <%= link_to post.title, post, class: "link" %><br>
-      <% end %>
-    </div>
-    <div class="user-reviews">
-      <% @user.reviews.each do |review| %>
-        <%= link_to review.title, review, class: "link" %><br>
-      <% end %>
+    <div class="user-posts-reviews">
+      <div class="user-posts">
+        <h2><%= pluralize(@user.posts.count, 'post') %></h2>
+        <% @user.posts.each do |post| %>
+          <div class="user-post">
+            <h3><%= link_to post.title, post, class: "link" %></h3>
+            <p><%= Post.readablerating(post.id) %>, <%= pluralize(post.review_count, 'review') %></p>
+          </div>
+        <% end %>
+      </div>
+      <div class="user-reviews">
+        <h2><%= pluralize(@user.reviews.count, 'review') %></h2>
+        <% @user.reviews.each do |review| %>
+          <div class="user-review">
+            <h4><%= link_to review.title, review, class: "link" %> <%= render 'shared/stars', rating: review.rating / 10 %></h4>
+            <p><%= review.desc %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="sidebar">
-    <%= render 'shared/sidebar' %>
+    <h2><%= @user.username %></h2>
+    <ul>
+      <li>has posted <%= pluralize(@user.posts.count, 'topic') %></li>
+      <li>has reviewed <%= pluralize(@user.reviews.count, 'topic') %> </li>
+      <li>has replied <%= pluralize(@user.replies.count, 'time') %></li>
+      <li>has <%= pluralize(@user.votes.count, 'vote') %> on <%= pluralize(@user.votes.where(voteable_type: "Review").count, 'review') %> and <%= pluralize(@user.votes.where(voteable_type: "Reply").count, 'reply') %></li>
+    </ul>
   </div>
 </main>
