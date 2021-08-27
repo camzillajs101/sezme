@@ -55,8 +55,7 @@ class Post < ApplicationRecord
     when "new"
       self.order(created_at: :desc)
     when "popular"
-      # sort it by score or something in the future
-      self.order(id: :asc)
+      self.most_hit
     when "most_reviews"
       self.order(review_count: :desc)
     when "highest_rating"
@@ -64,7 +63,7 @@ class Post < ApplicationRecord
     when "unrated"
       self.where(review_count: 0)
     else
-      self.order(id: :asc)
+      self.order(created_at: :desc)
     end
   end
 end
