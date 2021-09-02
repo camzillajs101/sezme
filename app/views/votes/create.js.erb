@@ -1,2 +1,6 @@
-$('#<%= params[:voteable_type].downcase %>-<%= params[:voteable_id] %>-like-btn').replaceWith('<%= unlike_btn(@vote) %>');
-$('#<%= params[:voteable_type].downcase %>-<%= params[:voteable_id] %>-likes-count').html('<%= pluralize(@model.votes.where(value: 0).count, "like") %>');
+$('#<%= params[:voteable_type].downcase %>-<%= params[:voteable_id] %>-<%= vote_name_for(params[:value].to_i) %>-btn').replaceWith('<%= unvote_btn(@vote) %>');
+$('#<%= params[:voteable_type].downcase %>-<%= params[:voteable_id] %>-likes-count').html('<%= @model.votes.where(value: 0).count %>');
+
+<% if @inverse_vote != nil %>
+  $('#<%= params[:voteable_type].downcase %>-<%= params[:voteable_id] %>-un<%= vote_name_for(@inverse_vote.value) %>-btn').replaceWith('<%= vote_btn(@inverse_vote.value, @model) %>');
+<% end %>
