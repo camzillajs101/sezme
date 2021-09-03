@@ -10,7 +10,7 @@
 
     <!-- maybe wrap this in a fieldset -->
     <div class="review-form-wrapper new-review-form-wrapper" id="new-review"> <!-- id is for link (posts/:id#new-review) -->
-      <%= render 'reviews/new_review' %>
+      <%= render 'reviews/new_review', review: @post.reviews.new %>
     </div>
 
     <hr><br>
@@ -22,10 +22,10 @@
         <div class="reviews-top-bar">
           <h3><%= pluralize(@reviews.count, 'review') %></h3>
           <div class="tabs">
-            <%= link_to "Newest", post_path(@post, :sort => "new"), name: "new", class: "cool-link" %>
-            <%= link_to "Oldest", post_path(@post, :sort => "old"), name: "old", class: "cool-link" %>
-            <%= link_to "Highest Rating", post_path(@post, :sort => "rate_high"), name: "rate_high", class: "cool-link" %>
-            <%= link_to "Lowest Rating", post_path(@post, :sort => "rate_low"), name: "rate_low", class: "cool-link" %>
+            <%= link_to "Best", post_path(@post, :sort => "best"), class: "cool-link" %>
+            <%= link_to "New", post_path(@post, :sort => "new"), class: "cool-link" %>
+            <%= link_to "Highest Rating", post_path(@post, :sort => "rate_high"), class: "cool-link" %>
+            <%= link_to "Lowest Rating", post_path(@post, :sort => "rate_low"), class: "cool-link" %>
           </div>
         </div>
 
@@ -44,10 +44,10 @@
     <p>Posted on <%= @post.created_at.strftime("%B %-d, %Y") %></p>
 
     <% for i in 1..5 %>
-      <%= link_to post_path(@post, :exception => 6-i), class: "link" do %>
+      <%= link_to post_path(@post, exception: 6-i), class: "link" do %>
         <%= 6-i %>-star:
       <% end %>
-      <progress value="<%= Post.stats(@post.id,6-i) %>" max="100"></progress> <%= Post.stats(@post.id,6-i) %>%<br>
+      <progress value="<%= @post.stats(6-i) %>" max="100"></progress> <%= @post.stats(6-i) %>%<br>
     <% end %>
   </div>
 </main>

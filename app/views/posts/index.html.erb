@@ -18,9 +18,9 @@
       <div class="index-post">
         <div class="postinfo">
           <%= link_to post, class: "link postlink" do %>
-            <%= post.title %> | <%= Post.readablerating(post.id) %>
+            <%= post.title %> | <%= post.readablerating %>
           <% end %>
-          <p>by user <%= link_to User.find(post.user_id).username, user_path(User.find(post.user_id).username), class: "link" %></p>
+          <p>by user <%= link_to post.user.username, user_path(post.user.username), class: "link" %></p>
           <p><%= pluralize(post.reviews.count, 'review') %> so far</p>
         </div>
 
@@ -32,7 +32,7 @@
             <%= render 'shared/stars', rating: user_review.rating / 10 %>
             <%= truncate(user_review.title, length: 30) %>
           <% else %>
-            <%= link_to "#{post_path(post.id)}#new-review", class: "btn" do %>
+            <%= link_to "#{post_path(post)}#new-review", class: "btn" do %>
               <%= image_tag("icons/star-half-fill.svg", class: "icon") %> Review
             <% end %>
           <% end %>

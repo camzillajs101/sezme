@@ -14,7 +14,7 @@
         <% @user.posts.each do |post| %>
           <div class="user-post">
             <h3><%= link_to post.title, post, class: "link" %></h3>
-            <p><%= Post.readablerating(post.id) %>, <%= pluralize(post.review_count, 'review') %></p>
+            <p><%= post.readablerating %>, <%= pluralize(post.review_count, 'review') %></p>
           </div>
         <% end %>
       </div>

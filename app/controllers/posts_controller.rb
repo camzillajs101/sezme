@@ -14,7 +14,6 @@ class PostsController < ApplicationController
     @post.punch(request)
     @user = User.find(@post.user_id)
     @reviews = Review.sort(@post, params[:sort])
-    @review = @post.reviews.new
     if user_signed_in?
       @post_vote = @post.votes.find_by(user_id: current_user.id)
       @user_review = @reviews.find_by(user_id: current_user.id)
