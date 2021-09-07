@@ -33,5 +33,6 @@ class Review < ApplicationRecord
     def update_post
       post.update_review_average
       post.update_review_count
+      post.update_bayesian
     end
 end

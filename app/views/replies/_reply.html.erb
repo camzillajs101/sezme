@@ -10,15 +10,22 @@
   <p><%= reply.body %></p>
 
   <div class="comment-info-line">
-    <span class="likes-count reply-likes-count" id="reply-<%= reply.id %>-likes-count">
-      <%= pluralize(reply.votes.where(value: 0).count, 'like') %>
-    </span>
     <% if user_signed_in? %>
-      <% if !reply.votes.exists?(user_id: current_user.id) %>
-        <%= like_btn(0, reply) %>
-      <% else %>
-        <%= unlike_btn(reply.votes.find_by(user_id: current_user.id)) %>
-      <% end %>
+      <div class="votes-container reply-votes-container">
+        <% if !reply.votes.exists?(user_id: current_user.id, value: 0) %>
+          <%= vote_btn(0, reply) %>
+        <% else %>
+          <%= unvote_btn(reply.votes.find_by(user_id: current_user.id, value: 0)) %>
+        <% end %>
+        <span class="likes-count reply-likes-count" id="reply-<%= reply.id %>-likes-count">
+          <%= reply.votes.where(value: 0).count %>
+        </span>
+        <% if !reply.votes.exists?(user_id: current_user.id, value: 1) %>
+          <%= vote_btn(1, reply) %>
+        <% else %>
+          <%= unvote_btn(reply.votes.find_by(user_id: current_user.id, value: 1)) %>
+        <% end %>
+      </div>
       <% if reply.user_id == current_user.id %>
         <%= link_to image_tag("icons/edit-2-fill.svg", class: "icon"), edit_reply_path(reply), remote: true %>
         <%= link_to image_tag("icons/delete-bin-fill.svg", class: "icon"), reply_path(reply), method: :delete, data: { confirm: "Delete this reply?" } %>
