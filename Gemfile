@@ -64,3 +64,6 @@ gem 'kaminari'
 
 # punching bag
 gem 'punching_bag'
+
+# AATO
+gem 'acts-as-taggable-on', '~> 7.0'

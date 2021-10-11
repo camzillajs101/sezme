@@ -93,7 +93,7 @@
   form styling
 ========== */
 
-.post-form { // TODO: too much nesting
+.new-post-form { // TODO: too much nesting
   margin: 1em 0;
 
   .field {
@@ -119,11 +119,12 @@
       }
     }
     textarea {
-      height: 8em;
+      height: 10em;
     }
   }
 
-  .form-submit {
+  .actions input {
+    width: 35%;
     padding: 1em 0;
     margin-top: 1em;
 
@@ -162,13 +163,6 @@
 .post-title {
   font-size: 2em;
   font-weight: bold;
-}
-// .newpostform * {
-//   width: 100%;
-//   padding: 0px;
-// }
-.field {
-
 }
 
 progress {
