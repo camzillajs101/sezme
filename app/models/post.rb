@@ -18,8 +18,7 @@ class Post < ApplicationRecord
     update bayesian: bayesian
   end
 
-  def self.rating(id)
-    reviews = Post.find(id).reviews
+  def rating
     count = [reviews.count, 1].max
     sum = 0
 
@@ -30,23 +29,20 @@ class Post < ApplicationRecord
     return sum / count / 10.0
   end
 
-  def self.readablerating(id)
-    rating = Post.rating(id)
-
-    if rating < 1
+  def readablerating
+    if review_count == 0
       return "[unrated]"
     else
       return "#{rating} stars"
     end
   end
 
-  def self.stats(id,rating)
-    reviews = Post.find(id).reviews
+  def stats(num_rating)
     total = [reviews.count, 1].max
     count = 0
 
     reviews.each do |review|
-      if review.rating == rating * 10
+      if review.rating == num_rating * 10
         count += 1
       end
     end

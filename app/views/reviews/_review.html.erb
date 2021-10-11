@@ -5,11 +5,8 @@
   </div>
 
   <div class="comment-info-line small-info review-info">
-    <%= link_to User.find(review.user_id).username, user_path(User.find(review.user_id).username), class: "link" %>
+    <%= link_to review.user.username, user_path(review.user.username), class: "link" %>
     <i><%= time_ago_in_words(review.created_at) %> ago</i>
-    <% if review.updated_at != review.created_at %>
-      <i class="no-🚰">(edited)</i>
-    <% end %>
   </div>
 
   <p><%= review.desc %></p>
@@ -34,7 +31,7 @@
       <%= link_to "Reply", new_review_reply_path(review), remote: true, class: "link" %>
       <% if review.user_id == current_user.id %>
         <%= link_to image_tag("icons/edit-2-fill.svg", class: "icon"), edit_review_path(review), remote: true %>
-        <%= link_to image_tag("icons/delete-bin-fill.svg", class: "icon"), review_path(review), method: :delete, data: { confirm: "Delete this review?" } %>
+        <%= link_to image_tag("icons/delete-bin-fill.svg", class: "icon"), review, method: :delete, data: { confirm: "Delete this review?" } %>
       <% end %>
     <% else %>
       <%= fake_like_btn %>
@@ -56,7 +53,7 @@
 
     <% if review.replies.any? && !review.replies.page(1).per(2).last_page? %>
       <div class="show-more-link">
-        <%= link_to "Show more", review_replies_path(review, :page => 2), remote: true, class: "link" %>
+        <%= link_to "Show more", review_replies_path(review, page: 2), remote: true, class: "link" %>
       </div>
     <% end %>
   </div>

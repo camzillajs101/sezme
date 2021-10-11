@@ -4,12 +4,12 @@
     <% if post.url && post.url != "" %>
       <div class="post-url">
         <%= link_to post.url, target: '_blank', class: 'link' do %>
-          <%= truncate(post.url, :length => 50) %>
+          <%= truncate(post.url, length: 50) %>
           <%= image_tag("icons/external-link-line.svg", class: 'icon') %>
         <% end %>
       </div>
     <% end %>
-    <p>Rating: <b><%= Post.readablerating(post.id) %></b> | Posted by user <%= link_to @user.username, user_path(@user.username), class: 'link' %> <%= time_ago_in_words(post.created_at, include_seconds: true) %> ago</p>
+    <p>Rating: <b><%= post.readablerating %></b> | Posted by user <%= link_to @user.username, user_path(@user.username), class: 'link' %> <%= time_ago_in_words(post.created_at, include_seconds: true) %> ago</p>
     <p><%= post.desc %></p>
     <p class="post-hit-count"><%= pluralize(post.hits, 'view') %></p>
   </div>
