@@ -7,7 +7,7 @@
     <h2>New topic</h2>
     <p>Create a topic to be reviewed. Make sure to describe it neutrally as to not influence reviews.</p>
 
-    <%= form_with model: @post, url: "/posts", class: "post-form" do |f| %>
+    <%= form_with model: @post, url: "/posts", class: "new-post-form" do |f| %>
       <div class="field">
         <%= f.label :title %><br>
         <%= f.text_field :title, placeholder: "Name your topic" %>
@@ -23,7 +23,7 @@
         <%= f.text_area :desc, placeholder: "Describe it in a few sentences" %>
       </div>
 
-      <div class="field">
+      <div class="actions">
         <%= f.submit "Create Topic", class: "form-submit" %>
       </div>
     <% end %>

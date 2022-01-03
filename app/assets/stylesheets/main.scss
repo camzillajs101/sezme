@@ -26,8 +26,8 @@ header {
   box-shadow: 0px 1px 5px 0 gray;
   background-color: var(--header-bg);
   color: var(--header-text);
-  font-family: "brandon-grotesque";
-  font-size: 1.25em;
+  font-family: "brandon-grotesque", "Georgia";
+  font-size: var(--fs-500);
 
   > * {
     margin: 0.5em 0;

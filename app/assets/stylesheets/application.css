@@ -23,6 +23,13 @@
   --header-bg: #114a66;
   --header-text: #2de3b0;
   --btn-bg: #00a3a3;
+
+  --fs-200: 0.8rem;
+  --fs-300: 0.9rem;
+  --fs-400: 1rem;
+  --fs-500: 1.25rem;
+  --fs-600: 1.5rem;
+  --fs-800: 3rem;
 }
 
 /* ==========
@@ -34,7 +41,7 @@
 }
 body {
  margin: 0;
- font-size: 16px;
+ font-size: var(--fs-400);
  font-family: "Open Sans", "open-sans", "Arial";
  background-color: var(--root-bg);
 }
@@ -48,7 +55,7 @@ hr {
   color: white;
 }
 
-input:not([type="submit"]), textarea {
+input, textarea {
   font-family: inherit; /* because chrome is a widdle baby */
   background-color: #f5f5f5;
 }

@@ -20,8 +20,8 @@
           <%= link_to post, class: "link postlink" do %>
             <%= post.title %> | <%= post.readablerating %>
           <% end %>
-          <p>by user <%= link_to post.user.username, user_path(post.user.username), class: "link" %></p>
-          <p><%= pluralize(post.reviews.count, 'review') %> so far</p>
+          <p><%= link_to post.user.username, user_path(post.user.username), class: "link" %></p>
+          <p><%= pluralize(post.review_count, 'review') %> so far</p>
         </div>
 
         <div class="side-btn">
