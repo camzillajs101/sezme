@@ -42,7 +42,7 @@
     <input type="checkbox" id="repliestoggle-<%= review.id %>" class="repliestoggle">
     <label for="repliestoggle-<%= review.id %>">
       <%= image_tag("icons/arrow-down-s-fill.svg", class: "icon") %>
-      <b><%= pluralize(review.replies.count, 'reply') %></b>
+      <b class="noselect"><%= pluralize(review.replies.count, 'reply') %></b>
     </label>
   <% end %>
 

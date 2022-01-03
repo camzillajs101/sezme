@@ -4,8 +4,9 @@
   <div class="page">
     <%= render 'shared/back' %>
 
+    <h2>Your groups</h2>
     <% @groups.each do |group| %>
-      <%= group.title %>
+      <%= link_to group.title, group %>
     <% end %>
   </div>
   <div class="sidebar">

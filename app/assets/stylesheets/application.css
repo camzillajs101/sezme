@@ -55,3 +55,6 @@ input:not([type="submit"]), textarea {
 textarea {
   resize: none;
 }
+.noselect {
+  user-select: none;
+}

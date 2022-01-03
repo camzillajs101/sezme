@@ -1,6 +1,5 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :verify_ownership, only: [:show, :edit]
 
   def index
     @groups = current_user.groups
@@ -8,17 +7,17 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    verify_ownership(@group)
   end
 
   def new
-    @group = Group.new
+    @group = current_user.groups.new
   end
 
   def create
-    @group = Group.new
+    @group = current_user.groups.new(group_params)
 
     if @group.save
-      current_user.groups << @group
       redirect_to @group
     else
       render :new
@@ -27,6 +26,7 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
+    verify_ownership(@group)
   end
 
   def update
@@ -47,11 +47,5 @@ class GroupsController < ApplicationController
   protected
     def group_params
       params.require(:group).permit(:title)
-    end
-    def verify_ownership
-      group = Group.find(params[:id])
-      if !current_user.groups.exists?(group)
-        redirect_to group
-      end
     end
 end
