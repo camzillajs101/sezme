@@ -7,11 +7,18 @@
         <%= image_tag("icons/pencil-fill.svg", class: "icon") %> Create Topic
       <% end %>
 
-      <div class="tabs">
-        <%= link_to "New", posts_path(:sort => "new"), class: "cool-link" %>
-        <%= link_to "Top", posts_path(:sort => "top"), class: "cool-link" %>
-        <%= link_to "Most Reviews", posts_path(:sort => "most_reviews"), class: "cool-link" %>
-        <%= link_to "Unrated", posts_path(:sort => "unrated"), class: "cool-link" %>
+      <div class="dropdown">
+        <%= check_box_tag :dropdowntoggle %>
+        <%= label_tag :dropdowntoggle do %>
+          Newest <%= image_tag("icons/arrow-drop-right-line.svg", class: "icon dropdown-icon") %>
+        <% end %>
+        <div class="dropdown-content">
+          <%= link_to "New", posts_path(:sort => "new") %>
+          <%= link_to "Top", posts_path(:sort => "top") %>
+          <%= link_to "Popular", posts_path(:sort => "popular") %>
+          <%= link_to "Most Reviews", posts_path(:sort => "most_reviews") %>
+          <%= link_to "Unrated", posts_path(:sort => "unrated") %>
+        </div>
       </div>
     </div>
     <% @posts.each do |post| %>

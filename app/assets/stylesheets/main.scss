@@ -269,6 +269,55 @@ main {
   }
 }
 
+.dropdown {
+  position: relative;
+  user-select: none;
+}
+.dropdown-content {
+  display: flex;
+  flex-flow: column wrap;
+  position: absolute;
+
+  top: 2em;
+  right: 0;
+
+  visibility: hidden;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 200ms;
+  z-index: 999;
+  background-color: white;
+  border: 1px solid lightgray;
+
+  a {
+    padding: 0.5em 0.7em;
+    white-space: nowrap;
+    color: black;
+
+    &:is(:hover, :focus) {
+      background-color: lightgray;
+    }
+  }
+}
+#dropdowntoggle {
+  display: none;
+
+  &:checked {
+    ~ .dropdown-content {
+      visibility: visible;
+      transform: scaleY(1);
+    }
+    ~ label .dropdown-icon {
+      transform: rotate(90deg);
+    }
+  }
+}
+.dropdown-icon {
+  top: -0.1ch;
+  margin-left: -0.4ch;
+  transition: transform 150ms;
+}
+
 .comment-info-line {
   display: flex;
   flex-flow: row wrap;
