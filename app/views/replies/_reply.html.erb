@@ -17,7 +17,7 @@
         <% else %>
           <%= unvote_btn(reply.votes.find_by(user_id: current_user.id, value: 0)) %>
         <% end %>
-        <span class="likes-count reply-likes-count" id="reply-<%= reply.id %>-likes-count">
+        <span class="likes-count reply-like-count" id="reply-<%= reply.id %>-like-count">
           <%= reply.votes.where(value: 0).count %>
         </span>
         <% if !reply.votes.exists?(user_id: current_user.id, value: 1) %>

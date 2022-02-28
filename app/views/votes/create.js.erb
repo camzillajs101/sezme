@@ -1,5 +1,9 @@
 $('#<%= params[:voteable_type].downcase %>-<%= params[:voteable_id] %>-<%= vote_name_for(params[:value].to_i) %>-btn').replaceWith('<%= unvote_btn(@vote) %>');
-$('#<%= params[:voteable_type].downcase %>-<%= params[:voteable_id] %>-likes-count').html('<%= @model.votes.where(value: 0).count %>');
+<% if params[:value] != 1 # dislike votes are not visibly counted %>
+  console.log('<%= params[:value].to_i %>');
+  console.log('#<%= params[:voteable_type].downcase %>-<%= params[:voteable_id] %>-<%= vote_name_for(params[:value].to_i) %>-count','<%= @model.votes.where(value: params[:value].to_i).count %>');
+  $('#<%= params[:voteable_type].downcase %>-<%= params[:voteable_id] %>-<%= vote_name_for(params[:value].to_i) %>-count').html('<%= @model.votes.where(value: params[:value].to_i).count %>');
+<% end %>
 
 <% if @inverse_vote != nil %>
   $('#<%= params[:voteable_type].downcase %>-<%= params[:voteable_id] %>-un<%= vote_name_for(@inverse_vote.value) %>-btn').replaceWith('<%= vote_btn(@inverse_vote.value, @model) %>');

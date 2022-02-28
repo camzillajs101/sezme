@@ -1,2 +1,6 @@
 $('#<%= @vote.voteable_type.downcase %>-<%= @vote.voteable_id %>-un<%= vote_name_for(@vote.value) %>-btn').replaceWith('<%= vote_btn(@vote.value, @model) %>');
-$('#<%= @vote.voteable_type.downcase %>-<%= @vote.voteable_id %>-likes-count').html('<%= @model.votes.where(value: 0).count %>');
+<% if params[:value] != 1 # dislike votes are not visibly counted %>
+  console.log('<%= params[:value].to_i %>');
+  console.log('#<%= @vote.voteable_type.downcase %>-<%= @vote.voteable_id %>-<%= vote_name_for(params[:value].to_i) %>-count','<%= @model.votes.where(value: 0).count %>');
+  $('#<%= @vote.voteable_type.downcase %>-<%= @vote.voteable_id %>-<%= vote_name_for(params[:value].to_i) %>-count').html('<%= @model.votes.where(value: 0).count %>');
+<% end %>

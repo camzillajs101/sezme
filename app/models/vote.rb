@@ -6,7 +6,7 @@ class Vote < ApplicationRecord
   after_destroy :update_review
 
   validates :user_id, uniqueness: { scope: [:voteable_id, :voteable_type, :value] }
-  validates :value, inclusion: 0..1
+  validates :value, inclusion: 0..3
 
   private
     def update_review

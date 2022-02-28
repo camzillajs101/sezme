@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   has_many :votes, as: :voteable, dependent: :destroy
 
   acts_as_punchable
-  acts_as_taggable_on :tags
+  # acts_as_taggable_on :tags
 
   validates :title, :desc, presence: true
 

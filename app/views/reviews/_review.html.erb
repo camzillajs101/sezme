@@ -11,21 +11,29 @@
 
   <p><%= review.desc %></p>
 
+  <div class="comment-info-line small-info">
+    <span class="likes-count review-helpful-count" id="review-<%= review.id %>-helpful-count">
+      <%= review.votes.where(value: 2).count %>
+    </span>
+    <%= 'person'.pluralize(review.votes.where(value: 2).count) %> found this review helpful
+    <span class="likes-count review-funny-count" id="review-<%= review.id %>-funny-count">
+      <%= review.votes.where(value: 3).count %>
+    </span>
+    <%= 'person'.pluralize(review.votes.where(value: 3).count) %> found this review funny
+  </div>
+
   <div class="comment-info-line">
     <% if user_signed_in? %>
       <div class="votes-container review-votes-container">
-        <% if !review.votes.exists?(user_id: current_user.id, value: 0) %>
-          <%= vote_btn(0, review) %>
+        <% if !review.votes.exists?(user_id: current_user.id, value: 2) %>
+          <%= vote_btn(2, review) %>
         <% else %>
-          <%= unvote_btn(review.votes.find_by(user_id: current_user.id, value: 0)) %>
+          <%= unvote_btn(review.votes.find_by(user_id: current_user.id, value: 2)) %>
         <% end %>
-        <span class="likes-count review-likes-count" id="review-<%= review.id %>-likes-count">
-          <%= review.votes.where(value: 0).count %>
-        </span>
-        <% if !review.votes.exists?(user_id: current_user.id, value: 1) %>
-          <%= vote_btn(1, review) %>
+        <% if !review.votes.exists?(user_id: current_user.id, value: 3) %>
+          <%= vote_btn(3, review) %>
         <% else %>
-          <%= unvote_btn(review.votes.find_by(user_id: current_user.id, value: 1)) %>
+          <%= unvote_btn(review.votes.find_by(user_id: current_user.id, value: 3)) %>
         <% end %>
       </div>
       <%= link_to "Reply", new_review_reply_path(review), remote: true, class: "link" %>
